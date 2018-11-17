@@ -39,9 +39,28 @@ Function DebloatBlacklist {
     Param ()
 
     $Bloatware = @(
+        
+        #Apps that could be necessary are added here and commented
+        #"*Microsoft.MSPaint*"
+        #"*Microsoft.MicrosoftStickyNotes*"
+        #"*Microsoft.Windows.Photos*"
+        #"*Microsoft.WindowsCalculator*"
+        #"*Microsoft.WindowsStore*"
+        #"Microsoft.SkypeApp" 
+        #"Microsoft.Office.Sway"
+
 
         #Unnecessary Windows 10 AppX Apps
+        "Microsoft.3DBuilder"
+        "*Microsoft.Advertising.Xaml*"
+        "Microsoft.BingFinance"
+        "Microsoft.BingFoodAndDrink"
+        "Microsoft.BingHealthAndFitness"
         "Microsoft.BingNews"
+        "Microsoft.BingSports"
+        "Microsoft.BingTravel"
+        "Microsoft.BingWeather"
+        "Microsoft.BioEnrollment"
         "Microsoft.DesktopAppInstaller"
         "Microsoft.GetHelp"
         "Microsoft.Getstarted"
@@ -49,26 +68,30 @@ Function DebloatBlacklist {
         "Microsoft.Microsoft3DViewer"
         "Microsoft.MicrosoftOfficeHub"
         "Microsoft.MicrosoftSolitaireCollection"
+        "Microsoft.Music.Preview" 
         "Microsoft.NetworkSpeedTest"
         "Microsoft.Office.OneNote"
         "Microsoft.Office.Sway"
         "Microsoft.OneConnect"
         "Microsoft.People"
         "Microsoft.Print3D"
-        "Microsoft.RemoteDesktop"
-        "Microsoft.SkypeApp"
+        "Microsoft.RemoteDesktop"       
         "Microsoft.StorePurchaseApp"
         "Microsoft.WindowsAlarms"
         "Microsoft.WindowsCamera"
         "microsoft.windowscommunicationsapps"
         "Microsoft.WindowsFeedbackHub"
         "Microsoft.WindowsMaps"
+        "Microsoft.Windows.PeopleExperienceHost"
+        "Microsoft.WindowsPhone"
         "Microsoft.WindowsSoundRecorder"
-        "Microsoft.Xbox.TCUI"
-        "Microsoft.XboxApp"
-        "Microsoft.XboxGameOverlay"
-        "Microsoft.XboxIdentityProvider"
-        "Microsoft.XboxSpeechToTextOverlay"
+        "*Microsoft.Xbox.TCUI*"
+        "*Microsoft.XboxApp*"
+        "*Microsoft.XboxGameOverlay*"
+        "*Microsoft.XboxSpeechToTextOverlay*"
+        "*Microsoft.XboxGameCallableUI*"
+        "*Microsoft.XboxIdentityProvider*"
+        "*Microsoft.XboxGamingOverlay*"
         "Microsoft.ZuneMusic"
         "Microsoft.ZuneVideo"
              
@@ -87,16 +110,13 @@ Function DebloatBlacklist {
         "*Spotify*"
         "*Minecraft*"
         "*Royal Revolt*"
-             
-        #Optional: Typically not removed but you can if you need to for some reason
-        #"*Microsoft.Advertising.Xaml_10.1712.5.0_x64__8wekyb3d8bbwe*"
-        #"*Microsoft.Advertising.Xaml_10.1712.5.0_x86__8wekyb3d8bbwe*"
-        #"*Microsoft.BingWeather*"
-        #"*Microsoft.MSPaint*"
-        #"*Microsoft.MicrosoftStickyNotes*"
-        #"*Microsoft.Windows.Photos*"
-        #"*Microsoft.WindowsCalculator*"
-        #"*Microsoft.WindowsStore*"
+        
+        #HP
+        "*Weather.TheWeatherChannelforHP*"
+        "*4DF9E0F8.Netflix*"
+        "*AD2F1837.HPConnectedPhotopoweredbySnapfish*"
+           
+
     )
     foreach ($Bloat in $Bloatware) {
         Get-AppxPackage -Name $Bloat| Remove-AppxPackage -ErrorAction SilentlyContinue
