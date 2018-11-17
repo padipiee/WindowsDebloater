@@ -3,14 +3,11 @@ Script/Utility/Application to debloat Windows 10
 
 # Purpose
 
-I have found many different solutions online to debloat Windows 10 and many either worked but caused issues in the long run, or they did so little that it wasn't enough of a "debloat" experience. I decided to create a script that will debloat Windows 10 the way that I envision it, with the option of even being able to revert changes.
-
+Ddebloat Windows 10 (ie remove unecessary apps) the way that I envision it, with the option of even being able to revert changes.
 This comes in hand when setting up new Windows 10 machines without needing to manually remove the bloatware found within Windows 10, along with some "fail safe" features via the Revert-Changes function, and even stops Windows from installing the bloatware in new user profiles.
 
 
 # How To Run
-
-
 
 Download the Windows10Debloater.ps1 file. Next, open PowerShell ISE/VSCode as an Administrator, copy the source code from Windows10Debloater.ps1 and throw it into PowerShell ISE/VSCode/etc and run it.
 
@@ -51,7 +48,7 @@ DmClient
 
 These scheduled tasks that are disabled have absolutely no impact on the function of the OS.
 
-# Bloatware that is removed:
+# Bloatware that is removed (examples):
 
 3DBuilder,
 Appconnector,
@@ -143,11 +140,6 @@ Third, Protect-Privacy adds and/or changes registry keys to stop some telemetry 
 Finally, there is an optional switch parameter which is Stop-EdgePDF. This just stops Edge from taking over as the default PDF viewer. I made this optional since some do not find this necessary for them or their organization.
 
 # Credit
+Based on  Sycnex/Windows10Debloater
 
-Thank you to a60wattfish, abulgatz, xsisbest, Damian and Reddit user /u/GavinEke for some of the suggestions and fixes that I have placed into my scripts. You all have done a fantastic job!
 
-# Donate 
-
-If you like and appreciate my work then please consider a donation for a cup of coffee. :)
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/syncrn)
