@@ -2,6 +2,7 @@
 #Also, to note - This does NOT remove essential system services/software/etc such as .NET framework installations, Cortana, Edge, etc.
 
 #no errors throughout
+#
 $ErrorActionPreference = 'silentlycontinue'
 
 If (Test-Path "C:\Windows10Debloater") {
