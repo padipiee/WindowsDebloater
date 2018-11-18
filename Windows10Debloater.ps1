@@ -261,21 +261,30 @@ Function Protect-Privacy {
 
     
     #########################################
-    # Prevents bloatware applications from returning and removes Start Menu suggestions          
+    # Prevents bloatware applications from returning and removes Start Menu suggestions : CloudContent       
     #########################################     
     
-    $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
-    $registryOEM = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
-    If (!(Test-Path $registryPath)) { 
-        New-Item $registryPath
-        Set-ItemProperty $registryPath DisableWindowsConsumerFeatures -Value 1 
-        Write-Output "[Disabled] Added Registry key to prevent bloatware apps from returning in $registryPath"
+    $registryPathCloudContent = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
+    $regItemCloudContent  = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent\DisableWindowsConsumerFeatures"
+    $regNameCloudContent = "DisableWindowsConsumerFeatures"
+    $regSecureValueCloudContentDisableWindowsConsumerFeatures = "1"
+    $regUnSecureValueCloudContentDisableWindowsConsumerFeatures = "0"
+    If (!(Test-Path $registryPathCloudContent)) { 
+        New-Item $registryPathCloudContent
+        Set-ItemProperty $registryPathCloudContent $regNameCloudContent -Value $regSecureValueCloudContentDisableWindowsConsumerFeatures
+        Write-Output "[Disabled] Added Registry key to prevent bloatware apps from returning in $regItemCloudContent"
     }
 
     #Else {
     #    Write-Output "[NoChange] Registry key to prevent bloatware apps from returning in was already set in $registryPath"
     #}
     
+
+    #########################################
+    # Prevents bloatware applications from returning and removes Start Menu suggestions : ContentDeliveryManager        
+    ######################################### 
+
+    $registryOEM = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
 
     If (!(Test-Path $registryOEM)) {
         New-Item $registryOEM
