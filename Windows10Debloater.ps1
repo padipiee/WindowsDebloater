@@ -1,10 +1,12 @@
-#This function finds any AppX/AppXProvisioned package and uninstalls it, except for Freshpaint, Windows Calculator, Windows Store, and Windows Photos.
+#This function finds any AppX/AppXProvisioned package and uninstalls it, except WhitelistedApps (check list in code)
 #Also, to note - This does NOT remove essential system services/software/etc such as .NET framework installations, Cortana, Edge, etc.
 
-#no errors throughout
-#
-$ErrorActionPreference = 'silentlycontinue'
 
+
+#########################################
+# Verify or create a sub-directory for log debug
+#########################################
+$ErrorActionPreference = 'silentlycontinue'
 If (Test-Path "C:\Windows10Debloater") {
     Write-Output "C:\Windows10Debloater exists. Skipping."
 }
@@ -18,6 +20,9 @@ Else {
 Start-Transcript -OutputDirectory "C:\Windows10Debloater"
 
 Add-Type -AssemblyName PresentationCore, PresentationFramework
+
+
+
 
 Function DebloatAll {
     
@@ -40,12 +45,10 @@ Function DebloatBlacklist {
 
     $Bloatware = @(
         
-        #Apps that could be necessary are added here and commented
+        #Apps that could be necessary are added here and commented (uncomment the needed to remove...when possible)
         #"*Microsoft.MSPaint*"
         #"*Microsoft.MicrosoftStickyNotes*"
         #"*Microsoft.Windows.Photos*"
-        #"*Microsoft.WindowsCalculator*"
-        #"*Microsoft.WindowsStore*"
         #"Microsoft.SkypeApp" 
         #"Microsoft.Office.Sway"
 
@@ -244,8 +247,9 @@ Function Protect-Privacy {
     Else {
         Write-Output "[NoChange] Cortana already configured from not being used as part of Windows Search Function with $regItemPathWindowsSearch"
     }
-
-    #Disables Bing Web Search in Start Menu
+    #########################################
+    # Disables Bing Web Search in Start Menu
+    #########################################
     
     $WebSearch = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
     Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" BingSearchEnabled -Value 0 
@@ -256,8 +260,9 @@ Function Protect-Privacy {
     }
 
     
-
-    #Prevents bloatware applications from returning and removes Start Menu suggestions               
+    #########################################
+    # Prevents bloatware applications from returning and removes Start Menu suggestions          
+    #########################################     
     
     $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
     $registryOEM = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
@@ -283,8 +288,9 @@ Function Protect-Privacy {
         Write-Output "[Disabled] Added Registry key to prevent bloatware apps from returning in $registryOEM"
     }
          
-    
-    #Preping mixed Reality Portal for removal    
+    #########################################
+    # Preping mixed Reality Portal for removal   
+    ######################################### 
    
     $Holo = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Holographic"    
     If (Test-Path $Holo) {
@@ -292,8 +298,9 @@ Function Protect-Privacy {
         Write-Output "[Disabled] Set Mixed Reality Portal value to 0 so that you can uninstall it in Settings : $Holo"
     }
 
-
-    #Disables Wi-fi Sense
+    #########################################
+    # Disables Wi-fi Sense
+    #########################################
     Write-Output "Disabling Wi-Fi Sense"
     $WifiSense1 = "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting"
     $WifiSense2 = "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots"
@@ -307,16 +314,21 @@ Function Protect-Privacy {
     }
     Set-ItemProperty $WifiSense2  Value -Value 0 
     Set-ItemProperty $WifiSense3  AutoConnectAllowedOEM -Value 0 
-        
-    #Disables live tiles
+    
+    #########################################
+    # Disables live tiles
+    #########################################
+
     Write-Output "Disabling live tiles"
     $Live = "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications"    
     If (!(Test-Path $Live)) {      
         New-Item $Live
     }
     Set-ItemProperty $Live  NoTileApplicationNotification -Value 1 
-        
-    #Turns off Data Collection via the AllowTelemtry key by changing it to 0
+    
+    #########################################
+    # Turns off Data Collection via the AllowTelemtry key by changing it to 0
+    #########################################
     Write-Output "Turning off Data Collection"
     $DataCollection1 = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
     $DataCollection2 = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
@@ -331,7 +343,9 @@ Function Protect-Privacy {
         Set-ItemProperty $DataCollection3  AllowTelemetry -Value 0 
     }
     
-    #Disabling Location Tracking
+    #########################################
+    # Disabling Location Tracking
+    #########################################
     Write-Output "Disabling Location Tracking"
     $SensorState = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}"
     $LocationConfig = "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration"
@@ -343,33 +357,42 @@ Function Protect-Privacy {
         New-Item $LocationConfig
     }
     Set-ItemProperty $LocationConfig Status -Value 0 
-        
-    #Disables People icon on Taskbar
+    
+    #########################################
+    # Disables People icon on Taskbar
+    #########################################
     Write-Output "Disabling People icon on Taskbar"
     $People = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People"    
     If (!(Test-Path $People)) {
         New-Item $People
     }
     Set-ItemProperty $People  PeopleBand -Value 0 
-        
-    #Disables scheduled tasks that are considered unnecessary 
-    Write-Output "Disabling scheduled tasks"
+    
+    #########################################
+    # Disables scheduled tasks that are considered unnecessary 
+    #########################################
+    
     Get-ScheduledTask  XblGameSaveTaskLogon | Disable-ScheduledTask
     Get-ScheduledTask  XblGameSaveTask | Disable-ScheduledTask
     Get-ScheduledTask  Consolidator | Disable-ScheduledTask
     Get-ScheduledTask  UsbCeip | Disable-ScheduledTask
     Get-ScheduledTask  DmClient | Disable-ScheduledTask
     Get-ScheduledTask  DmClientOnScenarioDownload | Disable-ScheduledTask
+    Write-Output "[Disabled]  scheduled tasks"
 
-    Write-Output "Stopping and disabling WAP Push Service"
-    #Stop and disable WAP Push Service
+    #########################################
+    # Stop and disable WAP Push Service
+    #########################################
     Stop-Service "dmwappushservice"
     Set-Service "dmwappushservice" -StartupType Disabled
+    Write-Output "[Stopped] and disabled WAP Push Service"
 
-    Write-Output "Stopping and disabling Diagnostics Tracking Service"
-    #Disabling the Diagnostics Tracking Service
+    #########################################
+    # Disabled the Diagnostics Tracking Service
+    #########################################
     Stop-Service "DiagTrack"
     Set-Service "DiagTrack" -StartupType Disabled
+    Write-Output "[Stopped] and disabled Diagnostics Tracking Service"
 }
 
 Function DisableCortana {
@@ -416,7 +439,7 @@ Function EnableCortana {
 Function Stop-EdgePDF {
     
     #Stops edge from taking over as the default .PDF viewer    
-    Write-Output "Stopping Edge from taking over as the default .PDF viewer"
+    
     $NoPDF = "HKCR:\.pdf"
     $NoProgids = "HKCR:\.pdf\OpenWithProgids"
     $NoWithList = "HKCR:\.pdf\OpenWithList" 
@@ -438,7 +461,8 @@ Function Stop-EdgePDF {
     If (!(Get-ItemProperty $NoWithList  NoStaticDefaultVerb)) {
         New-ItemProperty $NoWithList  NoStaticDefaultVerb 
     }
-            
+    Write-Output "[Stopped] Edge from taking over as the default .PDF viewer"
+    
     #Appends an underscore '_' to the Registry key for Edge
     $Edge = "HKCR:\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_"
     If (Test-Path $Edge) {
