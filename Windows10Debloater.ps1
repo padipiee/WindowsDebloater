@@ -1,8 +1,6 @@
 #This function finds any AppX/AppXProvisioned package and uninstalls it, except WhitelistedApps (check list in code)
 #Also, to note - This does NOT remove essential system services/software/etc such as .NET framework installations, Cortana, Edge, etc.
 
-
-
 #########################################
 # Verify or create a sub-directory for log debug
 #########################################
@@ -20,9 +18,6 @@ Else {
 Start-Transcript -OutputDirectory "C:\Windows10Debloater"
 
 Add-Type -AssemblyName PresentationCore, PresentationFramework
-
-
-
 
 Function DebloatAll {
     
@@ -214,6 +209,7 @@ Function Protect-Privacy {
         $valueAdvertisingInfoEnabled = (Get-Item $regKeyPathAdvertisingInfo -EA Ignore).Property -contains $regNameAdvertisingEnabled
         if ($valueAdvertisingInfoEnabled -eq $false)  { 
                 Write-Output "[ERR - NoChange] Item $regKeyPathAdvertisingInfo\$regValueNameAdvertisingEnabled  does not exist. Check this."
+        }
         Else { 
             #The value exist, checking its value..
             $valueAdvertisingInfoEnabled = Get-RegistryValue $regKeyPathAdvertisingInfo $regNameAdvertisingEnabled
