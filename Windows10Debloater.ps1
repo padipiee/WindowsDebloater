@@ -172,69 +172,160 @@ Function Remove-Keys {
         Remove-Item $Key -Recurse
     }
 }
-            
+
+function Test-RegistryValue($path, $name)
+    {
+        $key = Get-Item -LiteralPath $path -ErrorAction SilentlyContinue
+        $key -and $null -ne $key.GetValue($name, $null)
+    }
+    
+    # Gets the specified registry value or $null if it is missing
+    function Get-RegistryValue($path, $name)
+    {
+        $key = Get-Item -LiteralPath $path -ErrorAction SilentlyContinue
+        if ($key) {
+            $key.GetValue($name, $null)
+        }
+    }
+
 Function Protect-Privacy {
         
     [CmdletBinding()]
         
     Param()
-            
+    
+    #TODO : improve lisibility : check https://stackoverflow.com/questions/5648931/test-if-registry-value-exists
+    # This function just gets $true or $false
+    
+    #########################################
     #Disables Windows Feedback Experience
-    Write-Output "Disabling Windows Feedback Experience program"
-    $Advertising = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
-    If (Test-Path $Advertising) {
-        Set-ItemProperty $Advertising Enabled -Value 0 
+    #########################################
+    #Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Enabled
+    $regKeyPathAdvertisingInfo = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
+    $regItemAdvertisingEnabled = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo\Enabled"
+    $regNameAdvertisingEnabled = "Enabled"
+    $regSecureValueAdvertisingEnabled = "0"
+    $regUnSecureValueAdvertisingEnabled = "1"
+
+    If (Test-Path regKeyPathAdvertisingInfo) {
+        $valueAdvertisingInfoEnabled = (Get-Item $regKeyPathAdvertisingInfo -EA Ignore).Property -contains $regNameAdvertisingEnabled
+        if ($valueAdvertisingInfoEnabled -eq $false)  { 
+                Write-Output "[ERR - NoChange] Item $regKeyPathAdvertisingInfo\$regValueNameAdvertisingEnabled  does not exist. Check this."
+        Else { 
+            #The value exist, checking its value..
+            $valueAdvertisingInfoEnabled = Get-RegistryValue $regKeyPathAdvertisingInfo $regNameAdvertisingEnabled
+            if ($valueAdvertisingInfoEnabled -ne $regUnSecureValueAdvertisingEnabled  )  {
+                Set-ItemProperty $regKeyPathAdvertisingInfo Enabled -Value $regSecureValueAdvertisingEnabled   
+                Write-Output "[!Disabled]  Windows Feedback Experience program Reg Key : $regItemAdvertisingEnabled set to $regSecureValueAdvertisingEnabled"
+            }
+            if ($valueAdvertisingInfoEnabled -ne $regSecureValueAdvertisingEnabled   )  {
+                Write-Output "[NoChange]  Windows Feedback Experience program : $regItemAdvertisingEnabled already set to $regSecureValueAdvertisingEnabled"
+            }
+        }   
     }
-            
+    Else {
+        Write-Output "[ERR - NoChange] Path $regKeyPathAdvertisingInfo does not exist. Check this."
+    }
+
+  
+
     #Stops Cortana from being used as part of your Windows Search Function
-    Write-Output "Stopping Cortana from being used as part of your Windows Search Function"
+    
     $Search = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
     If (Test-Path $Search) {
         Set-ItemProperty $Search AllowCortana -Value 0 
+        Write-Output "[Stopped] Cortana from being used as part of  Windows Search Function"
+    }
+    Else {
+        Write-Output "[NoChange] Cortana already stopped from being used as part of  Windows Search Function"
     }
 
-    #Disables Web Search in Start Menu
-    Write-Output "Disabling Bing Search in Start Menu"
+    #Disables Bing Web Search in Start Menu
+    
     $WebSearch = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
     Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" BingSearchEnabled -Value 0 
     If (!(Test-Path $WebSearch)) {
         New-Item $WebSearch
+        Set-ItemProperty $WebSearch DisableWebSearch -Value 1 
+        Write-Output "[Disabled] Bing Search in Start Menu"
     }
-    Set-ItemProperty $WebSearch DisableWebSearch -Value 1 
+    #Else {
+   <#
+   .SYNOPSIS
+   Short description
+   
+   .DESCRIPTION
+   Long description
+   
+   .EXAMPLE
+   An example
+   
+   .NOTES
+   General notes
+   #>    Write-Output "[NoChange] Bing Web Search is already not in Start Menu"
+    #}
+    
             
     #Stops the Windows Feedback Experience from sending anonymous data
-    Write-Output "Stopping the Windows Feedback Experience program"
+    
     $Period = "HKCU:\Software\Microsoft\Siuf\Rules"
     If (!(Test-Path $Period)) { 
         New-Item $Period
+        Set-ItemProperty $Period PeriodInNanoSeconds -Value 0 
+        Write-Output "[Stopping] the Windows Feedback Experience program"
     }
-    Set-ItemProperty $Period PeriodInNanoSeconds -Value 0 
+    #Else {
+   <#
+   .SYNOPSIS
+   Short description
+   
+   .DESCRIPTION
+   Long description
+   
+   .EXAMPLE
+   An example
+   
+   .NOTES
+   General notes
+   #>    Write-Output "[NoChange] Windows Feedback Experience already not sending anonymous data"
+    #}
+    
 
     #Prevents bloatware applications from returning and removes Start Menu suggestions               
-    Write-Output "Adding Registry key to prevent bloatware apps from returning"
+    
     $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"
     $registryOEM = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
     If (!(Test-Path $registryPath)) { 
         New-Item $registryPath
+        Set-ItemProperty $registryPath DisableWindowsConsumerFeatures -Value 1 
+        Write-Output "[Disabled] Added Registry key to prevent bloatware apps from returning in $registryPath"
     }
-    Set-ItemProperty $registryPath DisableWindowsConsumerFeatures -Value 1 
+
+    #Else {
+    #    Write-Output "[NoChange] Registry key to prevent bloatware apps from returning in was already set in $registryPath"
+    #}
+    
 
     If (!(Test-Path $registryOEM)) {
         New-Item $registryOEM
+        Set-ItemProperty $registryOEM  ContentDeliveryAllowed -Value 0 
+        Set-ItemProperty $registryOEM  OemPreInstalledAppsEnabled -Value 0 
+        Set-ItemProperty $registryOEM  PreInstalledAppsEnabled -Value 0 
+        Set-ItemProperty $registryOEM  PreInstalledAppsEverEnabled -Value 0 
+        Set-ItemProperty $registryOEM  SilentInstalledAppsEnabled -Value 0 
+        Set-ItemProperty $registryOEM  SystemPaneSuggestionsEnabled -Value 0 
+        Write-Output "[Disabled] Added Registry key to prevent bloatware apps from returning in $registryOEM"
     }
-    Set-ItemProperty $registryOEM  ContentDeliveryAllowed -Value 0 
-    Set-ItemProperty $registryOEM  OemPreInstalledAppsEnabled -Value 0 
-    Set-ItemProperty $registryOEM  PreInstalledAppsEnabled -Value 0 
-    Set-ItemProperty $registryOEM  PreInstalledAppsEverEnabled -Value 0 
-    Set-ItemProperty $registryOEM  SilentInstalledAppsEnabled -Value 0 
-    Set-ItemProperty $registryOEM  SystemPaneSuggestionsEnabled -Value 0          
+         
     
     #Preping mixed Reality Portal for removal    
-    Write-Output "Setting Mixed Reality Portal value to 0 so that you can uninstall it in Settings"
+   
     $Holo = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Holographic"    
     If (Test-Path $Holo) {
         Set-ItemProperty $Holo  FirstRunSucceeded -Value 0 
+        Write-Output "[Disabled] Set Mixed Reality Portal value to 0 so that you can uninstall it in Settings : $Holo"
     }
+
 
     #Disables Wi-fi Sense
     Write-Output "Disabling Wi-Fi Sense"
