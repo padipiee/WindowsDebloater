@@ -198,7 +198,7 @@ Function Protect-Privacy {
     # This function just gets $true or $false
     
     #########################################
-    #Disables Windows Feedback Experience
+    # Disables Windows Feedback Experience
     #########################################
     #Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Enabled
     $regKeyPathAdvertisingInfo = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
@@ -228,16 +228,21 @@ Function Protect-Privacy {
     }
 
   
-
-    #Stops Cortana from being used as part of your Windows Search Function
+    #########################################
+    # Stops Cortana from being used as part of your Windows Search Function
+    #########################################
     
-    $Search = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
-    If (Test-Path $Search) {
-        Set-ItemProperty $Search AllowCortana -Value 0 
-        Write-Output "[Stopped] Cortana from being used as part of  Windows Search Function"
+    $regKeyPathWindowsSearch = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
+    $regItemPathWindowsSearch = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search\AllowCortana"
+    $regNameWindowsSearch = "AllowCortana"
+    $regSecureValueWindowsSearch = "0"
+    $regUnSecureValueWindowsSearch = "1"
+    If (Test-Path $regKeyPathWindowsSearch) {
+        Set-ItemProperty $regKeyPathWindowsSearch $regNameWindowsSearch -Value $regSecureValueWindowsSearch  
+        Write-Output "[!Disabled] Cortana from being used as part of Windows Search Function, set $regNameWindowsSearch to $regSecureValueWindowsSearch"
     }
     Else {
-        Write-Output "[NoChange] Cortana already stopped from being used as part of  Windows Search Function"
+        Write-Output "[NoChange] Cortana already configured from not being used as part of Windows Search Function with $regItemPathWindowsSearch"
     }
 
     #Disables Bing Web Search in Start Menu
@@ -249,46 +254,7 @@ Function Protect-Privacy {
         Set-ItemProperty $WebSearch DisableWebSearch -Value 1 
         Write-Output "[Disabled] Bing Search in Start Menu"
     }
-    #Else {
-   <#
-   .SYNOPSIS
-   Short description
-   
-   .DESCRIPTION
-   Long description
-   
-   .EXAMPLE
-   An example
-   
-   .NOTES
-   General notes
-   #>    Write-Output "[NoChange] Bing Web Search is already not in Start Menu"
-    #}
-    
-            
-    #Stops the Windows Feedback Experience from sending anonymous data
-    
-    $Period = "HKCU:\Software\Microsoft\Siuf\Rules"
-    If (!(Test-Path $Period)) { 
-        New-Item $Period
-        Set-ItemProperty $Period PeriodInNanoSeconds -Value 0 
-        Write-Output "[Stopping] the Windows Feedback Experience program"
-    }
-    #Else {
-   <#
-   .SYNOPSIS
-   Short description
-   
-   .DESCRIPTION
-   Long description
-   
-   .EXAMPLE
-   An example
-   
-   .NOTES
-   General notes
-   #>    Write-Output "[NoChange] Windows Feedback Experience already not sending anonymous data"
-    #}
+
     
 
     #Prevents bloatware applications from returning and removes Start Menu suggestions               
