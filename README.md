@@ -1,5 +1,5 @@
 # Windows10Debloater
-Script/Utility/Application to debloat Windows 10
+Powershell scripts to remove Windows 10 bloatware (unecessary applications) and improve security / privacy posture.
 
 # Purpose
 
