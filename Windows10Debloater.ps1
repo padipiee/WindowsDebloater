@@ -87,7 +87,7 @@ Function DebloatBlacklist {
         "*Microsoft.XboxApp*"
         "*Microsoft.XboxGameOverlay*"
         "*Microsoft.XboxSpeechToTextOverlay*"
-        "*Microsoft.XboxGameCallableUI*"
+        #"*Microsoft.XboxGameCallableUI*"         #locked as "part of Windows"...
         "*Microsoft.XboxIdentityProvider*"
         "*Microsoft.XboxGamingOverlay*"
         "Microsoft.ZuneMusic"
