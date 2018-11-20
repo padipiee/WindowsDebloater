@@ -198,7 +198,7 @@ Function Protect-Privacy {
     #########################################
     # Disables Windows Feedback Experience
     #########################################
-    #Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Enabled
+    #Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo\Enabled
     $regKeyPathAdvertisingInfo = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
     $regItemAdvertisingEnabled = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo\Enabled"
     $regNameAdvertisingEnabled = "Enabled"
