@@ -26,7 +26,7 @@ if errorlevel 1 (
 	pause
 	exit
 ) else (
-	echo There ermissions are OK to continu further!
+	echo The permissions as administrator are OK to continue further!
 	timeout /t 1 > nul
 )
 
