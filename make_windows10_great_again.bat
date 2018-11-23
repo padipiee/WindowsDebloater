@@ -1,4 +1,4 @@
-REM Credit  https://gist.github.com/IntergalacticApps/675339c2b805b4c9c6e9a442e0121b1d
+REM based on , v. 2.2.4. Credit  https://gist.github.com/IntergalacticApps/675339c2b805b4c9c6e9a442e0121b1d
 REM IntergalacticApps/make_windows10_great_again.bat
 REM
 REM
@@ -8,13 +8,14 @@ setlocal EnableDelayedExpansion
 
 ver | find "10." > nul
 if errorlevel 1 (
-	echo Your Windows version is not Windows 10... yet. Brace yourself, Windows 10 is coming^^!
+	echo Your Windows version is not Windows 10...exiting...
 	pause
 	exit
+) else (
+	echo Your Windows version is   Windows 10! Lets proceed.
 )
 
-echo Make Windows 10 Great Again^^! Ultimate batch spyware and trash remover, v. 2.2.4.
-echo Optimized for Anniversary Update.
+echo This is a batch spyware,  trash remover and security script
 pause
 
 echo.
@@ -25,7 +26,7 @@ if errorlevel 1 (
 	pause
 	exit
 ) else (
-	echo OK.
+	echo There ermissions are OK to continu further!
 	timeout /t 1 > nul
 )
 
@@ -55,19 +56,39 @@ powershell -Command "& {Get-NetFirewallRule | Where { $_.DisplayGroup -eq 'Deliv
 powershell -Command "& {Get-NetFirewallRule | Where { $_.DisplayGroup -like 'Windows Media Player Network Sharing Service*' } | Remove-NetFirewallRule;}"
 
 cls
-echo | set /p=Deleting OneDrive... 
-taskkill /f /im OneDrive.exe > nul 2>&1
+
+
 if exist %SystemRoot%\System32\OneDriveSetup.exe (
 	start /wait %SystemRoot%\System32\OneDriveSetup.exe /uninstall
-) else (
+	echo | set /p=Deleting OneDrive 32bits... 
+	taskkill /f /im OneDrive.exe > nul 2>&1
+	rd "%UserProfile%\OneDrive" /q /s > nul 2>&1
+	rd "%SystemDrive%\OneDriveTemp" /q /s > nul 2>&1
+	rd "%LocalAppData%\Microsoft\OneDrive" /q /s > nul 2>&1
+	rd "%ProgramData%\Microsoft OneDrive" /q /s > nul 2>&1
+) 
+
+if exist %SystemRoot%\SysWOW64\OneDriveSetup.exe (
 	start /wait %SystemRoot%\SysWOW64\OneDriveSetup.exe /uninstall
+	echo | set /p=Deleting OneDrive 64bits... 
+	taskkill /f /im OneDrive.exe > nul 2>&1
+	rd "%UserProfile%\OneDrive" /q /s > nul 2>&1
+	rd "%SystemDrive%\OneDriveTemp" /q /s > nul 2>&1
+	rd "%LocalAppData%\Microsoft\OneDrive" /q /s > nul 2>&1
+	rd "%ProgramData%\Microsoft OneDrive" /q /s > nul 2>&1
+) 
+
+REM Remove the OneDrive 32bits  Folder From File Explorer by Editing the Registry  (System.IsPinnedToNameSpaceTree )
+reg query "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /v {018D5C66-4533-4307-9B53-224DE2ED1FE6} > nul
+if not errorlevel 1 (
+	reg delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f 
+	echo  Removed the OneDrive 32bits Folder From File Explorer by Editing the Registry HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} (System.IsPinnedToNameSpaceTree )
 )
-rd "%UserProfile%\OneDrive" /q /s > nul 2>&1
-rd "%SystemDrive%\OneDriveTemp" /q /s > nul 2>&1
-rd "%LocalAppData%\Microsoft\OneDrive" /q /s > nul 2>&1
-rd "%ProgramData%\Microsoft OneDrive" /q /s > nul 2>&1
-reg delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
+
+REM Remove the OneDrive 64bits  Folder From File Explorer by Editing the Registry  (System.IsPinnedToNameSpaceTree )
 reg delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
+
+
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSync" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableMeteredNetworkFileSync" /t REG_DWORD /d 1 /f > nul
