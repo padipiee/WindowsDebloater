@@ -15,7 +15,7 @@ if errorlevel 1 (
 	echo Your Windows version is   Windows 10! Lets proceed.
 )
 
-echo This is a batch spyware,  trash remover and security script
+echo This is a batch spyware remover, trash remover and security hardenning script
 pause
 
 echo.
@@ -84,17 +84,26 @@ if not errorlevel 1 (
 	reg delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f 
 	echo  Removed the OneDrive 32bits Folder From File Explorer by Editing the Registry HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} (System.IsPinnedToNameSpaceTree )
 )
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A52BBA46-E9E1-435f-B3D9-28DAA648C0F6}" /f
 
 REM Remove the OneDrive 64bits  Folder From File Explorer by Editing the Registry  (System.IsPinnedToNameSpaceTree )
+reg query "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"  /v {018D5C66-4533-4307-9B53-224DE2ED1FE6} > nul
 reg delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A52BBA46-E9E1-435f-B3D9-28DAA648C0F6}" /f 
+reg delete "HKEY_USERS\S-1-5-21-2840528155-2331882053-1912885801-1000\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+reg delete "HKEY_USERS\S-1-5-21-2840528155-2331882053-1912885801-1000\Software\Classes\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+reg delete "HKEY_USERS\S-1-5-21-2840528155-2331882053-1912885801-1000_Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+reg delete "HKEY_USERS\S-1-5-21-2840528155-2331882053-1912885801-1000_Classes\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
 
-
+REM  OneDrive Disable File Sync 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSyncNGSC" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableFileSync" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableMeteredNetworkFileSync" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v "DisableLibrariesDefaultSaveToOneDrive" /t REG_DWORD /d 1 /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\OneDrive" /v "DisablePersonalSync" /t REG_DWORD /d 1 /f > nul
 echo OK.
+
 
 echo.
 echo Deleting spyware/bloatware services...
