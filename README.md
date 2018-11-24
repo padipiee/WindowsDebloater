@@ -21,6 +21,6 @@ This script will remove the bloatware from Windows 10 when using Remove-AppXPack
 # Batch script make_windows10_great_again
 Batch script that combine plenty of features (uninstall apps, add hardenning features, disable apps)
 
-#DisableWinTracking
+# DisableWinTracking
 Various python scripts for the same purpose.
 Describe ways for a  Clean removal of system apps (bypass error 0x80073CFA)
