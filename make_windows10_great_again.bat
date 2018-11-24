@@ -37,7 +37,7 @@ if not errorlevel 1 (
 
 if not defined LTSB (
 	cls
-	echo Deleting trash apps...
+	echo 0001 - Deleting trash apps...
 	powershell -Command "& {Get-AppxPackage -AllUsers | Remove-AppxPackage; Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online;}"
 	takeown /f "%ProgramFiles%\WindowsApps" /r
 	icacls "%ProgramFiles%\WindowsApps" /inheritance:e /grant "%UserName%:(OI)(CI)F" /T /C
@@ -49,18 +49,17 @@ if not defined LTSB (
 )
 
 cls
-echo Deleting spyware firewall rules... 
+echo 0002 - Deleting spyware firewall rules... 
 powershell -Command "& {Get-NetFirewallRule | Where { $_.Group -like '*@{*' } | Remove-NetFirewallRule;}"
 powershell -Command "& {Get-NetFirewallRule | Where { $_.Group -eq 'DiagTrack' } | Remove-NetFirewallRule;}"
 powershell -Command "& {Get-NetFirewallRule | Where { $_.DisplayGroup -eq 'Delivery Optimization' } | Remove-NetFirewallRule;}"
 powershell -Command "& {Get-NetFirewallRule | Where { $_.DisplayGroup -like 'Windows Media Player Network Sharing Service*' } | Remove-NetFirewallRule;}"
-
 cls
 
 
 if exist %SystemRoot%\System32\OneDriveSetup.exe (
 	start /wait %SystemRoot%\System32\OneDriveSetup.exe /uninstall
-	echo | set /p=Deleting OneDrive 32bits... 
+	echo | set /p=0003 - Deleting OneDrive 32bits... 
 	taskkill /f /im OneDrive.exe > nul 2>&1
 	rd "%UserProfile%\OneDrive" /q /s > nul 2>&1
 	rd "%SystemDrive%\OneDriveTemp" /q /s > nul 2>&1
@@ -70,7 +69,7 @@ if exist %SystemRoot%\System32\OneDriveSetup.exe (
 
 if exist %SystemRoot%\SysWOW64\OneDriveSetup.exe (
 	start /wait %SystemRoot%\SysWOW64\OneDriveSetup.exe /uninstall
-	echo | set /p=Deleting OneDrive 64bits... 
+	echo | set /p=0004 - Deleting OneDrive 64bits... 
 	taskkill /f /im OneDrive.exe > nul 2>&1
 	rd "%UserProfile%\OneDrive" /q /s > nul 2>&1
 	rd "%SystemDrive%\OneDriveTemp" /q /s > nul 2>&1
@@ -82,9 +81,14 @@ REM Remove the OneDrive 32bits  Folder From File Explorer by Editing the Registr
 reg query "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /v {018D5C66-4533-4307-9B53-224DE2ED1FE6} > nul
 if not errorlevel 1 (
 	reg delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f 
-	echo  Removed the OneDrive 32bits Folder From File Explorer by Editing the Registry HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} (System.IsPinnedToNameSpaceTree )
+	echo 0005 - Removing the OneDrive 32bits folder From File Explorer by Editing the Registry HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} (System.IsPinnedToNameSpaceTree )
 )
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A52BBA46-E9E1-435f-B3D9-28DAA648C0F6}" /f
+
+reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A52BBA46-E9E1-435f-B3D9-28DAA648C0F6}" > nul
+if not errorlevel 1 (
+	reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A52BBA46-E9E1-435f-B3D9-28DAA648C0F6}" /f
+	echo 0006 - Removing the OneDrive FolderDescriptions
+)
 
 REM Remove the OneDrive 64bits  Folder From File Explorer by Editing the Registry  (System.IsPinnedToNameSpaceTree )
 reg query "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"  /v {018D5C66-4533-4307-9B53-224DE2ED1FE6} > nul
@@ -372,42 +376,41 @@ if not defined hosts_added (
 	echo [OK]
 )
 
-echo.
-echo Adding registry tweaks...
 
-echo | set /p=Disable telemetry 
+
+echo | set /p=0001 - Disable Telemetry 
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SYSTEM\ControlSet001\Services\DiagTrack" /v "Start" /t REG_DWORD /d 4 /f > nul
 reg add "HKLM\SYSTEM\ControlSet001\Services\dmwappushsvc" /v "Start" /t REG_DWORD /d 4 /f > nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\dmwappushservice" /v "Start" /t REG_DWORD /d 4 /f > nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service" /v "Start" /t REG_DWORD /d 4 /f > nul
-echo [OK]
 
-echo | set /p=Disable Windows Customer Experience Improvement Program 
+
+echo | set /p=0002 - Disable Windows Customer Experience Improvement Program 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" /v "CEIPEnable" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\SQMClient" /v "CorporateSQMURL" /t REG_SZ /d "0.0.0.0" /f > nul
 echo [OK]
 
-echo | set /p=Disable Application Telemetry 
+echo | set /p=0003 - Disable Application Telemetry 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "AITEnable" /t REG_DWORD /d 0 /f > nul
 echo [OK]
 
-echo | set /p=Disable Inventory Collector 
+echo | set /p=0004 - Disable Inventory Collector 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "DisableInventory" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable Steps Recorder 
+echo | set /p=0005 - Disable Steps Recorder 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "DisableUAR" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable Advertising ID 
+echo | set /p=0006 - Disable Advertising ID 
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d 0 /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v "DisabledByGroupPolicy" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable keylogger 
+echo | set /p=0007 - Disable keylogger  InputPersonalization
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d 1 /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d 1 /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts" /t REG_DWORD /d 0 /f > nul
@@ -415,11 +418,11 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC" /v "PreventHandwriti
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" /v "PreventHandwritingErrorReports" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable browser access to local language 
+echo | set /p=0008 - Disable browser access to local language 
 reg add "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable SmartScreen 
+echo | set /p=0009 - Disable SmartScreen 
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f > nul
 reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScreenEnabled" /t REG_SZ /d "Off" /f > nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d 0 /f > nul
@@ -427,7 +430,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebCo
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableSmartScreen" /t REG_DWORD /d 0 /f > nul
 echo [OK]
 
-echo | set /p=Disable Cortana and web search 
+echo | set /p=0010 - Disable Cortana and web search 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "ConnectedSearchPrivacy" /t REG_DWORD /d 3 /f > nul
@@ -444,18 +447,18 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "DeviceHistor
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "HistoryViewEnabled" /t REG_DWORD /d 0 /f > nul
 echo [OK]
 
-echo | set /p=Disable Wi-Fi Sense 
+echo | set /p=0011 - Disable Wi-Fi Sense 
 reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" /v "value" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" /v "value" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config" /v "AutoConnectAllowedOEM" /t REG_DWORD /d 0 /f > nul
 echo [OK]
 
-echo | set /p=Disable biometrics 
+echo | set /p=0012 - Disable biometrics 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Biometrics" /v "Enabled" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WbioSrvc" /v "Start" /t REG_DWORD /d 4 /f > nul
 echo [OK]
 
-echo | set /p=Disable location access and sensors 
+echo | set /p=0012 - Disable location access and sensors 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /v "DisableLocation" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /v "DisableLocationScripting" /t REG_DWORD /d 1 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" /v "DisableSensors" /t REG_DWORD /d 1 /f > nul
@@ -466,7 +469,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{B
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /v "SensorPermissionState" /t REG_DWORD /d 0 /f > nul
 echo [OK]
 
-echo | set /p=Disable sync 
+echo | set /p=0013 - Disable sync 
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" /v "SyncPolicy" /t REG_DWORD /d 5 /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility" /v "Enabled" /t REG_DWORD /d 0 /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\AppSync" /v "Enabled" /t REG_DWORD /d 0 /f > nul
@@ -499,7 +502,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /v "DisableWindow
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" /v "DisableWindowsSettingSyncUserOverride" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable device access for Universal Apps 
+echo | set /p=0014 - Disable device access for Universal Apps 
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{21157C1F-2651-4CC1-90CA-1F28B02263F6}" /v "Value" /t REG_SZ /d "Deny" /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}" /v "Value" /t REG_SZ /d "Deny" /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}" /v "Value" /t REG_SZ /d "Deny" /f > nul
@@ -516,11 +519,16 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E53
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E6AD100E-5F4E-44CD-BE0F-2265D88D14F5}" /v "Value" /t REG_SZ /d "Deny" /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E83AF229-8640-4D18-A213-E22675EBB2C3}" /v "Value" /t REG_SZ /d "Deny" /f > nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled" /v "Value" /t REG_SZ /d "Deny" /f > nul
+
+
 if not defined LTSB (
+	echo | set /p=0015 - Disable device access for Universal Apps LTSB
 	set edge_path=HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\S-1-15-2-3624051433-2125758914-1423191267-1740899205-1073925389-3782572162-737981194
 	reg add !edge_path!\{2EEF81BE-33FA-4800-9670-1CD474972C3F} /v "Value" /t REG_SZ /d "Deny" /f > nul
 	reg add !edge_path!\{E5323777-F976-4f5b-9B55-B94699C46E44} /v "Value" /t REG_SZ /d "Deny" /f > nul
 )
+
+echo | set /p=0016 - Policy AppPrivacy default
 set shell_exp_path=HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\S-1-15-2-155514346-2573954481-755741238-1654018636-1233331829-3075935687-2861478708
 reg add %shell_exp_path%\{7D7E8402-7C54-4821-A34E-AEEFD62DED93} /v "Value" /t REG_SZ /d "Deny" /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsAccessAccountInfo" /t REG_DWORD /d 2 /f > nul
@@ -541,8 +549,9 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsSyncWit
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" /v "UserAuthPolicy" /t REG_DWORD /d 0 /f > nul
 echo [OK]
 
+
 if not defined LTSB (
-	echo | set /p=Disable background access for Universal Apps 
+	echo | set /p=0017 - Disable background access for Universal Apps 
 	reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.PPIProjection_cw5n1h2txyewy" /v "Disabled" /t REG_DWORD /d 1 /f > nul
 	reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.PPIProjection_cw5n1h2txyewy" /v "DisabledByUser" /t REG_DWORD /d 1 /f > nul
 	reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Windows.ContactSupport_cw5n1h2txyewy" /v "Disabled" /t REG_DWORD /d 1 /f > nul
@@ -552,7 +561,7 @@ if not defined LTSB (
 	echo [OK]
 )
 
-echo | set /p=Disable protected trash services 
+echo | set /p=0018 - Disable protected trash services 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /v "Start" /t REG_DWORD /d 4 /f > nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\UnistoreSvc" /v "Start" /t REG_DWORD /d 4 /f > nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\UserDataSvc" /v "Start" /t REG_DWORD /d 4 /f > nul
@@ -791,6 +800,15 @@ echo [OK]
 echo | set /p=Enable NTFS long paths 
 reg add "HKLM\SYSTEM\CurrentControlSet\Policies" /v "LongPathsEnabled" /t REG_DWORD /d 1 /f > nul
 echo [OK]
+
+REM https://www.bleepingcomputer.com/startups/adminservice.exe-26606.html
+
+reg query "HKLM\SYSTEM\CurrentControlSet\Services\AtherosSvc\Start" > nul
+if not errorlevel 1 (
+	echo | set /p=Disable AtherosSvc Bluetooth service - adminservice.exe - driver development kit (DDK)
+	reg add "HKLM\SYSTEM\CurrentControlSet\Services\AtherosSvc" /v "Start" /t REG_DWORD /d 4 /f > nul 2>&1
+)
+
 
 echo.
 echo | set /p=Restarting Explorer... 
