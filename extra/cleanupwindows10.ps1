@@ -1,3 +1,14 @@
+# Clean removal of system apps (bypass error 0x80073CFA)
+# Adaptations from https://github.com/10se1ucgo/DisableWinTracking/issues/48
+# https://github.com/10se1ucgo/DisableWinTracking/issues/48
+# for Applications "That can not be deleted...""
+# REF : https://answers.microsoft.com/en-us/insider/forum/all/how-to-uninstall-windows-feedback-app-on-windows/92b029c5-cc9d-4cf7-8ae4-7a979d95d81d
+
+
+##########Usage############
+#You can change the variable $packageBase at the end of the script to different package names.
+# Does not work on any applications... (like Cortana that have other hooks)
+####################
 
 function Enable-Privilege {  
   param($Privilege)
