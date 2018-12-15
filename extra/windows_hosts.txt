@@ -1,0 +1,274 @@
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+
+
+####blackbird
+0.0.0.0 a.ads1.msn.com
+0.0.0.0 a.ads2.msads.net
+0.0.0.0 a.ads2.msn.com
+0.0.0.0 a.rad.msn.com
+0.0.0.0 a-0001.a-msedge.net
+0.0.0.0 a-0002.a-msedge.net
+0.0.0.0 a-0003.a-msedge.net
+0.0.0.0 a-0004.a-msedge.net
+0.0.0.0 a-0005.a-msedge.net
+0.0.0.0 a-0006.a-msedge.net
+0.0.0.0 a-0007.a-msedge.net
+0.0.0.0 a-0008.a-msedge.net
+0.0.0.0 a-0009.a-msedge.net
+0.0.0.0 ac3.msn.com
+0.0.0.0 ad.doubleclick.net
+0.0.0.0 adnexus.net
+0.0.0.0 adnxs.com
+0.0.0.0 ads.msn.com
+0.0.0.0 ads1.msads.net
+0.0.0.0 ads1.msn.com
+0.0.0.0 aidps.atdmt.com
+0.0.0.0 aka-cdn-ns.adtech.de
+0.0.0.0 a-msedge.net
+0.0.0.0 az361816.vo.msecnd.net
+0.0.0.0 az512334.vo.msecnd.net
+0.0.0.0 b.ads1.msn.com
+0.0.0.0 b.ads2.msads.net
+0.0.0.0 b.rad.msn.com
+0.0.0.0 bs.serving-sys.com
+0.0.0.0 c.atdmt.com
+0.0.0.0 c.msn.com
+0.0.0.0 cdn.atdmt.com
+0.0.0.0 cds26.ams9.msecn.net
+0.0.0.0 choice.microsoft.com
+0.0.0.0 choice.microsoft.com.nsatc.net
+0.0.0.0 compatexchange.cloudapp.net
+0.0.0.0 corp.sts.microsoft.com
+0.0.0.0 corpext.msitadfs.glbdns2.microsoft.com
+0.0.0.0 cs1.wpc.v0cdn.net
+0.0.0.0 db3aqu.atdmt.com
+0.0.0.0 df.telemetry.microsoft.com
+0.0.0.0 diagnostics.support.microsoft.com
+0.0.0.0 ec.atdmt.com
+0.0.0.0 feedback.microsoft-hohm.com
+0.0.0.0 feedback.search.microsoft.com
+0.0.0.0 feedback.windows.com
+0.0.0.0 flex.msn.com
+0.0.0.0 g.msn.com
+0.0.0.0 h1.msn.com
+0.0.0.0 i1.services.social.microsoft.com
+0.0.0.0 i1.services.social.microsoft.com.nsatc.net
+0.0.0.0 lb1.www.ms.akadns.net
+0.0.0.0 live.rads.msn.com
+0.0.0.0 m.adnxs.com
+0.0.0.0 msedge.net
+0.0.0.0 msftncsi.com
+0.0.0.0 msnbot-65-55-108-23.search.msn.com
+0.0.0.0 msnbot-65-52-108-198.search.msn.com
+0.0.0.0 msnbot-65-52-108-198.search.msn.com
+0.0.0.0 msntest.serving-sys.com
+0.0.0.0 oca.telemetry.microsoft.com
+0.0.0.0 oca.telemetry.microsoft.com.nsatc.net
+0.0.0.0 pre.footprintpredict.com
+0.0.0.0 preview.msn.com
+0.0.0.0 rad.live.com
+0.0.0.0 rad.msn.com
+0.0.0.0 redir.metaservices.microsoft.com
+0.0.0.0 schemas.microsoft.akadns.net 
+0.0.0.0 secure.adnxs.com
+0.0.0.0 secure.flashtalking.com
+0.0.0.0 settings-sandbox.data.microsoft.com
+0.0.0.0 settings-win.data.microsoft.com
+0.0.0.0 sls.update.microsoft.com.akadns.net
+0.0.0.0 sqm.df.telemetry.microsoft.com
+0.0.0.0 sqm.telemetry.microsoft.com
+0.0.0.0 sqm.telemetry.microsoft.com.nsatc.net
+0.0.0.0 ssw.live.com
+0.0.0.0 static.2mdn.net
+0.0.0.0 statsfe1.ws.microsoft.com
+0.0.0.0 statsfe2.ws.microsoft.com
+0.0.0.0 telecommand.telemetry.microsoft.com
+0.0.0.0 telecommand.telemetry.microsoft.com.nsatc.net
+0.0.0.0 telemetry.appex.bing.net
+0.0.0.0 telemetry.microsoft.com
+0.0.0.0 telemetry.urs.microsoft.com
+0.0.0.0 vortex.data.microsoft.com
+0.0.0.0 vortex-bn2.metron.live.com.nsatc.net
+0.0.0.0 vortex-cy2.metron.live.com.nsatc.net
+0.0.0.0 vortex-sandbox.data.microsoft.com
+0.0.0.0 vortex-win.data.microsoft.com
+0.0.0.0 watson.live.com
+0.0.0.0 www.msftncsi.com
+0.0.0.0 apps.skype.com
+0.0.0.0 fe2.update.microsoft.com.akadns.net
+0.0.0.0 m.hotmail.com
+0.0.0.0 pricelist.skype.com
+0.0.0.0 reports.wes.df.telemetry.microsoft.com
+0.0.0.0 s.gateway.messenger.live.com
+0.0.0.0 s0.2mdn.net
+0.0.0.0 services.wes.df.telemetry.microsoft.com
+0.0.0.0 statsfe2.update.microsoft.com.akadns.net
+0.0.0.0 survey.watson.microsoft.com
+0.0.0.0 ui.skype.com
+0.0.0.0 view.atdmt.com
+0.0.0.0 watson.microsoft.com
+0.0.0.0 watson.ppe.telemetry.microsoft.com
+0.0.0.0 watson.telemetry.microsoft.com
+0.0.0.0 watson.telemetry.microsoft.com.nsatc.net
+0.0.0.0 wes.df.telemetry.microsoft.com
+####
+0.0.0.0 123-125-232-198.static.unitasglobal.net
+
+### f-secure  https://www.f-secure.com/documents/996508/1030745/callisto-group
+0.0.0.0 accounts-google.eu
+0.0.0.0 accounts-mail.asia
+0.0.0.0 authentification-request.top
+0.0.0.0 auth-login.top
+0.0.0.0 drive-login.com
+0.0.0.0 drive-meet-goodle.ru
+0.0.0.0 emailapp.pw
+0.0.0.0 fco-gov.pw
+0.0.0.0 fco-net.pw
+0.0.0.0 google-accounts.eu
+0.0.0.0 google-plus.top
+0.0.0.0 google-service.eu
+0.0.0.0 go-veryfication.link
+0.0.0.0 hotmail-online.eu
+0.0.0.0 icloud-service.pw
+0.0.0.0 live-com.pw
+0.0.0.0 live-login.info
+0.0.0.0 login-access.top
+0.0.0.0 login-live.review
+0.0.0.0 login-livecom.in
+0.0.0.0 login-livecom.info
+0.0.0.0 login-live-com.pw
+0.0.0.0 misrcosofts.com
+0.0.0.0 node005-prevention-aol.link
+0.0.0.0 node03-prevention-icloud.link
+0.0.0.0 platforma.link
+0.0.0.0 prevention-aol.link
+0.0.0.0 prevention-aol.top
+0.0.0.0 prevention-icloud.link
+0.0.0.0 qooqle-support-mail.pw
+0.0.0.0 screenname.click
+0.0.0.0 screenname-aol.pw
+0.0.0.0 secure-lcloud.accountant
+0.0.0.0 secure-store-lcloud.top
+0.0.0.0 service-mail.asia
+0.0.0.0 service-mail.in
+0.0.0.0 serv-login-com.pw
+0.0.0.0 shared-docs.pw
+0.0.0.0 store-icloud.link
+0.0.0.0 support-gmail.pw
+0.0.0.0 support-mail.pw
+0.0.0.0 support-mail.top
+0.0.0.0 updatemail.in
+0.0.0.0 yahoocentermail.info
+0.0.0.0 yahoocentermail.pw
+0.0.0.0 yahoomailfree.pw
+
+###################
+####From https://www.encrypt-the-planet.com/downloads/hosts.txt and other analysis
+#### 	
+##########
+0.0.0.0 bn1wns2011508.wns.windows.com
+0.0.0.0 bn2 licensing.md.mp.microsoft.com.akadns.net
+0.0.0.0 bn2.displaycatalog.md.mp.microsoft.com.akadns.net
+0.0.0.0 bn2wns1.wns.windows.com
+0.0.0.0 bnsch020022361.wns.windows.com
+0.0.0.0 bn3sch020010626.wns.windows.com
+0.0.0.0 bn3sch020010643.wns.windows.com
+#########
+0.0.0.0 BN3SCH020011855.wns.windows.com
+0.0.0.0 BN3SCH020022331.wns.windows.com
+0.0.0.0 BN4SCH101121022.wns.windows.com
+0.0.0.0 BN4SCH101121318.wns.windows.com
+0.0.0.0 BN4SCH101123006.wns.windows.com
+0.0.0.0 c-0001.c-msedge.net
+0.0.0.0 c.msn.com.nsatc.net
+0.0.0.0 choice.live.com
+0.0.0.0 choice.microsoft.com
+0.0.0.0 choice.microsoft.com.nsatc.net
+0.0.0.0 choice.microsoft.com.nstac.net
+0.0.0.0 client.wns.windows.com
+########wns.windows.com  - IPV6######
+::1 skydrive.wns.windows.com
+::1 bn3sch020010536.wns.windows.com
+::1 bnsch020022361.wns.windows.com
+::1 BN4SCH101121017.wns.windows.com
+::1 bn2wns1b.wns.windows.com
+
+0.0.0.0 nullroute
+0.0.0.0 www.windowssearch.com
+0.0.0.0 settings.data.microsoft.com
+0.0.0.0 spynet2.microsoft.com
+0.0.0.0 spynetalt.microsoft.com
+0.0.0.0 win10.ipv6.microsoft.com
+0.0.0.0 fe3.delivery.dsp.mp.microsoft.com.nsatc.net
+0.0.0.0 cache.datamart.windows.com
+0.0.0.0 db3wns2011111.wns.windows.com
+0.0.0.0 v10.vortex-win.data.microsoft.com
+0.0.0.0 bat.r.msn.com
+0.0.0.0 client-s.gateway.messenger.live.com
+0.0.0.0 arc.msn.com
+0.0.0.0 rpt.msn.com
+0.0.0.0 bn1303.settings.live.net
+0.0.0.0 ieonlinews.microsoft.com
+0.0.0.0 inprod.support.services.microsoft.com
+0.0.0.0 geover-prod.do.dsp.mp.microsoft.com
+0.0.0.0 geo-prod.do.dsp.mp.microsoft.com
+0.0.0.0 kv201-prod.do.dsp.mp.microsoft.com
+0.0.0.0 cp201-prod.do.dsp.mp.microsoft.com
+0.0.0.0 disc201-prod.do.dsp.mp.microsoft.com
+0.0.0.0 array201-prod.do.dsp.mp.microsoft.com
+0.0.0.0 array202-prod.do.dsp.mp.microsoft.com
+0.0.0.0 array203-prod.do.dsp.mp.microsoft.com
+0.0.0.0 array204-prod.do.dsp.mp.microsoft.com
+0.0.0.0 tsfe.trafficshaping.dsp.mp.microsoft.com
+0.0.0.0 dl.delivery.mp.microsoft.com
+0.0.0.0 tlu.dl.delivery.mp.microsoft.com
+0.0.0.0 statsfe1-df.ws.microsoft.com
+0.0.0.0 statsfe2-df.ws.microsoft.com
+0.0.0.0 public-family.api.account.microsoft.com
+0.0.0.0 dub407-m.hotmail.com
+0.0.0.0 www.bing.com
+0.0.0.0 c.bing.com
+0.0.0.0 g.bing.com
+0.0.0.0 appex.bing.com
+0.0.0.0 urs.microsoft.com
+0.0.0.0 c.urs.microsoft.com
+0.0.0.0 t.urs.microsoft.com
+0.0.0.0 activity.windows.com
+0.0.0.0 uif.microsoft.com
+0.0.0.0 iecvlist.microsoft.com
+0.0.0.0 ieonline.microsoft.com
+0.0.0.0 c.microsoft.com
+0.0.0.0 nexus.officeapps.live.com
+0.0.0.0 nexusrules.officeapps.live.com
+0.0.0.0 c1.microsoft.com
+0.0.0.0 c.s-microsoft.com
+0.0.0.0 apprep.smartscreen.microsoft.com
+0.0.0.0 otf.msn.com
+0.0.0.0 rr.office.microsoft.com
+0.0.0.0 web.vortex.data.microsoft.com
+0.0.0.0 ocsa.office.microsoft.com
+0.0.0.0 ocos-office365-s2s.msedge.net
+0.0.0.0 odc.officeapps.live.com
+0.0.0.0 uci.officeapps.live.com
+0.0.0.0 roaming.officeapps.live.com
+0.0.0.0 urs.smartscreen.microsoft.com

@@ -1,0 +1,9 @@
+2018-11-27 22:04:20 EST [13644]: [1-1] user=,db=,app=,client= LOG:  could not bind IPv6 address "::": Only one usage of each socket address (protocol/network address/port) is normally permitted.
+	
+2018-11-27 22:04:20 EST [13644]: [2-1] user=,db=,app=,client= HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2018-11-27 22:04:20 EST [13644]: [3-1] user=,db=,app=,client= LOG:  could not bind IPv4 address "0.0.0.0": Only one usage of each socket address (protocol/network address/port) is normally permitted.
+	
+2018-11-27 22:04:20 EST [13644]: [4-1] user=,db=,app=,client= HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2018-11-27 22:04:20 EST [13644]: [5-1] user=,db=,app=,client= WARNING:  could not create listen socket for "*"
+2018-11-27 22:04:20 EST [13644]: [6-1] user=,db=,app=,client= FATAL:  could not create any TCP/IP sockets
+2018-11-27 22:04:20 EST [13644]: [7-1] user=,db=,app=,client= LOG:  database system is shut down
