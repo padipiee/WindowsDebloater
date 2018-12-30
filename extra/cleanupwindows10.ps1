@@ -6,7 +6,8 @@
 
 
 ##########Usage############
-#You can change the variable $packageBase at the end of the script to different package names.
+# [1] You can change the variable $packageBase at the end of the script to different package names.
+# [2] extra> PowerShell.exe -ExecutionPolicy Bypass -File .\cleanupwindows10.ps1
 # Does not work on any applications... (like Cortana that have other hooks)
 ####################
 
@@ -71,6 +72,9 @@ function Take-Over($path) {
 
 do {} until (Enable-Privilege SeTakeOwnershipPrivilege)
 
+#TODO replace PkgMgre.exe by DISM.exe
+#Deployment Image Servicing and Management (DISM.exe) 
+#Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages
 function Remove-Package($name) {  
   $key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages\$name"
   Take-Over $key
@@ -78,7 +82,21 @@ function Remove-Package($name) {
   & C:\Windows\System32\PkgMgr.exe /up:$name /norestart /quiet
 }
 
+
+
+#List Miscrosoft pakac
+Write-Output "List Miscrosoft packages in CurrentVersion\Component Based Servicing\Packages"
+$packageBase = "Microsoft-WindowsFeedback"
+$packageNames = (dir ("HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages\" + $packageBase + "*")).name
+
+forEach ($package in $packageNames)
+{   
+    Write-Output  $package.substring($package.indexOf($packageBase))  found
+}
+
+
 #Remove Feedback
+Write-Output "!!!!!!!If exist attempt to remove Microsoft-WindowsFeedback "
 $packageBase = "Microsoft-WindowsFeedback"
 $packageNames = (dir ("HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages\" + $packageBase + "*")).name
 
