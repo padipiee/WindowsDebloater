@@ -30,8 +30,6 @@ if errorlevel 1 (
 	timeout /t 1 > nul
 )
 
-
-
 echo | set /p=0010 - Disable Cortana and web search 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f > nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowSearchToUseLocation" /t REG_DWORD /d 0 /f > nul
