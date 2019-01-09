@@ -1,4 +1,4 @@
-echo Deleting Comodo Telemetry tasks 
+echo Deleting HP Telemetry tasks 
 @echo on
 set spy_tasks=^
 	"\Hewlett-Packard\HP Support Assistant\HP Support Solutions Framework Report"
