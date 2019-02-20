@@ -218,10 +218,7 @@ echo | set /p=Disable Windows Tips
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableSoftLanding" /t REG_DWORD /d 1 /f > nul
 echo [OK]
 
-echo | set /p=Disable Windows Consumer Features (App Suggestions on Start) 
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d 0 /f > nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 1 /f > nul
-echo [OK]
+
 
 if not defined LTSB (
 	echo | set /p=Disable ads on lock screen 
