@@ -1,6 +1,6 @@
 
 # Purpose
-Scripts to remove unecessary Windows 10 apps, disable Telemetry and plenty of bloatware and spying default features.
+Scripts to remove unnecessary Windows 10 apps, disable Telemetry and plenty of bloatware and spying default features.
 Attempts to improve security and privacy posture of default configurations.
 
 # Usage
