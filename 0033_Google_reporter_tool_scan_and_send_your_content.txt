@@ -1,0 +1,7 @@
+#Google_reporter_tool_scan_and_send_your_content
+
+What : The tool informs Google about the scan results 
+Binary : C:\Users\<$user>\AppData\Local\Google\Chrome\User Data\SwReporter\<$version>\software_reporter_tool.exe
+
+Todo : monitor software_reporter_tool.exe or block
+Ref : https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/

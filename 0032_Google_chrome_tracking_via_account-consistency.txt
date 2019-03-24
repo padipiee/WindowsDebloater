@@ -1,0 +1,13 @@
+#Google_chrome_tracking_via_account-consistency
+
+What : By default Identity consistency between browser and cookie jar is maintained in Google Chrome after the Chrome 69 update
+Consequence : Tracking is so activated permanently on every action with Chrome, signing is maintained 
+so you become signed all time even after clearing cookies
+
+Todo : In Chrome Browser got to :
+chrome://flags/#account-consistency 
+and select « Disabled »
+
+Ref eng: https://www.theverge.com/2018/9/26/17904762/google-chrome-sign-in-changes-feedback
+Ref fr : https://www.macg.co/logiciels/2018/09/google-force-la-connexion-chrome-apres-la-connexion-un-de-ses-services-103509
+
