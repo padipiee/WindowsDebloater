@@ -4,7 +4,7 @@ Scripts to remove unnecessary Windows 10 apps, disable Telemetry and plenty of b
 Attempts to improve security and privacy posture of default configurations.
 
 # Usage
-Use scripts under controls directory 
+Use scripts under controls directory.
 Download zip and execute the needed scripts (0001 to xxxx ).
 
 
