@@ -35,4 +35,5 @@
 0.0.0.0 c.bing.com
 0.0.0.0 g.bing.com
 0.0.0.0 appex.bing.com
+0.0.0.0 n131adserv.com #zacinlo https://labs.bitdefender.com/2018/06/six-years-and-counting-inside-the-complex-zacinlo-ad-fraud-operation/
 
