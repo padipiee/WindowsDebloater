@@ -1,4 +1,5 @@
 REM Remove the OneDrive 64bits  Folder From File Explorer by Editing the Registry  (System.IsPinnedToNameSpaceTree )
+
 reg query "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"  /v {018D5C66-4533-4307-9B53-224DE2ED1FE6} > nul
 reg delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f > nul 2>&1
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{A52BBA46-E9E1-435f-B3D9-28DAA648C0F6}" /f 

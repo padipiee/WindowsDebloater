@@ -40,11 +40,11 @@ set spy_ips=^
 	157.56.96.123,157.56.144.215,157.56.144.216,198.41.214.183,198.41.214.184,^
 	198.41.214.186,198.41.214.187,198.41.215.182,198.41.215.185,198.41.215.186
 for %%i in (%spy_ips%) do (
-	netsh advfirewall firewall show rule %%i_BLOCK > nul
+	netsh advfirewall firewall show rule %%i_BLOCK 
 		if errorlevel 1 (
 			echo | set /p=%%i_BLOCK 
 			route -p ADD %%i MASK 255.255.255.255 0.0.0.0 > nul 2>&1
-			netsh advfirewall firewall add rule name="%%i_BLOCK" dir=out interface=any action=block remoteip=%%i > nul
+			netsh advfirewall firewall add rule name="%%i_BLOCK" dir=out interface=any action=block remoteip=%%i 
 			set frw_rule_added=1
 			echo [OK]
 		)
@@ -57,10 +57,10 @@ set svchost_rules=^
 	"Akamai Technologies;92.122.212.0-92.122.219.255,92.123.96.0-92.123.111.255,95.100.0.0-95.100.15.255,23.32.0.0-23.67.255.255"
 for %%i in (%svchost_rules%) do (
 	for /f "tokens=1,2 delims=;" %%a in (%%i) do (
-		netsh advfirewall firewall show rule "%%a SVCHOST_BLOCK" > nul
+		netsh advfirewall firewall show rule "%%a SVCHOST_BLOCK" 
 		if errorlevel 1 (
 			echo | set /p=%%a SVCHOST_BLOCK 
-			netsh advfirewall firewall add rule name="%%a SVCHOST_BLOCK" dir=out interface=any action=block program=%svchost% remoteip=%%b > nul
+			netsh advfirewall firewall add rule name="%%a SVCHOST_BLOCK" dir=out interface=any action=block program=%svchost% remoteip=%%b 
 			set frw_rule_added=1
 			echo [OK]
 		)

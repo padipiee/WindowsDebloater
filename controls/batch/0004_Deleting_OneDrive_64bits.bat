@@ -1,3 +1,5 @@
+REM Deleting OneDrive 64 bits
+
 
 if exist %SystemRoot%\SysWOW64\OneDriveSetup.exe (
 	start /wait %SystemRoot%\SysWOW64\OneDriveSetup.exe /uninstall

@@ -1,0 +1,22 @@
+
+
+#Comment désactiver les requêtes SSDP que mon navigateur broadcast 
+#https://support.google.com/chrome/thread/7084350?hl=fr
+
+.l....M-SEARCH * HTTP/1.1
+HOST: 239.255.255.250:1900
+MAN: "ssdp:discover"
+MX: 1
+ST: urn:dial-multiscreen-org:service:dial:1
+USER-AGENT: Google Chrome
+
+
+Load Media Router Component Extension
+Loads the Media Router component extension at startup. – Mac, Windows, Linux, Chrome OS
+#load-media-router-component-extension
+
+
+
+Connect to Cast devices on all IP addresses
+Have the Media Router connect to Cast devices on all IP addresses, not just RFC1918/RFC4193 private addresses. – Mac, Windows, Linux, Chrome OS
+#media-router-cast-allow-all-ips
