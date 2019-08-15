@@ -1,3 +1,5 @@
+REM Deleting spyware firewall rules
+
 cls
 echo 0002 - Deleting spyware firewall rules... 
 powershell -Command "& {Get-NetFirewallRule | Where { $_.Group -like '*@{*' } | Remove-NetFirewallRule;}"

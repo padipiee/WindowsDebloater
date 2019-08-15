@@ -1,0 +1,9 @@
+Chrome__enable-webrtc-hide-local-ips-with-mdns
+
+#https://ownyourbits.com/2018/08/14/protect-yourself-from-webrtc-leaks/
+
+Chrome flag #enable-webrtc-hide-local-ips-with-mdns
+
+Anonymize local IPs exposed by WebRTC.
+Conceal local IP addresses with mDNS hostnames. – Mac, Windows, Linux, Chrome OS
+
