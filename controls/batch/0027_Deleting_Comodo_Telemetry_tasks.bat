@@ -3,8 +3,6 @@ echo Deleting Comodo Telemetry tasks
 set spy_tasks=^
 	"\COMODO\COMODO Telemetry {18AD3DFA-30C0-4B5F-84F7-F1870B1A4921}"
 
-
-
 for %%i in (%spy_tasks%) do (
 	schtasks /query /tn %%i 
 	if not errorlevel 1 (
@@ -13,7 +11,6 @@ for %%i in (%spy_tasks%) do (
 		set item=%%i		
 	)
 )
-
 
 REM <Author>COMODO Security Solutions Inc.</Author>
 REM <URI>\COMODO\COMODO Telemetry {18AD3DFA-30C0-4B5F-84F7-F1870B1A4921}</URI>

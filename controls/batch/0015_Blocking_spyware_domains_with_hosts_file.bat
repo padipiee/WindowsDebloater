@@ -1,4 +1,4 @@
-echo Blocking spyware domains withs hosts file...
+echo Blocking spyware domains withs hosts file
 set spy_domains=^
 	nullroute,^
 	statsfe2.update.microsoft.com.akadns.net,fe2.update.microsoft.com.akadns.net,^

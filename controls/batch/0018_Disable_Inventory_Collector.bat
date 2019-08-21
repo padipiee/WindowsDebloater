@@ -1,2 +1,2 @@
-echo   Disable Inventory Collector 
+echo  Disable Inventory Collector 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "DisableInventory" /t REG_DWORD /d 1 /f 
