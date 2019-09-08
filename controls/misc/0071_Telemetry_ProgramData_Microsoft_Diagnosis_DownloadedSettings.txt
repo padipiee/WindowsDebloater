@@ -1,0 +1,33 @@
+Telemetry_ProgramData_Microsoft_Diagnosis_DownloadedSettings
+
+
+#Directory
+C:\ProgramData\Microsoft\Diagnosis\DownloadedSettings
+
+#App
+"Microsoft.Windows.UniversalTelemetryClientSettings_
+
+
+REf : https://support.microsoft.com/en-us/help/3022345/update-for-customer-experience-and-diagnostic-telemetry
+
+#URLS
+https://settings-win.data.microsoft.com/registerchannel/v1.0/"
+https://us-v20.events.data.microsoft.com/OneCollector/1.0
+https://events.data.microsoft.com
+https://v20.events.data.microsoft.com/OneCollector/1.0
+https://us5-v20.events.data.microsoft.com
+https://uk-v20.events.data.microsoft.com
+https://v10.events.data.microsoft.com
+https://us-v10.events.data.microsoft.com
+https://v10.vortex-win.data.microsoft.com
+
+#Comments
+.... uses SSL (TCP Port 443) to download manifests and upload telemetry to Microsoft that uses the following DNS endpoints:
+vortex-win.data.microsoft.com
+settings-win.data.microsoft.com
+This update contains the following two manifests that are used by the service when the user participates in the Windows CEIP
+ program or telemetry programs that are specifically managed by an application such as applications that use Application Insights.
+telemetry.ASM-WindowsDefault.json
+utc.app.json
+Note When an advanced user runs the System File Checker tool (sfc.exe) after installing this package, the two files that are listed above are unintentionally
+flagged as corrupted. There's no system effect or corruption when these files are flagged, and this issue will be fixed in a later service update.
