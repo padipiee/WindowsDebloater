@@ -1,0 +1,7 @@
+
+
+#Deactivate or delete ACER default Updater..
+
+move C:\ProgramData\Acer  D:\UTILS\Acer
+
+move C:\OEM   D:\UTILS\OEM

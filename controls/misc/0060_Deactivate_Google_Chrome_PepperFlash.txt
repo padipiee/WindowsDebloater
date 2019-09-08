@@ -1,0 +1,9 @@
+0060_Deactivate_Google_Chrome_PepperFlash
+===============================================
+chrome://version/  is confirming the installation of Google version of Flash : Pepper Flash Player
+Note : leaking the username also...
+
+#Old school deactivation....by renaming the directory ...
+
+Before : C:\Users\fhp\AppData\Local\Google\Chrome\User Data\PepperFlash\32.0.0.238\pepflashplayer.dll
+After :C:\Users\<user>\AppData\Local\Google\Chrome\User Data\____PepperFlash____

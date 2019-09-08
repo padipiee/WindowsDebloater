@@ -1,0 +1,11 @@
+###DNS analysis ###
+https://www.robtex.com/
+https://www.threatminer.org
+https://apiary.io/
+https://bgpview.docs.apiary.io/#reference/0/asn/view-asn-details?console=1
+https://ipinfo.io/
+https://db-ip.com/52.43.43.110
+https://www.maxmind.com/en/geoip2-services-and-databases
+https://bgpview.io/asn/5769#prefixes-v4
+Malteago
+

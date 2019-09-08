@@ -25,25 +25,6 @@ set spy_tasks=^
 	"Microsoft\Windows\Location\WindowsActionDialog"^
 	"Microsoft\Windows\Maps\MapsToastTask"^
 	"Microsoft\Windows\Maps\MapsUpdateTask"^
-	"Microsoft\Windows\Media Center\ActivateWindowsSearch"^
-	"Microsoft\Windows\Media Center\ConfigureInternetTimeService"^
-	"Microsoft\Windows\Media Center\DispatchRecoveryTasks"^
-	"Microsoft\Windows\Media Center\ehDRMInit"^
-	"Microsoft\Windows\Media Center\InstallPlayReady"^
-	"Microsoft\Windows\Media Center\mcupdate"^
-	"Microsoft\Windows\Media Center\MediaCenterRecoveryTask"^
-	"Microsoft\Windows\Media Center\ObjectStoreRecoveryTask"^
-	"Microsoft\Windows\Media Center\OCURActivate"^
-	"Microsoft\Windows\Media Center\OCURDiscovery"^
-	"Microsoft\Windows\Media Center\PBDADiscovery"^
-	"Microsoft\Windows\Media Center\PBDADiscoveryW1"^
-	"Microsoft\Windows\Media Center\PBDADiscoveryW2"^
-	"Microsoft\Windows\Media Center\PvrRecoveryTask"^
-	"Microsoft\Windows\Media Center\PvrScheduleTask"^
-	"Microsoft\Windows\Media Center\RegisterSearch"^
-	"Microsoft\Windows\Media Center\ReindexSearchRoot"^
-	"Microsoft\Windows\Media Center\SqlLiteRecoveryTask"^
-	"Microsoft\Windows\Media Center\UpdateRecordPath"^
 	"Microsoft\Windows\Maintenance\WinSAT"^
 	"Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem"^
 	"Microsoft\Windows\RetailDemo\CleanupOfflineContent"^

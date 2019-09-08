@@ -1,0 +1,29 @@
+C:\WINDOWS\system32>bitsadmin.exe /list /allusers /verbose
+
+BITSADMIN version 3.0
+BITS administration utility.
+(C) Copyright Microsoft Corp.
+
+GUID: {E8558276-7028-4130-9D98-D95A27D72F62} DISPLAY: 'SpeechModelDownloadJob'
+TYPE: DOWNLOAD STATE: SUSPENDED OWNER: NT AUTHORITY\NETWORK SERVICE
+PRIORITY: NORMAL FILES: 0 / 1 BYTES: 0 / UNKNOWN
+CREATION TIME: 2019-06-08 5:51:28 PM MODIFICATION TIME: 2019-06-08 5:57:12 PM
+COMPLETION TIME: UNKNOWN ACL FLAGS:
+NOTIFY INTERFACE: UNREGISTERED NOTIFICATION FLAGS: 3
+RETRY DELAY: 600 NO PROGRESS TIMEOUT: 1209600 ERROR COUNT: 0
+PROXY USAGE: AUTODETECT PROXY LIST: NULL PROXY BYPASS LIST: NULL
+DESCRIPTION:
+JOB FILES:
+        0 / UNKNOWN WORKING https://msftspeechmodelsprod.azureedge.net/SR/SV10-EV100/en-us-n/MV101/naspmodelsmetadata.xml -> C:\ProgramData\Microsoft\Speech_OneCore\SR\SV10-EV100\en-US-N\MV101\naspmodelsmetadata.xml
+NOTIFICATION COMMAND LINE: none
+owner MIC integrity level: SYSTEM
+owner elevated ?           false
+This job is read-only to the current CMD window because the job's mandatory
+integrity level of SYSTEM is higher than the window's level of HIGH.
+Peercaching flags
+         Enable download from peers      :false
+         Enable serving to peers         :false
+
+CUSTOM HEADERS: NULL
+
+Listed 1 job(s).
