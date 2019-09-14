@@ -1,8 +1,31 @@
+###Windows 10 Endpoints declared :
+#Windows 10, version 1709, connection endpoints for non-Enterprise editions
+https://docs.microsoft.com/en-us/windows/privacy/windows-endpoints-1709-non-enterprise-editions
+
+#Windows 10, version 1809, connection endpoints for non-Enterprise editions
+https://docs.microsoft.com/en-us/windows/privacy/windows-endpoints-1809-non-enterprise-editions
+
+##Windows 10, version 1809
+https://docs.microsoft.com/en-us/windows/privacy/manage-windows-1809-endpoints
+
+
 ###Major ASNs###
 ###ASN - https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29\
 ## https://www.bgpview.io/asn/8075#prefixes-v4
 20.36.218.63 #AS8075 MICROSOFT-CORP-MSN-AS-BLOCK - Microsoft Corporation, US (registered Mar 31, 1997)
 20.36.219.28
+
+
+### Windows Spotlight : https://en.wikipedia.org/wiki/Windows_Spotlight
+ feature included by default in Windows 10 that downloads pictures and advertisements automatically from Bing ....
+ msnbot-*.search.msn.com	TLSv1.2	Used to retrieve Windows Spotlight metadata.
+ ris.api.iris.microsoft.com.akadns.net	TLSv1.2/HTTPS	Used to retrieve Windows Spotlight metadata.
+ g.msn.com.nsatc.net	HTTP	Used to retrieve Windows Spotlight metadata.
+ arc.msn.com	HTTPS	Used to retrieve Windows Spotlight metadata.
+arc.msn.com.nsatc.net	TLSv1.2	Used to retrieve Windows Spotlight metadata.
+*.search.msn.com	TLSv1.2	Used to retrieve Windows Spotlight metadata.
+HTTPS	ris.api.iris.microsoft.com
+HTTPS	query.prod.cms.rt.microsoft.com
 
 ###AS13335 CLOUDFLARENET - Cloudflare, Inc., US
 104.25.71.118
@@ -12,8 +35,6 @@
 8.247.120.126
 
 ### AS8075	64.4.0.0/18 MICROSOFT-CORP-MSN-AS-BLOCK	Microsoft Corporation
-
-### AS8075 
 #13.64.0.0/11	MSFT	Microsoft Corporation	AS8075	MICROSOFT-CORP-MSN-AS-BLOCK	Microsoft Corporation
 13.78.168.230
 #40.64.0.0/10	NET40	American Registry for Internet Numbers		MICROSOFT-CORP-MSN-AS-BLOCK	Microsoft Corporation
