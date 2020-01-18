@@ -1,0 +1,10 @@
+
+
+#Generate a power consumption analysis and identify the breakdown of CPU consumption per process...
+
+C:\WINDOWS\system32>powercfg /SLEEPSTUDY
+Sleep Study report saved to file path C:\WINDOWS\system32\sleepstudy-report.html
+
+Check Power Estimation per APP ID and abnormal processes...
+
+file:///C:/Windows/System32/sleepstudy-report.html#connected-standby-session-4

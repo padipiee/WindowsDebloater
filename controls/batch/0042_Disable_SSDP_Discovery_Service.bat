@@ -1,6 +1,5 @@
 
-REM Disable SSDP Discovery Service
-
+:: Disable SSDP Discovery Service
 REM Discovers networked devices and services that use the SSDP discovery protocol, such as UPnP devices.
 REM Also announces SSDP devices and services running on the local computer. 
 REM If this service is stopped, SSDP-based devices will not be discovered. 
