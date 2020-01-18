@@ -1,0 +1,17 @@
+$RECYCLE.BIN is a hidden subdirectory by default with not always expected behaviors...
+It is important to ensure maintenance and review !
+
+
+{require Admin privilege}
+###List subdirectories
+X:\$RECYCLE.BIN>dir /A /Q /S
+Directory of E:\$RECYCLE.BIN\S-1-5-21-2603876803-2771836092-143344598-1001\$R7MRF47\blah
+2017-09-16  11:01 AM    <DIR>          ...                    vduserdata
+
+###Delete
+X:\$RECYCLE.BIN>DEL /S /Q  E:\$RECYCLE.BIN\S-1-5-21-2603876803-2771836092-143344598-1001
+
+X:\$RECYCLE.BIN>DEL /A:R  /S *
+
+X:\$RECYCLE.BIN>del /A:D /S /Q  S-1-5-21-1828132456-471099617-995837809-1001
+
