@@ -1,4 +1,4 @@
-###DNS analysis ###
+###DNS analysis Tools###
 https://www.robtex.com/
 https://www.threatminer.org
 https://apiary.io/
@@ -7,5 +7,7 @@ https://ipinfo.io/
 https://db-ip.com/52.43.43.110
 https://www.maxmind.com/en/geoip2-services-and-databases
 https://bgpview.io/asn/5769#prefixes-v4
+https://securitytrails.com/corp/api
+https://www.farsightsecurity.com/solutions/dnsdb/
 Malteago
 

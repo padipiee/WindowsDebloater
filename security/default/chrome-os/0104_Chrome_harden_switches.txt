@@ -1,0 +1,75 @@
+
+==============
+===Default====
+==============
+#From chrome://version/
+
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" 
+--flag-switches-begin 
+--load-media-router-component-extension=0 
+--disable-features=CastAllowAllIPs 
+--flag-switches-end 
+--enable-audio-service-sandbox 
+--restore-last-session 
+--flag-switches-begin 
+--load-media-router-component-extension=0 
+--flag-switches-end 
+--enable-audio-service-sandbox
+
+======================
+==Hardening examples==
+======================
+
+From https://raw.githubusercontent.com/CHEF-KOCH/Chromium-hardening/master/command%20line/cmd.txt
+Show current flags via 'about:version'. You can copy & paste these settings.
+
+--flag-switches-begin 
+--autoplay-policy=document-user-activation-required 
+--disable-device-discovery-notifications 
+--no-pings 
+--enable-appcontainer 
+--disable-offer-upload-credit-cards 
+--enable-gpu-appcontainer 
+--history-entry-requires-user-gesture 
+--disable-password-generation 
+--disable-push-api-background-mode 
+--enable-quic --use-simple-cache-backend=on 
+--disable-single-click-autofill 
+--site-per-process 
+--extension-content-verification=bootstrap 
+--enable-lcd-text 
+--reduced-referrer-granularity 
+--show-saved-copy=primary 
+--enable-smooth-scrolling 
+--tls13-variant=draft23 
+--enable-features=AnimatedAppMenuIcon,AutofillCreditCardAblationExperiment,
+AutomaticTabDiscarding,Av1Decoder,BlockTabUnders,ClipboardContentSetting,
+EnableEmojiContextMenu,ExpensiveBackgroundTimerThrottling,FullscreenExitUI,
+GdiTextPrinting,ImportantSitesInCBD,MarkHttpAs,MaterialDesignBookmarks,
+MaterialDesignExtensions,NativeNotifications,NewAudioRenderingMixingStrategy,
+NewEncodeCpuLoadEstimator,NewPrintPreview,NewStyleNotifications,NupPrinting,
+ParallelDownloading,PdfIsolation,PictureInPicture,PolicyTool,SecondaryUiMd,
+SoundContentSetting,SpeculativePreconnect,UnifiedConsent,UseModernMediaControls,
+V8VmFuture,ViewsSimplifiedFullscreenUI,WebRTC-H264WithOpenH264FFmpeg,brotli-encoding 
+--disable-features=AutofillCreditCardLastUsedDateDisplay,AutofillShowTypePredictions,
+AutofillUpstreamSendDetectedValues,ClientLoFi,DataReductionProxyDecidesTransform,
+DesktopIOSPromotion,DoodlesOnLocalNtp,GamepadExtensions,GenericSensor,GenericSensorExtraClasses,
+NewUsbBackend,NoScriptPreviews,OptimizationHints,PasswordExport,PasswordImport,Previews,
+SafeSearchUrlReporting,VoiceSearchOnLocalNtp,fill-on-account-select 
+--flag-switches-end
+
+
+===============
+==References===
+===============
+
+Main = https://github.com/CHEF-KOCH/Chromium-hardening
+
+https://developers.google.com/issue-tracker/concepts/access-control
+
+A user is an individual user identified by a GAIA (Google Accounts and ID Administration) ID. 
+This ID may be a e-mail address associated with a Google domain (for example, user@gmail.com) or an e-mail address in another domain that has been configured by a G Suite domain administrator.
+
+https://stackoverflow.com/questions/27028322/how-to-look-up-user-information-from-google-gaia-id
+
+https://developers.google.com/people/api/rest/v1/people/get?apix_params=%7B%22resourceName%22%3A%22people%2Fme%22%2C%22personFields%22%3A%22metadata%22%7D
