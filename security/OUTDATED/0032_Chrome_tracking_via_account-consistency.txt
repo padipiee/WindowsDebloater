@@ -1,5 +1,7 @@
 #Google_chrome_tracking_via_account-consistency
 
+Note : apparently deprecated Chrome 80.x  >
+
 What : By default Identity consistency between browser and cookie jar is maintained in Google Chrome after the Chrome 69 update
 Consequence : Tracking is so activated permanently on every action with Chrome, signing is maintained 
 so you become signed all time even after clearing cookies

@@ -1,4 +1,4 @@
-Chrome__enable-webrtc-hide-local-ips-with-mdns
+Chrome_enable-webrtc-hide-local-ips-with-mdns
 
 #https://ownyourbits.com/2018/08/14/protect-yourself-from-webrtc-leaks/
 
