@@ -1,15 +1,16 @@
 
 # Purpose
-Scripts to remove unnecessary Windows 10 apps, disable Telemetry and plenty of bloatware and spying default features.
-Attempts to improve security and privacy posture of default configurations.
+Scripts to harden Windows 10.
+Assist to remove unnecessary Windows 10 apps, disable Telemetry , unactivate bloatware and disable spying default features.
+Attempts to improve security and privacy posture.
 
 # Usage
-Use scripts under controls directory.
-Download zip and execute the needed scripts (0001 to xxxx ).
+Use scripts in MS cmd batch, powershell, python, Ansible.
 
 
 # Sources / Others tools sources /Credits
-This is using various ideas from various sources and then add variants, modifications and optimizations of my own.
+This is using various ideas from various initial sources.
+With the time I added plenty of  variants, modifications and optimizations of my own.
 
 Include some original scripts at the time this project was initiated (subfolder are for credits and are not maintained, check the original repo ), essentially :
 - Sycnex/Windows10Debloater
