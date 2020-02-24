@@ -31,7 +31,7 @@ function Get-RegKeys
     (
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         $Hive,
 
         [parameter(Mandatory=$true)]
@@ -111,7 +111,7 @@ function New-RegKey
     (
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         $Hive,
 
         [parameter(Mandatory=$true)]
@@ -179,7 +179,7 @@ function Remove-RegKey
     (
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         $Hive,
 
         [parameter(Mandatory=$true)]
@@ -246,7 +246,7 @@ function Get-RegValues
     (
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         $Hive,
 
         [parameter(Mandatory=$true)]
@@ -348,12 +348,12 @@ function Test-RegKeyAccess
     (
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         $Hive,
 
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“KEY_QUERY_VALUE”, "KEY_CREATE_SUB_KEY", "KEY_ENUMERATE_SUB_KEYS", 
+        [Validateset("KEY_QUERY_VALUE", "KEY_CREATE_SUB_KEY", "KEY_ENUMERATE_SUB_KEYS", 
         "KEY_NOTIFY", "KEY_CREATE", "DELETE", "READ_CONTROL", "WRITE_DAC", "WRITE_OWNER")]
         $AccessType,
 
@@ -387,7 +387,7 @@ function Test-RegKeyAccess
 
         switch ($AccessType)
         {
-            “KEY_QUERY_VALUE”        {$type2check = 1}
+            "KEY_QUERY_VALUE"        {$type2check = 1}
             "KEY_SET_VALUE"          {$type2check = 2}
             "KEY_CREATE_SUB_KEY"     {$type2check = 4}
             "KEY_ENUMERATE_SUB_KEYS" {$type2check = 8}
@@ -456,11 +456,11 @@ function Set-RegValue
     Param
     (
         [parameter(Mandatory=$true)]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         [string]$Hive,
 
         [parameter(Mandatory=$true)]
-        [Validateset(“DWORD”, “EXPANDSZ”, “MULTISZ”, "QWORD", "SZ", "BINARY")]
+        [Validateset("DWORD", "EXPANDSZ", "MULTISZ", "QWORD", "SZ", "BINARY")]
         [string]$Type,
 
         [parameter(Mandatory=$true)]
@@ -501,9 +501,9 @@ function Set-RegValue
         # Set according to type
         switch ($type) 
         {
-            “DWORD”     {$data = ($reg.SetDwordValue($reg_hive, $key, $Name, $Data))}
-            “EXPANDSZ”  {$data = ($reg.SetExpandedStringValue($reg_hive, $key, $Name, $Data))}
-            “MULTISZ”   {$data = ($reg.SetMultiStringValue($reg_hive, $key, $Name, $Data))}
+            "DWORD"     {$data = ($reg.SetDwordValue($reg_hive, $key, $Name, $Data))}
+            "EXPANDSZ"  {$data = ($reg.SetExpandedStringValue($reg_hive, $key, $Name, $Data))}
+            "MULTISZ"   {$data = ($reg.SetMultiStringValue($reg_hive, $key, $Name, $Data))}
             "QWORD"     {$data = ($reg.SetQwordValue($reg_hive, $key, $Name, $Data))}
             "SZ"        {$data = ($reg.SetStringValue($reg_hive, $key, $Name, $Data))}
             "BINARY"    {$data = ($reg.SetBinaryValue($reg_hive, $key, $Name, $Data))}
@@ -551,7 +551,7 @@ function Get-RegValue
     Param
     (
         [parameter(Mandatory=$true)]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         [string]$Hive,
 
         [parameter(Mandatory=$true)]
@@ -597,9 +597,9 @@ function Get-RegValue
                 # Get according to type
                 switch ($type) 
                 {
-                    “4”  {$data = ($reg.GetDwordValue($reg_hive, $key, $Name)).uvalue}
-                    “2”  {$data = ($reg.GetExpandedStringValue($reg_hive, $key, $Name)).svalue}
-                    “7”  {$data = ($reg.GetMultiStringValue($reg_hive, $key, $Name)).svalue}
+                    "4"  {$data = ($reg.GetDwordValue($reg_hive, $key, $Name)).uvalue}
+                    "2"  {$data = ($reg.GetExpandedStringValue($reg_hive, $key, $Name)).svalue}
+                    "7"  {$data = ($reg.GetMultiStringValue($reg_hive, $key, $Name)).svalue}
                     "11" {$data = ($reg.GetQwordValue($reg_hive, $key, $Name)).uvalue}
                     "1"  {$data = ($reg.GetStringValue($reg_hive, $key, $Name)).svalue}
                     "3"  {$data = ($reg.GetBinaryValue($reg_hive, $key, $Name)).uvalue}
@@ -643,7 +643,7 @@ function Remove-RegValue
     Param
     (
         [parameter(Mandatory=$true)]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         [string]$Hive,
 
         [parameter(Mandatory=$true)]
@@ -736,7 +736,7 @@ function Get-RegKeySecurityDescriptor
     (
         [parameter(Mandatory=$true)]
         [string]
-        [Validateset(“HKCR”, “HKCU”, “HKLM”, "HKUS", "HKCC")]
+        [Validateset("HKCR", "HKCU", "HKLM", "HKUS", "HKCC")]
         $Hive,
 
         [parameter(Mandatory=$true)]
