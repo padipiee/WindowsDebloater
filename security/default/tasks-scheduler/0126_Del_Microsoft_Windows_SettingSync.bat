@@ -1,0 +1,1 @@
+del /F /Q "C:\Windows\System32\Tasks\Microsoft\Windows\SettingSync\*" 
