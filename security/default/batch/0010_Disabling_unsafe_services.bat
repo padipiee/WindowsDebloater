@@ -1,6 +1,5 @@
 
-echo.
-echo Disabling unsafe services...
+:: Disable unsafe services...
 set unsafe_services=^
 	RemoteRegistry,TermService,TrkWks,DPS,^
 	SensorDataService,SensorService,SensrSvc

@@ -1,4 +1,4 @@
-REM Deleting OneDrive 64 bits
+:: Deleting OneDrive 64 bits
 
 
 if exist %SystemRoot%\SysWOW64\OneDriveSetup.exe (

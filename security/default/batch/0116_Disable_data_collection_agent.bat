@@ -1,9 +1,5 @@
 
 ::The following example stops logging and uploading by the agent. 
-reg add "HKCU\Software\Policies\Microsoft\Office\16.0\osm" /v "Enablelogging" /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Policies\Microsoft\Office\16.0\osm" /v "EnableUpload" /t REG_DWORD /d 0 /f
-
-
 ::https://docs.microsoft.com/en-us/deployoffice/compat/manage-the-privacy-of-data-monitored-by-telemetry-in-office
 
 
@@ -16,3 +12,6 @@ reg add "HKCU\Software\Policies\Microsoft\Office\16.0\osm" /v "EnableUpload" /t 
 ::#Office.Telemetry.AriaEventSink.HandleMsaDeviceTokenResponse
 ::#Office.Telemetry.AriaEventSink.HandleMsaDeviceTokenResponse
 ::#Office.Telemetry.AriaEventSink.RequestMsaDeviceToken
+
+reg add "HKCU\Software\Policies\Microsoft\Office\16.0\osm" /v "Enablelogging" /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Policies\Microsoft\Office\16.0\osm" /v "EnableUpload" /t REG_DWORD /d 0 /f

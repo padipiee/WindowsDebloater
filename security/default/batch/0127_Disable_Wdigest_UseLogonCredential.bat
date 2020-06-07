@@ -12,5 +12,4 @@
 ::https://www.stigviewer.com/stig/windows_7/2016-12-19/finding/V-72753
 
 reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 0 /f
-
 reg query HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential

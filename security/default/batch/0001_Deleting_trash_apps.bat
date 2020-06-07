@@ -1,4 +1,4 @@
-REM Deleting trash apps
+:: Deleting trash apps
 
 reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion" /v "ProductName" | find "LTSB" > nul
 if not errorlevel 1 (

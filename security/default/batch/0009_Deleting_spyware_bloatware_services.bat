@@ -1,5 +1,4 @@
-echo.
-echo Deleting spyware/bloatware services...
+:: Delete spyware/bloatware services...
 set spy_services=^
 	DiagTrack,dmwappushservice,diagnosticshub.standardcollector.service,DcpSvc,^
 	WerSvc,PcaSvc,DoSvc,WMPNetworkSvc,XblAuthManager,XblGameSave,XboxNetApiSvc,^
