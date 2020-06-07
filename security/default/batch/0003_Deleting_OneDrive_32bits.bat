@@ -1,4 +1,4 @@
-REM Deleting OneDrive 32 bits
+:: Deleting OneDrive 32 bits
 
 if exist %SystemRoot%\System32\OneDriveSetup.exe (
 	start /wait %SystemRoot%\System32\OneDriveSetup.exe /uninstall
