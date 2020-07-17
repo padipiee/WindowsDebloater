@@ -16,7 +16,6 @@ Loads the Media Router component extension at startup. – Mac, Windows, Linux, 
 #load-media-router-component-extension
 
 
-
 Connect to Cast devices on all IP addresses
 Have the Media Router connect to Cast devices on all IP addresses, not just RFC1918/RFC4193 private addresses. – Mac, Windows, Linux, Chrome OS
 #media-router-cast-allow-all-ips
