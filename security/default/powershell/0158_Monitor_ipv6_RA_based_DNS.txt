@@ -1,0 +1,31 @@
+#1 - Via Wireshark filters
+#icmpv6 and icmpv6.type==134 
+#icmpv6.type==134 and icmpv6.opt.type==25
+
+##File->Export Packet Dissections->As JSON
+#        "icmpv6": {
+#          "icmpv6.type": "134",
+#		   ....
+#          "icmpv6.opt": {
+#            "icmpv6.opt.type": "25",
+
+#2 - Python Scapy 
+#https://github.com/secdev/scapy/blob/master/scapy/layers/inet6.py
+
+#type=134 : ICMPv6 Neighbor Discovery - Router Advertisement
+#icmp6ndopts=25 : "Recursive DNS Server Option",
+
+
+#iptables Rules examples as INPUT
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 1 -j ACCEPT                      # Destination Unreachable [RFC4443]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 2 -j ACCEPT                      # Packet Too Big [RFC4443]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 3 -j ACCEPT                      # Time Exceeded [RFC4443]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 4 -j ACCEPT                      # Parameter Problem [RFC4443]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 128 -j ACCEPT                    # Echo Request [RFC4443]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 130 -j ACCEPT                    # Multicast Listener Query [RFC2710]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 131 -j ACCEPT                    # Multicast Listener Report [RFC2710]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 132 -j ACCEPT                    # Multicast Listener Done [RFC2710]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 134 -m hl --hl-eq 255 -j ACCEPT  # Router Advertisement [RFC4861]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 135 -m hl --hl-eq 255 -j ACCEPT  # Neighbor Solicitation [RFC4861]
+#ip6tables -A INPUT -p ipv6-icmp -m icmp6 --icmpv6-type 136 -m hl --hl-eq 255 -j ACCEPT  # Neighbor Advertisement [RFC4861]
+#ip6tables -A INPUT -p udp -m udp --sport 547 --dport 546 -m hl --hl-eq 255 -j ACCEPT    # DHCPv6
