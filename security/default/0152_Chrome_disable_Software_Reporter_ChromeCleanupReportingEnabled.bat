@@ -1,5 +1,6 @@
 :: Disable Chrome Software Reporter Tool using Chrome Policies
 
+reg add "HKLM\SOFTWARE\Policies\Google\Chrome" /v ChromeCleanupEnabled /t REG_DWORD /d 0
 reg add "HKLM\SOFTWARE\Policies\Google\Chrome" /v ChromeCleanupReportingEnabled /t REG_DWORD /d 0
 
 ::Enter 0 for disabling the reporting functionality. Enter 1 to enable the reporting functionality.
