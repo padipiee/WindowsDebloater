@@ -1,0 +1,10 @@
+
+#bypassing HWID detection methods used by intrusive software 
+#Spoofing the Windows 10 HDD/diskdrive serialnumber from kernel without hooking
+
+#https://github.com/Alex3434/wmi-static-spoofer
+
+#https://github.com/namazso/hdd_serial_spoofer
+
+
+#https://www.unknowncheats.me/forum/anti-cheat-bypass/333662-methods-retrieving-unique-identifiers-hwids-pc.html
