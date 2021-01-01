@@ -1,0 +1,6 @@
+
+#List existing volume shadow copies (unique Identifiers present...)
+vssadmin List Shadows
+
+#vssadmin delete shadows /All
+#https://www.unknowncheats.me/forum/anti-cheat-bypass/333662-methods-retrieving-unique-identifiers-hwids-pc.html
