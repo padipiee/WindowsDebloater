@@ -1,0 +1,89 @@
+Some ref : https://gist.github.com/Carm01/3b83d78a0d99cc78ff1d46385ba68a13
+
+[A][Privacy]
+1 - Disable sharing of handwriting
+1 - HKLM\SOFTWARE\Policies\Microsoft\Windows\TabletPC\PreventHandwritingDataSharing
+2 - Disable sharing of handwriting error reports
+2 - HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports\PreventHandwritingErrorReports
+3 - Disable Inventory Collector
+3 - HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat\DisableInventory
+4 - Disable camera in logon Screen
+4 - HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization\NoLockScreenCamera
+...
+21 - Disable sending URLs from apps to Windows Store [0076]
+21 - HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost\EnableWebContentEvaluation
+21 - reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
+
+[B][Activity History and Clipboard]
+1 - Disable recording of user activity 
+1 - HKLM\SOFTWARE\Policies\Microsoft\Windows\System\EnableActivityFeed [0075]
+###
+2 - Disable storing user's activity history on this device [0011; 0075]
+2 -  turn off Activity history log off required( top most check box
+2 - HKLM\SOFTWARE\Policies\Microsoft\Windows\System\PublishUserActivities
+2 - REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "PublishUserActivities" /d "0" /t REG_DWORD /f
+###
+4 - Disable storage of clipboard history for whole machine
+4 - HKLM\SOFTWARE\Policies\Microsoft\Windows\System\AllowClipboardHistory 
+4 - (delete) = Enable
+4 - 0 = Disable
+
+
+[C][App Privacy]
+1 - Disable app access to user account on this device
+1 - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation\Value
+1 - REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation" /v "Value" /d "Deny" /t REG_SZ /f 
+#####
+2 - Disable app access to user account information for current user
+2 - HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation\Value
+1 - REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation" /v "Value" /d "Deny" /t REG_SZ /f 
+2 - Deny = Off
+2 - Allow = On
+#####
+
+
+
+[D][Security]
+1 
+2
+3 Disable Telemetry
+3 HKLM\System\CurrentControlSet\Services\dmwappushservice\Start
+3 HKLM\System\CurrentControlSet\Control\WMI\Autologger\AutoLogger-Diagtrack-Listener\Start
+3 HKLM\System\CurrentControlSet\Services\DiagTrack\Start
+ 
+
+[D][Microsoft Edge - Chromium based]
+
+
+[F][Synchronization of Windows Events]
+
+
+[G][Cortana]
+
+[H] [Location Services]
+
+
+[I][User Behavior]
+
+
+[J][Windows Update]
+
+[K][Windows Defender and Microsoft Spynet](not supported?)
+
+[L][Lock Screen]
+
+
+[L][Miscellaneous]
+
+====
+HKLM\System\CurrentControlSet\Enum\PCI\VEN_10DE&DEV_1C8C&SUBSYS_12601025&REV_A1\4&ad45ee9&0&0008\HardwareID
+HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0001\PruningMode
+HKLM\System\CurrentControlSet\Enum\PCI\VEN_8086&DEV_3E9B&SUBSYS_125E1025&REV_00\3&11583659&0&10\HardwareID
+====================================================
+
+=====Hall of Shame===============================================
+
+Version 1909 - 
+ShutpUp10 detect Security >> Disable Telemetrey  ([D3] Telemetrey again reactivatd by MS in 18363.1379 ?!)
+February 11, 2021—KB5001028 (OS Build 18363.1379) Out-of-band -?KB500102
+January 21, 2021—KB4598298 (OS Build 18363.1350) Preview

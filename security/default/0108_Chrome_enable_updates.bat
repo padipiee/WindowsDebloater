@@ -18,7 +18,7 @@ reg ADD "HKLM\SOFTWARE\Wow6432Node\SOFTWARE\Policies\Google\Update" /v UpdateDef
 reg ADD "HKLM\SOFTWARE\Wow6432Node\SOFTWARE\Policies\Google\Update" /v AutoUpdateCheckPeriodMinutes /t REG_DWORD /d 1 /f
 reg ADD "HKLM\SOFTWARE\Wow6432Node\SOFTWARE\Policies\Google\Update" /v DisableAutoUpdateChecksCheckboxValue /t REG_DWORD /d 0 /f
 reg ADD "HKLM\SOFTWARE\Wow6432Node\SOFTWARE\Policies\Google\Update" /v Update{8A69D345-D564-463C-AFF1-A69D9E530F96} /t REG_DWORD /d 1 /f
-
+:: https://admx.help/?Category=GoogleUpdate&Policy=Google.Policies.Update::Pol_UpdatePolicyGoogleChrome
 
 ::::::Disable::::::
 ::reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Update" /v UpdateDefault /t REG_DWORD /d 0 /f
