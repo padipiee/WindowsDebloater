@@ -1,0 +1,2 @@
+:: Privacy - Disable device metadata retrieval from the Internet.
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d 1 /f

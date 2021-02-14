@@ -1,7 +1,29 @@
 #Google_reporter_tool_scan_and_send_your_content
 
+Problem 1 : Google Chrome Software Reporter Tool scans the computer's drive ...and reports these scans to Google..!!! Trust ?? Humm???!!
 What : The tool informs Google about the scan results 
 Binary : C:\Users\<$user>\AppData\Local\Google\Chrome\User Data\SwReporter\<$version>\software_reporter_tool.exe
 
+Problem 2 : While you can delete the content of the entire folder or rename the executable file itself, 
+doing so offers a temporary recourse only as Google will push the Software Reporter Tool to the system again when the web browser is updated.
+
+Remenber : Blocking access to the program may prevent Google from removing problematic software from the system or informing you about it. You may use other software,
+antivirus software for instance, to remove threats or potentially unwanted programs from the system.
+
+Solution : 
+Binary : C:\Users\<$user>\AppData\Local\Google\Chrome\User Data\SwReporter\<$version>\software_reporter_tool.exe
+Directory: C:\Users\<$user>\AppData\Local\Google\Chrome\User Data\SwReporter\
+
+A better option is to remove permissions so that no user (or Google) may access the folder or run the Software Reporter Tool.
+
+    Right-click on the folder SwReporter and select Properties from the menu.
+    Switch to the Security tab.
+    Select Advanced on the page that opens.
+    Click on "Disable inheritance" and select "remove all inherited permissions from this object."
+    Select apply and in the Windows Security prompt "yes."
+    Select ok.
+    Select ok again.
+
+
 Todo : monitor software_reporter_tool.exe or block
-Ref : https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/
+Ref 1 : https://www.ghacks.net/2018/01/20/how-to-block-the-chrome-software-reporter-tool-software_reporter_tool-exe/

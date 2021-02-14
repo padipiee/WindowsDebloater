@@ -1,0 +1,16 @@
+{
+    "type": "report",
+    "spec_version": "2.1",
+    "id": "report--e41dbd06-c558-4789-af4d-d50c7b019546",
+    "created": "2021-01-03T23:10:34.224603Z",
+    "modified": "2021-01-03T23:10:34.224603Z",
+    "name": "fs",
+    "description": "dsf",
+    "published": "2018-03-28T18:33:21.414Z",
+    "object_refs": [
+        "attack-pattern--1c7637c6-3f2d-42d8-85ca-48a1e7e84f9d"
+    ],
+    "labels": [
+        "fds"
+    ]
+}
