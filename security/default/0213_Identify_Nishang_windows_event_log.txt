@@ -1,0 +1,4 @@
+#####https://www.microsoft.com/security/blog/2021/03/02/hafnium-targeting-exchange-servers/
+#Look for Nishang Invoke-PowerShellTcpOneLine in Windows Event Logging:
+SecurityEvent  | where EventID == 4688  | where Process has_any ("powershell.exe", "PowerShell_ISE.exe")  | where CommandLine has "$client = New-Object System.Net.Sockets.TCPClient"
+
