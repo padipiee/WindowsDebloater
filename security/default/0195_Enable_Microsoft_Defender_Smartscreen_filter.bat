@@ -1,5 +1,3 @@
-
-
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableSmartScreen" /t REG_DWORD /d 1 /f 
 ::https://www.maketecheasier.com/disable-smartscreen-filter-windows10/
 

@@ -1,2 +1,5 @@
-#Look for downloads of PowerCat in cmd and Powershell command line logging in Windows Event Logs:
+#Look for downloads of PowerCat in cmd 
+#and Powershell command line logging in Windows Event Logs:
+
+
 SecurityEvent  | where EventID == 4688  | where Process has_any ("cmd.exe", "powershell.exe", "PowerShell_ISE.exe")  | where CommandLine has "https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1"

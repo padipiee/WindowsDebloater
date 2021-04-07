@@ -1,3 +1,4 @@
+# 
 Get-NetFirewallRule -DisplayName *metry*
 
 #Block Telemetry rules
