@@ -28,7 +28,6 @@ Some ref : https://gist.github.com/Carm01/3b83d78a0d99cc78ff1d46385ba68a13
 4 - (delete) = Enable
 4 - 0 = Disable
 
-
 [C][App Privacy]
 1 - Disable app access to user account on this device
 1 - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation\Value

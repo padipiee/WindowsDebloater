@@ -1,0 +1,31 @@
+
+HKLM\System\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-1828132456-471099617-995837809-1001
+HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\BAM
+HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Cache
+HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers
+HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\SideBySide
+HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo\Enabled
+HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost\EnableWebContentEvaluation
+
+HKCU\Control Panel\International\User Profile\HttpAcceptLanguageOptOut
+HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\Value
+
+
+
+
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel\DisableExceptionChainValidationNote 
+Change the value of the DisableExceptionChainValidation registry entry to 0
+DisableExceptionChainValidation registry entry to 0 to enable it, and then click OK.
+Note A value of 1 disables the registry entry. A value of 0 enables it.
+
+https://www.microsoft.com/security/blog/2020/06/24/defending-exchange-servers-under-attack/
+HKLM\SYSTEM\CurrentControlSet\SecurityProviders WDigest /v UseLogonCredential /t REG_DWORD /d 1
+
+
+WevtUtil qe "Windows PowerShell" /q:"*[System[(EventID=501)]]" /c:5 /rd:true /f:text   
+
+
+#https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/windows/security/threat-protection/microsoft-defender-atp/evaluate-attack-surface-reduction.md
+#Use audit mode to measure impact
+(Get-MpPreference).AttackSurfaceReductionRules_Ids | Foreach {Add-MpPreference -AttackSurfaceReductionRules_Ids $_ -AttackSurfaceReductionRules_Actions AuditMode}

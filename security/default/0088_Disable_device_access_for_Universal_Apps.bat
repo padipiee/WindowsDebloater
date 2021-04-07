@@ -48,8 +48,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E6A
 ::@@@[b1511] Has something to do with Device Access [b1607] Appears deprecated@@@
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E83AF229-8640-4D18-A213-E22675EBB2C3}" /v "Value" /t REG_SZ /d "Deny" /f
 
-::@@@[b1607] Let your apps automatically share and sync info with wireless devices tat don’t explicitly pair with your PC, tablet or phone@@@
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled" /v "Value" /t REG_SZ /d "Deny" /f 
+
 
 ::@@@[b1607] Let apps access notifications@@@
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8c501030-f8c2-40b2-8b3b-e6605788ff39}" /v "Value" /t REG_SZ /d "Deny" /f
