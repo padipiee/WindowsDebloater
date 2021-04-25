@@ -1,0 +1,26 @@
+#https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/configure-wdac-managed-installer
+
+#https://bohops.com/2020/11/02/exploring-the-wdac-microsoft-recommended-block-rules-part-ii-wfc-fsi/
+
+#https://oddvar.moe/2017/12/13/applocker-case-study-how-insecure-is-it-really-part-1/
+https://oddvar.moe/2017/12/13/harden-windows-with-applocker-based-on-case-study-part-1/
+
+#https://github.com/api0cradle/UltimateAppLockerByPassList
+
+#https://www.mcafee.com/blogs/other-blogs/mcafee-labs/what-is-mshta-how-can-it-be-used-and-how-to-protect-against-it/
+
+#https://lolbas-project.github.io/
+#If you are looking for UNIX binaries you should visit https://gtfobins.github.io/
+
+#https://github.com/microsoft/AaronLocker/blob/master/AaronLocker/Create-Policies.ps1
+
+#https://p0w3rsh3ll.wordpress.com/category/powershell/
+
+#https://blog.palantir.com/microsoft-defender-attack-surface-reduction-recommendations-a5c7d41c3cf8
+
+#https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/attack-surface-reduction?view=o365-worldwide
+
+#Get-ChildItem <exe filepath> | Get-AppLockerFileInformation | New-AppLockerPolicy -RuleType Publisher, Hash -User Everyone -Xml > AppLocker_MI_PS_ISE.xml
+
+
+#C:\Windows\System32\mshta.exe
