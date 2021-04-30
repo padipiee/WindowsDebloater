@@ -1,14 +1,12 @@
 
 echo Deleting spyware tasks FULL ...
 set spy_tasks=^
-	"Microsoft\Office\Office 15 Subscription Heartbeat"^
 	"Microsoft\Office\OfficeTelemetryAgentFallBack2016"^
 	"Microsoft\Office\OfficeTelemetryAgentLogOn2016"^
 	"Microsoft\Windows\AppID\SmartScreenSpecific"^
 	"Microsoft\Windows\Application Experience\AitAgent"^
 	"Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser"^
 	"Microsoft\Windows\Application Experience\ProgramDataUpdater"^
-	"Microsoft\Windows\Application Experience\StartupAppTask"^
 	"Microsoft\Windows\Autochk\Proxy"^
 	"Microsoft\Windows\Clip\License Validation"^
 	"Microsoft\Windows\CloudExperienceHost\CreateObjectTask"^
@@ -36,15 +34,6 @@ set spy_tasks=^
 	"Microsoft\Windows\Shell\FamilySafetyRefresh"^
 	"Microsoft\Windows\Shell\FamilySafetyRefreshTask"^
 	"Microsoft\Windows\Speech\SpeechModelDownloadTask"^
-	"Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance"^
-	"Microsoft\Windows\Windows Defender\Windows Defender Cleanup"^
-	"Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan"^
-	"Microsoft\Windows\Windows Defender\Windows Defender Verification"^
-	"Microsoft\Windows\Windows Error Reporting\QueueReporting"^
-	"Microsoft\Windows\WindowsUpdate\Automatic App Update"^
-	"Microsoft\Windows\WindowsUpdate\sih"^
-	"Microsoft\Windows\WindowsUpdate\sihboot"^
-	"Microsoft\Windows\WS\License Validation"^
 	"Microsoft\Windows\WS\WSTask"^
 	"Microsoft\XblGameSave\XblGameSaveTask"^
 	"Microsoft\XblGameSave\XblGameSaveTaskLogon"
