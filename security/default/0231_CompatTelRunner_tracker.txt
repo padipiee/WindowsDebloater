@@ -1,5 +1,7 @@
 #C:\Windows\System32\CompatTelRunner.exe
 
+2021-07-25;Security Disable Telemetry is constently reactivated by Microsoft
 2021-04-30;Enable Telemetry; Reactivated again via Windows10 Pro 20H2 19042.928; Windows Feature Experience Pack 120.2212.551.0; 0026_Deleting_microsoft_spyware_tasks_FULL.bat :: "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser"
+2021-05-02;;Enable Telemetry;with KB4023057 Again !
 
 
