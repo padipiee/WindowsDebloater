@@ -1,4 +1,5 @@
-::Disable UAC remote elevation capability
+::REF 0239_Disable_UAC_remote_elevation_capability
+::CHECK Disable UAC remote elevation capability
 ::This setting controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.)
 
 ::;0131.ps1;0181.ps1;205.ps1
@@ -7,7 +8,7 @@
 
 ::https://posts.specterops.io/pass-the-hash-is-dead-long-live-localaccounttokenfilterpolicy-506c25a7c167
 
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t reg_dword /d 0
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy 
 
 ::Enabled (recommended): Applies UAC token-filtering to local accounts on network logons. Membership in powerful group such as Administrators is disabled and powerful privileges are removed from the resulting access token. This configures the LocalAccountTokenFilterPolicy registry value to 0. This is the default behavior for Windows.
 
