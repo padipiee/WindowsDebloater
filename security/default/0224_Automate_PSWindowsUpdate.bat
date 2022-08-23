@@ -9,6 +9,13 @@
 ::
 ::
 ::#####
+
+Powershell.exe -ExecutionPolicy RemoteSigned Get-WURebootStatus
 Powershell.exe -ExecutionPolicy RemoteSigned Install-WindowsUpdate
+Powershell.exe -ExecutionPolicy RemoteSigned Get-WURebootStatus
+Powershell.exe -ExecutionPolicy RemoteSigned Get-WUHistory
+##Merge and convert Windows Update trace files
+#Powershell.exe -ExecutionPolicy RemoteSigned Get-WindowsUpdateLog
+
 
 pause > nul
