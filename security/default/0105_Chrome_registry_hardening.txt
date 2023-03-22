@@ -19,7 +19,6 @@ Check also chrome://policy/
 "AlternativeBrowserPath"="${ie}"
 "AlwaysOpenPdfExternally"=dword:00000001
 "ApplicationLocaleValue"="en"
-"AudioCaptureAllowed"=dword:00000000
 "AudioSandboxEnabled"=dword:00000001
 "AuthNegotiateDelegateWhitelist"="foobar.example.com"
 "AuthSchemes"="basic,digest,ntlm,negotiate"
@@ -159,7 +158,6 @@ Check also chrome://policy/
 "RoamingProfileSupportEnabled"=dword:00000001
 "RunAllFlashInAllowMode"=dword:00000001
 "SSLErrorOverrideAllowed"=dword:00000001
-"SSLVersionMin"="tls1"
 "SafeBrowsingEnabled"=dword:00000001
 "SafeBrowsingExtendedReportingEnabled"=dword:00000001
 "SafeBrowsingForTrustedSourcesEnabled"=dword:00000000
@@ -176,7 +174,7 @@ Check also chrome://policy/
 "SpellcheckEnabled"=dword:00000000
 "SuppressUnsupportedOSWarning"=dword:00000001
 "SyncDisabled"=dword:00000001
-"TLS13HardeningForLocalAnchorsEnabled"=dword:00000001
+
 "TabFreezingEnabled"=dword:00000000
 "TaskManagerEndProcessEnabled"=dword:00000001
 "ThirdPartyBlockingEnabled"=dword:00000000
@@ -199,9 +197,6 @@ Check also chrome://policy/
 "4"="-profile"
 "5"="%HOME%\\browser_profile"
 
-[HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\AudioCaptureAllowedUrls]
-"1"="https://www.example.com/"
-"2"="https://[*.]example.edu/"
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\AutoSelectCertificateForUrls]
 "1"="{\"pattern\":\"https://www.example.com\",\"filter\":{\"ISSUER\":{\"CN\":\"certificate issuer name\", \"L\": \"certificate issuer location\", \"O\": \"certificate issuer org\", \"OU\": \"certificate issuer org unit\"}, \"SUBJECT\":{\"CN\":\"certificate subject name\", \"L\": \"certificate subject location\", \"O\": \"certificate subject org\", \"OU\": \"certificate subject org unit\"}}}"

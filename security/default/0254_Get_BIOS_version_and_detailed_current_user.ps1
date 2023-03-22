@@ -1,4 +1,5 @@
 
+# 0254_Get_BIOS_version_and_detailed_current_user
 #BIOS Version
 Get-WmiObject Win32_BIOS
 
