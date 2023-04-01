@@ -1,5 +1,3 @@
-Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*' | Select FriendlyName
-
 ###To capture a USB event trace
 ##Check https://docs.microsoft.com/en-us/windows-hardware/drivers/usbcon/how-to-capture-a-usb-event-trace an usage of logman an perfview
 
