@@ -594,31 +594,7 @@ Function EnableAdminShares {
 	Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "AutoShareWks" -ErrorAction SilentlyContinue
 }
 
-# Disable obsolete SMB 1.0 protocol - Disabled by default since 1709
-Function DisableSMB1 {
-	Write-Output "Disabling SMB 1.0 protocol..."
-	Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
-}
 
-# Enable obsolete SMB 1.0 protocol - Disabled by default since 1709
-Function EnableSMB1 {
-	Write-Output "Enabling SMB 1.0 protocol..."
-	Set-SmbServerConfiguration -EnableSMB1Protocol $true -Force
-}
-
-# Disable SMB Server - Completely disables file and printer sharing, but leaves the system able to connect to another SMB server as a client
-# Note: Do not run this if you plan to use Docker and Shared Drives (as it uses SMB internally), see https://github.com/Disassembler0/Win10-Initial-Setup-Script/issues/216
-Function DisableSMBServer {
-	Write-Output "Disabling SMB Server..."
-	Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
-	Set-SmbServerConfiguration -EnableSMB2Protocol $false -Force
-}
-
-# Enable SMB Server
-Function EnableSMBServer {
-	Write-Output "Enabling SMB Server..."
-	Set-SmbServerConfiguration -EnableSMB2Protocol $true -Force
-}
 
 # Disable NetBIOS over TCP/IP on all currently installed network interfaces
 Function DisableNetBIOS {
