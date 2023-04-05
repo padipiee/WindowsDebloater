@@ -1168,21 +1168,7 @@ $traitement = "Default admin Account:" + $nomcompteadmin + ",statut :$adminstate
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "AA" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Accounts: Block Microsoft accounts is set to Users cant add or log on with Microsoft accounts Value must be 3 " + ";"
-$exist = Test-Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System | Select-Object NoConnectedUser
- $traitement = $traitement.NoConnectedUser
-}
-else {
- $traitement = "not configure"
-}
+
 
 $chaine += $traitement
 $chaine>> $nomfichier
@@ -3285,41 +3271,13 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#Xbox Accessory Management Service (XboxGipSvc)'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "SS" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure Xbox Accessory Management Service (XboxGipSvc) is set to 'Disabled' or 'Not Installed', value must be 4 or not installed" + ";"
-$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\XboxGipSvc"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\XboxGipSvc"|Select-Object Start
- $traitement = $traitement.Start
-}
-else {
- $traitement = "It s not installed"
-}
+
 
 $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#Xbox Game Monitoring (xbgm)'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "SS" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure Xbox Game Monitoring (xbgm) s set to 'Disabled' or 'Not Installed', value must be 4 or not installed" + ";"
-$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\xbgm"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\xbgm"|Select-Object Start
- $traitement = $traitement.Start
-}
-else {
- $traitement = "It s not installed"
-}
+
 
 $chaine += $traitement
 $chaine>> $nomfichier
@@ -5736,22 +5694,7 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#Turn off Windows Customer Experience Improvement Program
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "ICS" + "$indextest"
-$chaine = "$id" + ";" + "(L2)Ensure Turn off Windows Customer Experience Improvement Program is set to Enabled, value must be 1 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows" |Select-Object CEIPEnable
- $traitement = $traitement.CEIPEnable
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
+
 
 #'Turn off Windows Error Reporting
 $indextest += 1

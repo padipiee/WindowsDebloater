@@ -775,14 +775,6 @@ Configuration CIS_Windows10_v181 {
           ValueData   = '4'
       } 
 
-      # 5.41 (L1) Ensure 'Xbox Accessory Management Service (XboxGipSvc)' is set to 'Disabled'
-      Registry 'XboxGipSvc' {
-          Ensure      = 'Present'
-          Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc'
-          ValueName   = 'Start'
-          ValueType   = 'DWord'
-          ValueData   = '4'
-      } 
 
       # 5.42 (L1) Ensure 'Xbox Live Auth Manager (XblAuthManager)' is set to 'Disabled'
       Registry 'XblAuthManager' {
@@ -2210,14 +2202,6 @@ Configuration CIS_Windows10_v181 {
           ValueData  = '2'
       }
 
-      # 18.8.22.1.13 (L2) Ensure 'Turn off Windows Customer Experience Improvement Program' is set to 'Enabled'
-      Registry 'CEIPEnable' {
-          Ensure     = 'Present'
-          Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows'
-          ValueName  = 'CEIPEnable'
-          ValueType  = 'DWord'
-          ValueData  = '0'
-      }
 
       # 18.8.22.1.14 (L2) Ensure 'Turn off Windows Error Reporting' is set to 'Enabled'
       Registry 'Disabled2' {

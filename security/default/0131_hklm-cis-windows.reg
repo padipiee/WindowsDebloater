@@ -14,14 +14,7 @@ Windows Registry Editor Version 5.00
 ;;; - Windows Defender
 ;;; - Device Guard
 
-;;; 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
-;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
-; <deleted> = (Default)
-; 0000000 = This policy is disabled
-; 0000001 = Users can’t add Microsoft accounts
-; 0000003 = Users can’t add or log on with Microsoft accounts (CIS)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"NoConnectedUser"=dword:0000003
+
 
 ;;; 2.3.1.4 (L1) Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
@@ -759,21 +752,9 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"Start"=dword:0000004
 
-;;; 5.41 (L1) Ensure 'Xbox Accessory Management Service (XboxGipSvc)' is set to 'Disabled'
-;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc]
-; 2 = Automatic
-; 3 = Manual (Default)
-; 4 = Disabled (CIS)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"Start"=dword:0000004
 
-;;; 5.42 (L1) Ensure 'Xbox Game Monitoring (xbgm)' is set to 'Disabled'
-;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xbgm]
-; 2 = Automatic
-; 3 = Manual (Default)
-; 4 = Disabled (CIS)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"Start"=dword:0000004
+
+
 
 ;;; 5.43 (L1) Ensure 'Xbox Live Auth Manager (XblAuthManager)' is set to 'Disabled'
 ;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager]
@@ -1341,12 +1322,7 @@ Windows Registry Editor Version 5.00
 ; 2 = On (CIS)
 "CEIP"=dword:0000002
 
-;;; 18.8.22.1.13 (L2) Ensure 'Turn off Windows Customer Experience Improvement Program' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\SQMClient\Windows]
-; <deleted> = (Default)
-; 0000000 = Off (CIS)
-; 0000001 = On
-"CEIPEnable"=dword:0000000
+
 
 ;;; 18.8.22.1.14 (L2) Ensure 'Turn off Windows Error Reporting' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Error Reporting]
