@@ -2752,14 +2752,7 @@ Configuration CIS_Windows10_v181 {
           ValueData  = '1'
       }
 
-      # 18.9.16.1 (L1) Ensure 'Allow Telemetry' is set to 'Enabled: 0 - Security [Enterprise Only]' or 'Enabled: 1 - Basic'
-      Registry 'AllowTelemetry' {
-          Ensure     = 'Present'
-          Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
-          ValueName  = 'AllowTelemetry'
-          ValueType  = 'DWord'
-          ValueData  = '0'
-      }
+
 
       # 18.9.16.2 (L2) Ensure 'Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service' is set to 'Enabled: Disable Authenticated Proxy usage'
       Registry 'DisableEnterpriseAuthProxy' {
