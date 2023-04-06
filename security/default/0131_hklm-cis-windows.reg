@@ -1614,14 +1614,7 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "EnumerateAdministrators"=dword:0000000
 
-;;; 18.9.16.1 (L1) Ensure 'Allow Telemetry' is set to 'Enabled: 0 - Security [Enterprise Only]'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
-; <deleted> = (Default)
-; 0 = Security: Security data only (CIS)
-; 1 = Basic: Security + basic system and quality data
-; 2 = Enhanced: Basic + enhanced insights and advanced reliability data
-; 3 = Full: Enhanced + full diagnostics data
-"AllowTelemetry"=dword:0000000
+
 
 ;;; 18.9.16.2 (L2) Ensure 'Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service' is set to 'Enabled: Disable Authenticated Proxy usage'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
