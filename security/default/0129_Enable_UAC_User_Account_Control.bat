@@ -2,6 +2,7 @@
 ::0129_Enable_UAC_User_Account_Control.bat
 ::
 :: Default configuration to enforce and maintain | EnableLUA=1 !
+:: The key is called EnableLUA because User Access Control was previously called Limited User Account (LUA).
 :: 
 ::https://support.gfi.com/hc/en-us/articles/360012968753-How-to-disable-User-Account-Control-UAC-
 ::https://gallery.technet.microsoft.com/scriptcenter/Disable-UAC-using-730b6ecd
