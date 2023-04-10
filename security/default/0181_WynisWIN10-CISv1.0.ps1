@@ -2926,21 +2926,7 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#Remote Registry (RemoteRegistry)'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "SS" + "$indextest"
-$chaine = "$id" + ";" + "(L2)Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled' or 'Not Installed', value must be 4 or not installed" + ";"
-$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\RemoteRegistry"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\RemoteRegistry"|Select-Object Start
- $traitement = $traitement.Start
-}
-else {
- $traitement = "It s not installed"
-}
+
 
 $chaine += $traitement
 $chaine>> $nomfichier
@@ -7896,22 +7882,7 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#Configure Password Manager'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "ME" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Configure Password Manager' is set to 'Disabled', value must be 0 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main" |Select-Object FormSuggestPasswords
- $traitement = $traitement.FormSuggestPasswords
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
+
 
 
 
@@ -8908,22 +8879,7 @@ $chaine += $traitementtemp
 $chaine>> $nomfichier
 
 
-#Configure SmartScreen Filter'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "WDEF" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled', value must be 1 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" |Select-Object EnabledV9
- $traitement = $traitement.EnabledV9
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
+
 
 
 #Prevent bypassing SmartScreen prompts for files'

@@ -631,14 +631,6 @@ Configuration CIS_Windows10_v181 {
           ValueData   = '4'
       } 
 
-      # 5.25 (L2) Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled'
-      Registry 'RemoteRegistry' {
-          Ensure      = 'Present'
-          Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry'
-          ValueName   = 'Start'
-          ValueType   = 'DWord'
-          ValueData   = '4'
-      } 
 
       # 5.26 (L1) Ensure 'Routing and Remote Access (RemoteAccess)' is set to 'Disabled'
       Registry 'RemoteAccess' {
@@ -2963,14 +2955,7 @@ Configuration CIS_Windows10_v181 {
           ValueData  = '1'
       }
 
-      # 18.9.45.6 (L1) Ensure 'Configure Password Manager' is set to 'Disabled'
-      Registry 'FormSuggestPasswords' {
-          Ensure     = 'Present'
-          Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main'
-          ValueName  = 'FormSuggest Passwords'
-          ValueType  = 'String'
-          ValueData  = 'no'
-      }
+
 
       # 18.9.45.7 (L2) Ensure 'Configure Pop-up Blocker' is set to 'Enabled'
       Registry 'AllowPopups' {
@@ -3512,14 +3497,6 @@ Configuration CIS_Windows10_v181 {
           ValueData  = 'Block'
       }    
 
-      # 18.9.80.2.1 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled'
-      Registry 'EnabledV9' {
-          Ensure     = 'Present'
-          Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter'
-          ValueName  = 'EnabledV9'
-          ValueType  = 'DWord'
-          ValueData  = '1'
-      }   
 
       # 18.9.80.2.2 (L1) Ensure 'Prevent bypassing Windows Defender SmartScreen prompts for files' is set to 'Enabled'
       Registry 'PreventOverrideAppRepUnknown' {

@@ -1,0 +1,1 @@
+Get-ChildItem Env: | ft Key,Value

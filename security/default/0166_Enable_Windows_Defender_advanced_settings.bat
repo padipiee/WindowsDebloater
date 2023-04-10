@@ -5,14 +5,7 @@
 :: Reset Defender to defaults. Commented out but available for reference
 ::"%programfiles%"\"Windows Defender"\MpCmdRun.exe -RestoreDefaults
 ::
-:: Start Defender Service
-sc start WinDefend
-::Enable Windows Defender sandboxing
-setx /M MP_FORCE_USE_SANDBOX 1
-:: Update signatures
-"%ProgramFiles%"\"Windows Defender"\MpCmdRun.exe -SignatureUpdate
-:: Enable Defender signatures for Potentially Unwanted Applications (PUA)
-powershell.exe Set-MpPreference -PUAProtection enable
+
 :: Enable Defender periodic scanning
 reg add "HKCU\SOFTWARE\Microsoft\Windows Defender" /v PassiveMode /t REG_DWORD /d 2 /f
 :: Enable Cloud functionality of Windows Defender
