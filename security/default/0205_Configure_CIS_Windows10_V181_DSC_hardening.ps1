@@ -2266,14 +2266,7 @@ Configuration CIS_Windows10_v181 {
           ValueData  = '1'
       }
 
-      # 18.8.28.2 (L1) Ensure 'Do not display network selection UI' is set to 'Enabled'
-      Registry 'DontDisplayNetworkSelectionUI' {
-          Ensure     = 'Present'
-          Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
-          ValueName  = 'DontDisplayNetworkSelectionUI'
-          ValueType  = 'DWord'
-          ValueData  = '1'
-      }
+
 
       # 18.8.28.3 (L1) Ensure 'Do not enumerate connected users on domainjoined computers' is set to 'Enabled'
       Registry 'DontEnumerateConnectedUsers' {
@@ -3835,14 +3828,7 @@ Configuration CIS_Windows10_v181 {
           ValueData    = '1'
       }
 
-      # 19.1.3.4 (L1) Ensure 'Screen saver timeout' is set to 'Enabled: 900 seconds or fewer, but not 0'
-      Registry 'ScreenSaveTimeOut' {
-          Ensure       = 'Present'
-          Key          = 'HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop'
-          ValueName    = 'ScreenSaveTimeOut'
-          ValueType    = 'DWord'
-          ValueData    = '900'
-      }
+
 
       # 19.5.1.1 (L1) Ensure 'Turn off toast notifications on the lock screen' is set to 'Enabled'
       Registry 'NoToastApplicationNotificationOnLockScreen' {

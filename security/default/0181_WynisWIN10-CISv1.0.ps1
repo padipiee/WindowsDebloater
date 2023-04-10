@@ -1489,22 +1489,7 @@ $chaine>> $nomfichier
 
 
 
-#Interactive logon: Machine inactivity limit'
 
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "IL" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure Interactive logon: Machine inactivity limit' is set to 900 or fewer second(s), but not 0 " + ";"
-$exist = Test-Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System |Select-Object InactivityTimeoutSecs
- $traitement = $traitement.InactivityTimeoutSecs
-}
-else {
- $traitement = "not configure"
-}
 
 $chaine += $traitement
 $chaine>> $nomfichier
@@ -5803,22 +5788,7 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#Do not display network selection UI
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "LOGON" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure Do not display network selection UI is set to Enabled, value must be 1 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" |Select-Object DontDisplayNetworkSelectionUI
- $traitement = $traitement.DontDisplayNetworkSelectionUI
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
+
 
 #Do not enumerate connected users on domain-joined computers'
 $indextest += 1
