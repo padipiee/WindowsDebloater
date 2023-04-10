@@ -1,9 +1,4 @@
-# 0306 Enforce SchUseStrongCrypto if .Net Framework 4.x is used...
-#.NET Framework's last version is 4.8
-#.NET Core starts as 5.x
-# Function to disable cipher in the Windows Registry
-
-# Function to disable cipher in the Windows Registry
+# Function to disable obsolete ciphers in the Windows Registry
 function DisableCipher([string]$cipherName)
 {
     $registryPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\$cipherName"
