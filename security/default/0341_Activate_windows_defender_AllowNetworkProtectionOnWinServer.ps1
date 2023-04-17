@@ -6,7 +6,7 @@
 
 
 
-function Check-AdminPriv {
+function Test-AdminPriv {
   # Check if running with administrative privileges
   if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Warning "This function requires administrative privileges. Please run PowerShell as an administrator."
@@ -62,7 +62,7 @@ function Set-MpPreference-AllowNetworkProtectionOnWinServer {
   }
 }
 
-Check-AdminPriv
+Test-AdminPriv
 Test-Get-MpPreference-AllowNetworkProtectionOnWinServer
 Set-Registry-AllowNetworkProtectionOnWinServer
 Set-MpPreference-AllowNetworkProtectionOnWinServer

@@ -2,7 +2,7 @@
 # https://jeffreyappel.nl/microsoft-defender-for-endpoint-series-validate-defender-protection-and-additional-troubleshooting-part6/
 # https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/network-protection?view=o365-worldwide
 
-function Check-AdminPriv {
+function Test-AdminPriv {
   # Check if running with administrative privileges
   if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Warning "This function requires administrative privileges. Please run PowerShell as an administrator."
@@ -18,7 +18,8 @@ function Test-Get-MpPreference-AllowDatagramProcessingOnWinServer {
   # Check if the AllowDatagramProcessingOnWinServer option is enabled
   if ($mpPreference.AllowDatagramProcessingOnWinServer -eq 1) {
     Write-Host "Get-MpPreference : AllowDatagramProcessingOnWinServer option is currently enabled in Windows Defender."
-  } else {
+  }
+  else {
     Write-Host "Get-MpPreference : AllowDatagramProcessingOnWinServer option is currently disabled in Windows Defender."
   }
 }
@@ -35,10 +36,12 @@ function Set-Registry-AllowDatagramProcessingOnWinServer {
       Set-ItemProperty -Path $registryPath -Name $registryValue -Value 1
       reg query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection"
       Write-Host "Successfully activated AllowDatagramProcessingOnWinServer registry option for Windows Defender."
-    } else {
+    }
+    else {
       Write-Warning "The required registry key does not exist. Please ensure that Windows Defender is installed on the system."
     }
-  } catch {
+  }
+  catch {
     Write-Error "Failed to activate AllowDatagramProcessingOnWinServer option in Windows Defender. Error: $_"
   }
 }
@@ -53,12 +56,13 @@ function Set-MpPreference-AllowDatagramProcessingOnWinServer {
     $real_status = (Get-MpPreference).AllowDatagramProcessingOnWinServer
     Write-Host "Set-MpPreference :  AllowDatagramProcessingOnWinServer option set to $real_status in Windows Defender."
 
-  } catch {
+  }
+  catch {
     Write-Error "Set-MpPreference : Failed to set AllowDatagramProcessingOnWinServer option to $true in Windows Defender. Error: $_"
   }
 }
 
-Check-AdminPriv
+Test-AdminPriv
 Test-Get-MpPreference-AllowDatagramProcessingOnWinServer
 Set-Registry-AllowDatagramProcessingOnWinServer
 Set-MpPreference-AllowDatagramProcessingOnWinServer
