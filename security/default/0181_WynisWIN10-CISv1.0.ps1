@@ -5204,21 +5204,7 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "DG" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock', value must be 1 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" |Select-Object LsaCfgFlags
- $traitement = $traitement.LsaCfgFlags
-}
-else {
- $traitement = "not configure"
-}
+
 
 $chaine += $traitement
 $chaine>> $nomfichier

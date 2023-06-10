@@ -14,7 +14,7 @@ powershell.exe Set-MpPreference -SubmitSamplesConsent Always
 ::
 :: Enable early launch antimalware driver for scan of boot-start drivers
 :: 3 is the default which allows good, unknown and 'bad but critical'. Recommend trying 1 for 'good and unknown' or 8 which is 'good only'
-reg add "HKCU\SYSTEM\CurrentControlSet\Policies\EarlyLaunch" /v DriverLoadPolicy /t REG_DWORD /d 3 /f
+reg add "HKCU\SYSTEM\CurrentControlSet\Policies\EarlyLaunch" /v DriverLoadPolicy /t REG_DWORD /d 3 /fl
 ::
 :: Enable ASR rules in Win10 1903 ExploitGuard to mitigate Office malspam
 :: Blocks Office childprocs, Office proc injection, Office win32 api calls & executable content creation
