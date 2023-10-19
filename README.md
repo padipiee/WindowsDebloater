@@ -1,12 +1,11 @@
 
 # Purpose
 Scripts to harden Windows 10.
-Assist to remove unnecessary Windows 10 apps, disable Telemetry, inactivate bloatware and disable spying default features.
+Assist to remove unnecessary Windows 10 apps, disable Telemetry, inactivate bloatware and disable unecessary or insecure default features.
 Attempts to improve security and privacy posture.
 
 # Usage
 Use scripts in MS cmd batch, powershell, python, ansible.
-
 
 # Sources / Others tools sources /Credits
 This is using various ideas from various initial sources.
