@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+Activates the AllowNetworkProtectionDownLevel option for Windows Defender.
+
+.DESCRIPTION
+This script activates the AllowNetworkProtectionDownLevel option for Windows Defender, which specifies whether to allow network protection to be set to Enabled or Audit Mode on Windows versions before 1709.
+
+.NOTES
+- This script requires administrative privileges.
+- The script sets the registry value to 1 to enable the option.
+- The script sets the Windows Defender preference to EnableNetworkProtection Enabled and AllowNetworkProtectionDownLevel $true.
+
+.EXAMPLE
+PS C:\> .\0340_Activate_windows_defender_AllowNetworkProtectionDownLevel.ps1
+Activates the AllowNetworkProtectionDownLevel option for Windows Defender.
+
+.INPUTS
+None.
+
+.OUTPUTS
+None.
+
+#> 
+
+
 # Activate AllowNetworkProtectionDownLevel option for Windows defender
 ## !! Specifies whether to allow network protection to be set to Enabled or Audit Mode on Windows versions before 1709. !!
 

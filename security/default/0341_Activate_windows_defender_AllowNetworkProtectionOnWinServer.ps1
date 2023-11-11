@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+Activates the AllowNetworkProtectionOnWinServer option for Windows Defender.
+
+.DESCRIPTION
+This script activates the AllowNetworkProtectionOnWinServer option for Windows Defender. It checks if the option is already enabled, and if not, it sets the required registry key and Windows Defender preference to enable it.
+
+.PARAMETER None
+This script does not accept any parameters.
+
+.EXAMPLE
+.\0341_Activate_windows_defender_AllowNetworkProtectionOnWinServer.ps1
+Activates the AllowNetworkProtectionOnWinServer option for Windows Defender.
+
+.NOTES
+Author: Unknown
+Date: Unknown
+#>
 # Activate AllowNetworkProtectionOnWinServer option for Windows defender
 # https://jeffreyappel.nl/microsoft-defender-for-endpoint-series-validate-defender-protection-and-additional-troubleshooting-part6/
 # https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/network-protection?view=o365-worldwide

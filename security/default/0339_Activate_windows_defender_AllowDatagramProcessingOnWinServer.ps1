@@ -1,3 +1,18 @@
+<#
+.SYNOPSIS
+Activates the AllowDatagramProcessingOnWinServer option for Windows Defender.
+
+.DESCRIPTION
+This script activates the AllowDatagramProcessingOnWinServer option for Windows Defender. It sets the required registry key and Windows Defender preference to enable the option.
+
+.PARAMETER None
+
+.EXAMPLE
+.\0339_Activate_windows_defender_AllowDatagramProcessingOnWinServer.ps1
+
+.NOTES
+This script requires administrative privileges to run. Please run PowerShell as an administrator.
+#>
 # Activate AllowDatagramProcessingOnWinServer option for Windows defender
 # https://jeffreyappel.nl/microsoft-defender-for-endpoint-series-validate-defender-protection-and-additional-troubleshooting-part6/
 # https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/network-protection?view=o365-worldwide
