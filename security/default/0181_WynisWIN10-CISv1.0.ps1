@@ -2926,7 +2926,25 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
+<<<<<<< HEAD
 
+=======
+#Remote Registry (RemoteRegistry)'
+$indextest += 1
+$chaine = $null
+$traitement = $null
+$exist = $null
+$id = "SS" + "$indextest"
+$chaine = "$id" + ";" + "(L2)Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled' or 'Not Installed', value must be 4 or not installed" + ";"
+$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\RemoteRegistry"
+if ( $exist -eq $true) {
+ $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Services\RemoteRegistry"|Select-Object Start
+ $traitement = $traitement.Start
+}
+else {
+ $traitement = "It s not installed"
+}
+>>>>>>> feae34e98302c12b3753da7b45b8072fcab3dc01
 
 $chaine += $traitement
 $chaine>> $nomfichier
@@ -5204,7 +5222,25 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
+<<<<<<< HEAD
 
+=======
+#Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock'
+$indextest += 1
+$chaine = $null
+$traitement = $null
+$exist = $null
+$id = "DG" + "$indextest"
+$chaine = "$id" + ";" + "(L1)Ensure 'Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock', value must be 1 " + ";"
+$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard"
+if ( $exist -eq $true) {
+ $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" |Select-Object LsaCfgFlags
+ $traitement = $traitement.LsaCfgFlags
+}
+else {
+ $traitement = "not configure"
+}
+>>>>>>> feae34e98302c12b3753da7b45b8072fcab3dc01
 
 $chaine += $traitement
 $chaine>> $nomfichier
@@ -7868,7 +7904,26 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
+<<<<<<< HEAD
 
+=======
+#Configure Password Manager'
+$indextest += 1
+$chaine = $null
+$traitement = $null
+$id = "ME" + "$indextest"
+$chaine = "$id" + ";" + "(L1)Ensure 'Configure Password Manager' is set to 'Disabled', value must be 0 " + ";"
+$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main"
+if ( $exist -eq $true) {
+ $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main" |Select-Object FormSuggestPasswords
+ $traitement = $traitement.FormSuggestPasswords
+}
+else {
+ $traitement = "not configure"
+}
+$chaine += $traitement
+$chaine>> $nomfichier
+>>>>>>> feae34e98302c12b3753da7b45b8072fcab3dc01
 
 
 
@@ -8865,7 +8920,26 @@ $chaine += $traitementtemp
 $chaine>> $nomfichier
 
 
+<<<<<<< HEAD
 
+=======
+#Configure SmartScreen Filter'
+$indextest += 1
+$chaine = $null
+$traitement = $null
+$id = "WDEF" + "$indextest"
+$chaine = "$id" + ";" + "(L1)Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled', value must be 1 " + ";"
+$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter"
+if ( $exist -eq $true) {
+ $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter" |Select-Object EnabledV9
+ $traitement = $traitement.EnabledV9
+}
+else {
+ $traitement = "not configure"
+}
+$chaine += $traitement
+$chaine>> $nomfichier
+>>>>>>> feae34e98302c12b3753da7b45b8072fcab3dc01
 
 
 #Prevent bypassing SmartScreen prompts for files'
