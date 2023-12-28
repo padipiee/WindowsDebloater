@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-This script executes a query using osqueryi to check the status of Windows Defender Spynet registry disabled. It also retrieves the status of DisableBlockAtFirstSeen from Windows Defender preferences.
+This script executes a query  (as admin...) using osqueryi to check the status of Windows Defender Spynet registry disabled. It also retrieves the status of DisableBlockAtFirstSeen from Windows Defender preferences.
 
 .DESCRIPTION
 The script imports the powershell-yaml module and loads a YAML file containing the query to be executed. It then converts the YAML content to a PowerShell object and extracts the query from it. The query is logged and executed using osqueryi. The result of the query is logged as well.
@@ -63,6 +63,10 @@ try {
 
   # Log the status
   Write-Host "DisableBlockAtFirstSeen status: $blockAtFirstSeenStatus"
+  
+  if ($blockAtFirstSeenStatus -eq $false) {
+    Write-Output "DisableBlockAtFirstSeen is currently set to false. This means real-time checks with Windows Defender Antivirus Cloud Protection are ACTIVE before allowing certain content to be run or accessed. This is the secure default target."
+  }
 }
 catch {
   Write-Host "Error occurred while getting DisableBlockAtFirstSeen status: $_"

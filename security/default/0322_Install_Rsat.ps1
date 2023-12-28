@@ -1,4 +1,21 @@
-# Install Rsat.GroupPolicy.Management.Tools
+<#
+.SYNOPSIS
+Installs the Rsat.GroupPolicy.Management.Tools capability or feature (Remote Server Administration Tools)
+
+.DESCRIPTION
+This script checks if the Rsat.GroupPolicy.Management.Tools capability is installed on the local machine. If not, it installs the RSAT feature. It then retrieves and displays the version of the installed capability or feature.
+
+.PARAMETER None
+This script does not accept any parameters.
+
+.EXAMPLE
+.\0322_Install_Rsat.ps1
+Runs the script to install the Rsat.GroupPolicy.Management.Tools capability or feature.
+
+.NOTES
+Author: [Your Name]
+Date: [Current Date]
+#>
 
 $capabilityInstalled_Rsat_GroupPolicy_Management_Tools = Get-WindowsCapability -Online | Where-Object { $_.Name -like 'Rsat.GroupPolicy.Management.Tools*' } | Select-Object -Last 1 State | Select-Object -Last 2 | ForEach-Object { $_.State -replace '.*:\s*','' }
 
