@@ -1,4 +1,21 @@
-﻿# PowerShell Script to Automatically Download and Install the Latest osquery
+﻿<#
+.SYNOPSIS
+Automatically downloads and installs the latest version of osquery.
+
+.DESCRIPTION
+This PowerShell script fetches the latest release URL of osquery from the GitHub API, downloads the osquery MSI installer, and installs osquery on the local machine. It also adds the osqueryi executable to the PATH environment variable. After installation, it verifies the osquery installation by checking the version of osqueryi.
+
+.PARAMETER None
+
+.EXAMPLE
+.\0348_install_latest_osquery.ps1
+
+.NOTES
+Author: [Your Name]
+Date: [Current Date]
+Version: 1.0
+#>
+# PowerShell Script to Automatically Download and Install the Latest osquery
 
 try {
     # Function to fetch the latest osquery release URL

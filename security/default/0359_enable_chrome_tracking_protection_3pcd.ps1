@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+Enables tracking protection in Google Chrome by modifying the Preferences file.
+
+.DESCRIPTION
+This script enables the tracking protection feature in Google Chrome by modifying the Preferences file. It backs up the original Preferences file, reads and parses it, modifies the necessary flag, converts it back to JSON, and writes it back to the file. It then closes all running instances of Chrome to apply the changes and restarts Chrome.
+
+.PARAMETER None
+
+.INPUTS
+None
+
+.OUTPUTS
+None
+
+.EXAMPLE
+Enable-TrackingProtection
+
+This example demonstrates how to use the script to enable tracking protection in Google Chrome.
+
+.NOTES
+Author: 
+Date: 
+Version: 1.0
+#>
 $chromeProfilePath = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default"
 $preferencesPath = Join-Path -Path $chromeProfilePath -ChildPath "Preferences"
 
