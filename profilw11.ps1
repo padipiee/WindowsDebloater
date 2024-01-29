@@ -11,4 +11,6 @@
 ./security/default/0017_Disable_Application_Telemetry.ps1
 ./security/default/0018_Disable_Inventory_Collector.ps1
 ./security/default/0019_Disable_Steps_Recorder.ps1
+./security/default/0020_Disable_Advertising_ID.ps1
+./security/default/0021_Disable_keylogger_InputPersonalization.ps1
 
