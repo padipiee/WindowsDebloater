@@ -1,24 +1,33 @@
 
-#:: Disable unsafe services...
+<#
+.SYNOPSIS
+This script disables unsafe services and stops unneeded services for privacy.
 
-$unsafe_services = "RemoteRegistry","TermService","TrkWks","DPS","SensorDataService","SensorService","SensrSvc"
+.DESCRIPTION
+The script disables a list of unsafe services and stops unneeded services for privacy. It also deletes or disables specific services related to privacy.
+
+.PARAMETER None
+
+.EXAMPLE
+.\0010_Disable_unsafe_services.ps1
+#>
+
+
+$unsafe_services = "RemoteRegistry", "TermService", "TrkWks", "DPS", "SensorDataService", "SensorService", "SensrSvc"
 foreach ($service in $unsafe_services) {
-    Write-Host "Current service: $service is going to be stopped and disabled"
-    Stop-Service -Name $service -Force
-    Set-Service -Name $service -StartupType Disabled
+    $serviceStatus = Get-Service -Name $service | Select-Object -ExpandProperty Status
+    if ($serviceStatus -eq "Running") {
+        Write-Host "[0010_Disable_unsafe_services] Stopping and disabling service: $service"
+        Stop-Service -Name $service -Force
+        Set-Service -Name $service -StartupType Disabled
+    }
+    elseif ($serviceStatus -eq "Stopped") {
+        Write-Host "[0010_Disable_unsafe_services] Service: $service is already disabled"
+    }
+    else {
+        Write-Host "[0010_Disable_unsafe_services] Service: $service is not found"
+    }
 }
-
-# Privacy - Stop unneeded services.
-Stop-Service -Name "DiagTrack", "dmwappushservice", "RemoteRegistry", "RetailDemo", "WinRM", "WMPNetworkSvc"
-
-# Privacy - Delete, or disable, unneeded services.
-Set-Service -Name "RemoteRegistry" -StartupType Disabled
-Set-Service -Name "RetailDemo" -StartupType Disabled
-Set-Service -Name "WinRM" -StartupType Disabled
-Set-Service -Name "WMPNetworkSvc" -StartupType Disabled
-Remove-Service -Name "DiagTrack" -Force
-Remove-Service -Name "dmwappushservice" -Force
-
 
 
 # ;;; 5.25 (L2) Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled'
@@ -45,11 +54,11 @@ Remove-Service -Name "dmwappushservice" -Force
 # }
 
 
-    #   # 5.25 (L2) Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled'
-    #   Registry 'RemoteRegistry' {
-    #     Ensure      = 'Present'
-    #     Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry'
-    #     ValueName   = 'Start'
-    #     ValueType   = 'DWord'
-    #     ValueData   = '4'
-    # } 
+#   # 5.25 (L2) Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled'
+#   Registry 'RemoteRegistry' {
+#     Ensure      = 'Present'
+#     Key         = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry'
+#     ValueName   = 'Start'
+#     ValueType   = 'DWord'
+#     ValueData   = '4'
+# } 
