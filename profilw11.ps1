@@ -1,9 +1,8 @@
 
 #
-./security/default/0003_Delete_OneDriveSetup_32bits.ps1
+#./security/default/0003_Delete_OneDriveSetup_32bits.ps1
 #
 ./security/default/0004_Delete_OneDrive_64bits.ps1
-#
 ./security/default/0006_Remove_OneDrive_FolderDescriptions.ps1
 ./security/default/0008_Disable_OneDrive_file_sync.ps1
 ./security/default/0009_Delete_services.ps1
@@ -16,4 +15,9 @@
 ./security/default/0020_Disable_Advertising_ID.ps1
 ./security/default/0021_Disable_keylogger_InputPersonalization.ps1
 ./security/default/0023_Disable_browser_access_to_local_language.ps1
+
+
+#
+./security/default/0364_get_chocolatey_iex.ps1
+./security/default/0365_choco_upgrade_nmap.ps1
 
