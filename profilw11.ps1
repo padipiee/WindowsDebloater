@@ -15,6 +15,14 @@
 ./security/default/0020_Disable_Advertising_ID.ps1
 ./security/default/0021_Disable_keylogger_InputPersonalization.ps1
 ./security/default/0023_Disable_browser_access_to_local_language.ps1
+./security/default/0024_Disable_SmartScreen.ps1
+./security/default/0025_Disable_Advertising_ID_for_Relevant_Ads.ps1
+./security/default/0026-001_Deleting_microsoft_task_Microsoft_Compatibility_Appraiser_only.ps1
+#./security/default/0029_List_all_scheduled_tasks.ps1
+./security/default/0030_Disable_biometrics.ps1
+./security/default/0031_Disable_Program_Compatibility_Assistant.ps1
+./security/default/0035_Disable_cortana.ps1
+
 
 
 #
