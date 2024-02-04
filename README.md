@@ -12,9 +12,7 @@ A current profile (TBC) would be the update of the day sequence of each required
 
 # Usage
 
-This tool is mainly focused on a **powershell** approach an collect  batch, powershell, python, ansible for reference
-Use scripts in MS cmd batch, powershell, python, ansible.
-
+This tool is mainly focused on a **powershell** approach and add others scripts ( batch, powershell, python, ansible ) for reference.
 
 ## Credits
 
@@ -22,4 +20,5 @@ This is using various ideas from various initial sources.
 With the time I added plenty of variants, modifications and optimizations of my own.
 
 ## License
+
 BSD 2-clause
