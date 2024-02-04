@@ -26,8 +26,17 @@ function Get-RegistryValue {
     [string]$Name
   )
 
-  $value = Get-ItemProperty -Path $Path -Name $Name | Select-Object -ExpandProperty $Name
-  return $value
+  # Check if the property exists
+  $property = Get-Item -Path $Path | Select-Object -ExpandProperty Property
+
+  if ($property -contains $Name) {
+    $value = Get-ItemProperty -Path $Path -Name $Name | Select-Object -ExpandProperty $Name
+    return $value
+  }
+  else {
+    Write-Output "[0056_Disable_with_policy_apprivacy] Property $Name does not exist at path $Path."
+    return $null
+  }
 }
 
 # Function to set registry value
