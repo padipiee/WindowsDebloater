@@ -22,10 +22,19 @@
 ./security/default/0030_Disable_biometrics.ps1
 ./security/default/0031_Disable_Program_Compatibility_Assistant.ps1
 ./security/default/0035_Disable_cortana.ps1
-
+./security/default/0037_Disable_Windows_Consumer_Features.ps1
+#./security/default/0038_Disable_Bluetooth.ps1  ##? HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\ActionCenter\Quick Actions\All\SystemSettings_Device_BluetoothQuickAction"
+./security/default/0040_Disable_anonymous_enumeration.ps1
+./security/default/0042_Disable_SSDP_Discovery_Service.ps1
+#./security/default/0043_Disable_DiagTrack.ps1  #not found Windows 11
+./security/default/0044_Disable_NVIDIA_Container_Telemetry.ps1 
+./security/default/0046_Disable_App_Access_To_Voice_Activation_When_Device_Is_Locked.ps1
+#
+./security/default/0056_Disable_with_policy_apprivacy.ps1
 
 
 #
 ./security/default/0364_get_chocolatey_iex.ps1
 ./security/default/0365_choco_upgrade_nmap.ps1
+./security/default/0366_install_powershell7.ps1
 

@@ -1,6 +1,0 @@
-
-Disable NVIDIA Container Telemetry NvContainerTelemetryApi.dl
-
-Disable NvContainerTelemetryApi.dll : 
-### C:\Program Files\NVIDIA Corporation\NvContainer\NvContainerTelemetryApi.dll 
-### C:\Program Files\NVIDIA Corporation\NvContainer\___NvContainerTelemetryApi.dll_____old
