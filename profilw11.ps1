@@ -18,7 +18,6 @@
 ./security/default/0024_Disable_SmartScreen.ps1
 ./security/default/0025_Disable_Advertising_ID_for_Relevant_Ads.ps1
 ./security/default/0026-001_Deleting_microsoft_task_Microsoft_Compatibility_Appraiser_only.ps1
-#./security/default/0029_List_all_scheduled_tasks.ps1
 ./security/default/0030_Disable_biometrics.ps1
 ./security/default/0031_Disable_Program_Compatibility_Assistant.ps1
 ./security/default/0035_Disable_cortana.ps1
@@ -29,12 +28,22 @@
 #./security/default/0043_Disable_DiagTrack.ps1  #not found Windows 11
 ./security/default/0044_Disable_NVIDIA_Container_Telemetry.ps1 
 ./security/default/0046_Disable_App_Access_To_Voice_Activation_When_Device_Is_Locked.ps1
-#
+
 ./security/default/0056_Disable_with_policy_apprivacy.ps1
+./security/default/0057_Disable_via_DoNotShowFeedbackNotifications.ps1
+./security/default/0058_Disable_game_DVR.ps1
 
 
 #
 ./security/default/0364_get_chocolatey_iex.ps1
 ./security/default/0365_choco_upgrade_nmap.ps1
 ./security/default/0366_install_powershell7.ps1
+./security/default/0368_block_msedge_telemetry.ps1
+
+
+############################################
+# On demand . Enable if needed
+############################################
+#./security/default/0029_List_all_scheduled_tasks.ps1
+#./security/default/0367_monitor_ip_trafic.ps1
 
