@@ -23,14 +23,18 @@ $targetMessage = "[0004_Delete_OneDrive_64bits] [no change] [compliant] No actio
 if (Test-Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe") {
     Start-Process -Wait "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" "/uninstall"
     Write-Host "[0004_Delete_OneDrive_64bits] - Deleting OneDrive 64 bits..."
-    Get-Process OneDrive | Stop-Process -Force
-    Remove-Item -Path "$env:UserProfile\OneDrive" -Recurse -Force
-    Remove-Item -Path "$env:SystemDrive\OneDriveTemp" -Recurse -Force
-    Remove-Item -Path "$env:LocalAppData\Microsoft\OneDrive" -Recurse -Force
-    Remove-Item -Path "$env:ProgramData\Microsoft OneDrive" -Recurse -Force
+    Get-Process OneDrive -ErrorAction SilentlyContinue | Stop-Process -Force
+
+    $pathsToRemove = @("$env:UserProfile\OneDrive", "$env:SystemDrive\OneDriveTemp", "$env:LocalAppData\Microsoft\OneDrive", "$env:ProgramData\Microsoft OneDrive")
+
+    foreach ($path in $pathsToRemove) {
+        if (Test-Path $path) {
+            Remove-Item -Path $path -Recurse -Force
+        }
+    }
 
     # Test again after deletion
-    if (-not (Test-Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe")) {		
+    if (-not (Test-Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe")) {        
         Write-Host $targetMessage
     }
     else {
@@ -38,7 +42,7 @@ if (Test-Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe") {
         Write-Host $failMessage
     }
 }
-else {	
+else {    
     Write-Host "[0004_Delete_OneDrive_64bits] Path tested: $Env:SystemRoot\SysWOW64\OneDriveSetup.exe"
     Write-Host $targetMessage
 }
