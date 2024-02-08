@@ -1,4 +1,10 @@
+
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+if (!(Test-Path $registryPath)) {
+  Write-Host "[0031_Disable_Program_Compatibility_Assistant] - Registry folder $registryPath does not exist. Exiting..."
+  exit
+}
+
 $registryValueName = "DisablePCA"
 $targetValue = 1
 

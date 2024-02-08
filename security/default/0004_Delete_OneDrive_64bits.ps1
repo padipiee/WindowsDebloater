@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-Deletes OneDrive 64-bit installation and related files.
+Disables OneDrive file synchronization.
 
 .DESCRIPTION
-This script checks if the OneDriveSetup.exe file exists and proceeds to uninstall OneDrive, stop any running OneDrive processes, and remove all associated files and folders.
+This script disables OneDrive file synchronization by setting the 'DisableFileSyncNGSC' registry value to 1.
 
 .PARAMETER None
 
@@ -15,34 +15,33 @@ None
 
 .EXAMPLE
 
-This example runs the script to delete the OneDrive 64-bit installation and related files.
+This example runs the script to disable OneDrive file synchronization.
 
 #>
-$targetMessage = "[0004_Delete_OneDrive_64bits] [no change] [compliant] No action completed, already on target"
+$targetMessage = "[0008_Disable_OneDrive_file_sync] [no change] [compliant] No action completed, already on target"
 
-if (Test-Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe") {
-    Start-Process -Wait "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe" "/uninstall"
-    Write-Host "[0004_Delete_OneDrive_64bits] - Deleting OneDrive 64 bits..."
-    Get-Process OneDrive -ErrorAction SilentlyContinue | Stop-Process -Force
+$oneDrivePath = 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive'
 
-    $pathsToRemove = @("$env:UserProfile\OneDrive", "$env:SystemDrive\OneDriveTemp", "$env:LocalAppData\Microsoft\OneDrive", "$env:ProgramData\Microsoft OneDrive")
+if (!(Test-Path $oneDrivePath)) {
+    Write-Host "[0008_Disable_OneDrive_file_sync] - Registry folder does not exist. Exiting..."
+    return
+}
 
-    foreach ($path in $pathsToRemove) {
-        if (Test-Path $path) {
-            Remove-Item -Path $path -Recurse -Force
-        }
+if (Test-Path $oneDrivePath) {
+    $disableFileSyncNGSC = Get-ItemPropertyValue -Path $oneDrivePath -Name "DisableFileSyncNGSC" -ErrorAction SilentlyContinue
+
+    if ($disableFileSyncNGSC -ne $null -and $disableFileSyncNGSC -ne 1) {
+        Set-ItemProperty -Path $oneDrivePath -Name "DisableFileSyncNGSC" -Value 1
+        Write-Host "[0008_Disable_OneDrive_file_sync] - OneDrive file synchronization disabled"
     }
-
-    # Test again after deletion
-    if (-not (Test-Path "$Env:SystemRoot\SysWOW64\OneDriveSetup.exe")) {        
-        Write-Host $targetMessage
+    elseif ($disableFileSyncNGSC -eq 1) {
+        Write-Host "[0008_Disable_OneDrive_file_sync] - OneDrive file synchronization is already disabled"
     }
     else {
-        $failMessage = "[0004_Delete_OneDrive_64bits] [no change] [compliant] OneDrive deletion failed"
-        Write-Host $failMessage
+        Write-Host "[0008_Disable_OneDrive_file_sync] - Unable to retrieve registry property value"
     }
 }
-else {    
-    Write-Host "[0004_Delete_OneDrive_64bits] Path tested: $Env:SystemRoot\SysWOW64\OneDriveSetup.exe"
+else {
+    Write-Host "[0008_Disable_OneDrive_file_sync] Path tested: $oneDrivePath"
     Write-Host $targetMessage
 }

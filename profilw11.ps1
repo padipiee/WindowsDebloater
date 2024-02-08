@@ -1,11 +1,9 @@
 # Set-ExecutionPolicy Unrestricted
-
+# 0002_git_config_global.ps1
 
 ############################################################
 #
-#./security/default/0003_Delete_OneDriveSetup_32bits.ps1
-#
-
+############################################################
 ./security/default/0004_Delete_OneDrive_64bits.ps1
 ./security/default/0008_Disable_OneDrive_file_sync.ps1
 ./security/default/0009_Delete_services.ps1

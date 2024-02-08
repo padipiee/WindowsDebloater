@@ -1,5 +1,3 @@
-
-
 <#
 .SYNOPSIS
 Disables Application Telemetry if it is enabled.
@@ -23,19 +21,31 @@ Author: [Your Name]
 Date: [Current Date]
 Version: 1.0
 #>
-if (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat") {
-  $item = Get-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat" -Name "AITEnable"
-  if ($null -ne $item) {
-    if ($item.AITEnable -eq 0) {
-      Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry is already disabled (AITEnable) [no change]"
+
+$AppCompatPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+if (!(Test-Path $AppCompatPath)) {
+  Write-Host "[0017_Disable_Application_Telemetry] - Registry folder $AppCompatPath does not exist. Exiting..."
+  exit
+}
+
+$propertyName = "AITEnable"
+if (Test-Path -Path $AppCompatPath) {
+  if (Get-ItemProperty -Path $AppCompatPath -Name $propertyName -ErrorAction SilentlyContinue) {
+    $item = Get-ItemProperty -Path $AppCompatPath -Name $propertyName
+    if ($item.$propertyName -eq 0) {
+      Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry is already disabled ($propertyName) [no change]"
     }
     else {
-      Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry is currently set to $($item.AITEnable)"
-      Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat" -Name "AITEnable" -Value 0
+      Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry is currently set to $($item.$propertyName)"
+      Set-ItemProperty -Path $AppCompatPath -Name $propertyName -Value 0
       Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry has been disabled"
     }
   }
+  else {
+    Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry is not configured [no change]"
+  }
 }
 else {
-  Write-Host "[0017_Disable_Application_Telemetry] Application Telemetry is not configured [no change]"
+  Write-Host "[0017_Disable_Application_Telemetry] Registry folder $AppCompatPath does not exist. Exiting..."
+  return
 }

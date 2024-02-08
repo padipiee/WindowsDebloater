@@ -18,7 +18,18 @@ Date: [Date]
 Version: [Version Number]
 #>
 # Disable Inventory Collector
+
+
+
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+
+$registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+if (!(Test-Path $registryPath)) {
+  Write-Host "[0018_Disable_Application_Telemetry] - Registry folder $registryPath does not exist. Exiting..."
+  exit
+}
+
+
 $propertyName = "DisableInventory"
 $initialValue = Get-ItemProperty -Path $registryPath -Name $propertyName
 

@@ -19,6 +19,13 @@ Runs the script to disable OneDrive file synchronization.
 #>
 
 $oneDrivePath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive"
+
+if (!(Test-Path $oneDrivePath)) {
+  Write-Host "[0008_Disable_OneDrive_file_sync] - Registry folder does not exist. Exiting..."
+  return
+}
+
+
 $oneDriveUserPath = "HKCU:\SOFTWARE\Microsoft\OneDrive"
 
 $disableFileSyncNGSC = Get-ItemPropertyValue -Path $oneDrivePath -Name "DisableFileSyncNGSC"
