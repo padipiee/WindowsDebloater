@@ -29,6 +29,9 @@
 #./security/default/0043_Disable_DiagTrack.ps1  #not found Windows 11
 ./security/default/0044_Disable_NVIDIA_Container_Telemetry.ps1 
 ./security/default/0046_Disable_App_Access_To_Voice_Activation_When_Device_Is_Locked.ps1
+./security/default/0047_Disable_App_Access_To_Voice_Activation.ps1
+./security/default/0048_Disable_Use_of_Windows_Hello_Biometrics.ps1
+./security/default/0049_Disable_Netbios.ps1
 
 ./security/default/0056_Disable_with_policy_apprivacy.ps1
 ./security/default/0057_Disable_via_DoNotShowFeedbackNotifications.ps1
