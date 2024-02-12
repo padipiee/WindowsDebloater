@@ -43,6 +43,8 @@
 ./security/default/0365_choco_upgrade_nmap.ps1
 ./security/default/0366_install_powershell7.ps1
 ./security/default/0368_block_msedge_telemetry.ps1
+./security/default/0369_upgrade_powershell.ps1
+
 
 
 ############################################
