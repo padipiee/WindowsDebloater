@@ -32,10 +32,19 @@
 ./security/default/0047_Disable_App_Access_To_Voice_Activation.ps1
 ./security/default/0048_Disable_Use_of_Windows_Hello_Biometrics.ps1
 ./security/default/0049_Disable_Netbios.ps1
-
 ./security/default/0056_Disable_with_policy_apprivacy.ps1
 ./security/default/0057_Disable_via_DoNotShowFeedbackNotifications.ps1
 ./security/default/0058_Disable_game_DVR.ps1
+./security/default/0072_Disable_loggers.ps1
+./security/default/0073_Disable_WMI_Autologger_CloudExperienceHostOobe.ps1
+./security/default/0077_Disable_Microsoft_Windows_Maps_sched_task.ps1
+./security/default/0079_Disable_Windows_tips_DisableSoftLanding.ps1
+./security/default/0080_List_BITS.ps1
+./security/default/0085_Disable_Wi-Fi.ps1
+./security/default/0086_Disable_location_access_and_sensors.ps1
+./security/default/0091_Query_shell_extensions_list_for_detection.ps1
+./security/default/0094_Disable_ads_Explorer_Advanced_ShowSyncProviderNotifications.ps1
+./security/default/0101_Disable_xbox_Game_monitoring_service_xbgm.ps1
 
 
 #
