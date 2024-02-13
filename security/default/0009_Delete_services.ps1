@@ -22,13 +22,15 @@ Author: [Your Name]
 Date: [Current Date]
 #>
 
+#DiagTrack, also known as the Universal Telemetry Client (UTC). File located in %SystemRoot%\system32\diagtrack.dll
+
+
 # keep :
 #DoSvc (Delivery Optimization): Optimizes Windows updates and app downloads. Relevance to Microsoft Store: Relevant for app downloads. Keep enabled if you use Microsoft Store"DoSvc",
 #wlidsvc (Microsoft Account Sign-in Assistant):
 #LicenseManager (Windows License Manager Service): Relevance to Microsoft Store: Relevant for app licensing.
 
 $spy_services = @(
-    "DiagTrack",
     "dmwappushservice",
     "diagnosticshub.standardcollector.service",
     "DcpSvc",

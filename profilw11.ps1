@@ -6,8 +6,10 @@
 ############################################################
 ./security/default/0004_Delete_OneDrive_64bits.ps1
 ./security/default/0008_Disable_OneDrive_file_sync.ps1
-./security/default/0009_Delete_services.ps1
+#./security/default/0009_Delete_services.ps1
+#./security/default/0009.01_Delete_services_diagtrack.ps1
 ./security/default/0010_Disable_unsafe_services.ps1
+./security/default/0010.01_Disable_unsafe_services_remoteregistry.ps1
 ./security/default/0011_Disable_Collect_Activity_History_PublishUserActivities.ps1
 ./security/default/0016_Disable_global_Telemetry_AllowTelemetry.ps1
 ./security/default/0017_Disable_Application_Telemetry.ps1
