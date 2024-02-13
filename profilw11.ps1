@@ -53,6 +53,8 @@
 ./security/default/0366_install_powershell7.ps1
 ./security/default/0368_block_msedge_telemetry.ps1
 ./security/default/0369_upgrade_powershell.ps1
+#./security/default/0370_disable_tips.ps1
+./security/default/0371_enable-feature_Microsoft-Windows-Subsystem-Linux.ps1
 
 
 

@@ -22,25 +22,27 @@ Author: [Your Name]
 Date: [Current Date]
 #>
 
+# keep :
+#DoSvc (Delivery Optimization): Optimizes Windows updates and app downloads. Relevance to Microsoft Store: Relevant for app downloads. Keep enabled if you use Microsoft Store"DoSvc",
+#wlidsvc (Microsoft Account Sign-in Assistant):
+#LicenseManager (Windows License Manager Service): Relevance to Microsoft Store: Relevant for app licensing.
+
 $spy_services = @(
     "DiagTrack",
     "dmwappushservice",
     "diagnosticshub.standardcollector.service",
     "DcpSvc",
     "WerSvc",
-    "PcaSvc",
-    "DoSvc",
+    "PcaSvc",    
     "WMPNetworkSvc",
     "XblAuthManager",
     "XblGameSave",
     "XboxNetApiSvc",
     "xboxgip",
-    "wlidsvc",
     "lfsvc",
     "NcbService",
     "WbioSrvc",
-    "LicenseManager",
-    "OneSyncSvc",
+     "OneSyncSvc",
     "CDPSvc",
     "CDPUserSvc",
     "MapsBroker",
