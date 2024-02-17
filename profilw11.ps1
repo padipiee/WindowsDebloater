@@ -1,4 +1,4 @@
-# Set-ExecutionPolicy Unrestricted
+Set-ExecutionPolicy Unrestricted
 # 0002_git_config_global.ps1
 
 ############################################################

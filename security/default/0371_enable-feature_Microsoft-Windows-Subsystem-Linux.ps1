@@ -20,14 +20,32 @@ This example enables the Microsoft Windows Subsystem for Linux feature.
 
 #>
 
+Get-WindowsOptionalFeature -Online | Where-Object { $_.FeatureName -like "*Linux*" }
+
 $featureName = "Microsoft-Windows-Subsystem-Linux"
 
-if ((Get-WindowsOptionalFeature -Online -FeatureName $featureName).State -ne "Enabled") {
+$featureState = (Get-WindowsOptionalFeature -Online -FeatureName $featureName).State
+
+if ($featureState -eq "Enabled") {
+    Write-Host "[0371_enable-feature_Microsoft-Windows-Subsystem-Linux] The Microsoft Windows Subsystem for Linux feature is already activated."
+}
+else {
     Enable-WindowsOptionalFeature -Online -FeatureName $featureName -All -NoRestart
     Write-Host "[0371_enable-feature_Microsoft-Windows-Subsystem-Linux] The Microsoft Windows Subsystem for Linux feature has been activated."
 }
+
+# Check if Virtual Machine Platform is already enabled
+$vmPlatform = Get-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform"
+
+if ($vmPlatform.State -ne "Enabled") {
+    # Enable Virtual Machine Platform
+    Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
+    Write-Host "[0371_enable-feature_Microsoft-Windows-Subsystem-Linux] The VirtualMachinePlatform was enabled."
+}
 else {
-    Write-Host "[0371_enable-feature_Microsoft-Windows-Subsystem-Linux] The Microsoft Windows Subsystem for Linux feature is already activated."
+    Write-Host "[0371_enable-feature_Microsoft-Windows-Subsystem-Linux] The VirtualMachinePlatform is already enabled."
 }
 
+wsl --set-default-version 2
+#wsl.exe --install
 #wsl --install -d kali-linux
