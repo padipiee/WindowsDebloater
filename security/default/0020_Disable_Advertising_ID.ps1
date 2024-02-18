@@ -8,14 +8,14 @@ if (Test-Path -Path $registryPath) {
 
   if ($initialValue -ne 0) {
     Set-ItemProperty -Path $registryPath -Name $registryProperty -Value 0
-    Write-Host "[0020_Disable_Advertising_ID] CurrentVersion\AdvertisingInfo was set to 0"
+    Write-Host "[0020_Disable_Advertising_ID] CurrentVersion\AdvertisingInfo $registryProperty was set to 0"
   }
   else {
-    Write-Host "[0020_Disable_Advertising_ID] CurrentVersion\AdvertisingInfo was already set [no change]"
+    Write-Host "[0020_Disable_Advertising_ID] CurrentVersion\AdvertisingInfo $registryProperty was already set [no change]"
   }
 }
 else {
-  Write-Host "[0020_Disable_Advertising_ID] CurrentVersion\AdvertisingInfo path does not exist"
+  Write-Host "[0020_Disable_Advertising_ID] CurrentVersion\AdvertisingInfo $registryPropertypath does not exist"
 }
 
 #Enabled Value 1

@@ -57,6 +57,7 @@ Set-ExecutionPolicy Unrestricted
 ./security/default/0369_upgrade_powershell.ps1
 #./security/default/0370_disable_tips.ps1
 ./security/default/0371_enable-feature_Microsoft-Windows-Subsystem-Linux.ps1
+./security/default/0373_Disable_cool_data_tips_screen_log.ps1
 
 
 
