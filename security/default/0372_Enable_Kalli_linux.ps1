@@ -21,8 +21,6 @@ This example enables the Microsoft Windows Subsystem for Linux feature.
 #>
 
 wsl --set-default-version 2
-
 wsl --list --verbose
-
-#wsl.exe --install
-#wsl --install -d kali-linux
+wsl.exe --install
+wsl --install -d kali-linux
