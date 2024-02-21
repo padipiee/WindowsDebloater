@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+Disables the SSDP Discovery Service by modifying the registry.
+
+.DESCRIPTION
+This script disables the SSDP Discovery Service by modifying the registry value of 'Start' under the registry path 'HKLM:\SYSTEM\CurrentControlSet\services\SSDPSRV'. If the registry key does not exist, a message will be displayed.
+
+.PARAMETER None
+
+.INPUTS
+None
+
+.OUTPUTS
+None
+
+.EXAMPLE
+Disable-SSDPDiscoveryService
+#>
 
 $registryPath = "HKLM:\SYSTEM\CurrentControlSet\services\SSDPSRV"
 $targetValue = 4

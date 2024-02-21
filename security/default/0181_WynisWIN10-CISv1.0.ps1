@@ -8347,22 +8347,6 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#Allow Cortana'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "OCR" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Allow Cortana' is set to 'Disabled', value must be 0 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" |Select-Object AllowCortana
- $traitement = $traitement.AllowCortana
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
 
 #Allow Cortana above lock screen'
 $indextest += 1

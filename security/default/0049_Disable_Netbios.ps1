@@ -1,4 +1,30 @@
 
+<#
+.SYNOPSIS
+Disables NetBIOS by modifying the registry.
+
+.DESCRIPTION
+This script disables NetBIOS by modifying the registry value of the NetBIOS service.
+
+.PARAMETER registryPath
+The registry path of the NetBIOS service.
+
+.PARAMETER propertyName
+The name of the property to modify.
+
+.PARAMETER desiredValue
+The desired value to set for the property.
+
+.NOTES
+- This script requires administrative privileges to modify the registry.
+- It checks if the registry path exists and if the current value of the property matches the desired value.
+- If the current value does not match the desired value, it updates the registry value.
+- If the current value already matches the desired value, it does not make any changes.
+
+.EXAMPLE
+Disable-NetBIOS -registryPath "HKLM:\SYSTEM\CurrentControlSet\Services\NetBIOS" -propertyName "Start" -desiredValue 4
+#>
+
 $registryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\NetBIOS"
 $propertyName = "Start"
 $desiredValue = 4

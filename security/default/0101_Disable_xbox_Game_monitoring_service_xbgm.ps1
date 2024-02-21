@@ -1,7 +1,30 @@
 
+<#
+.SYNOPSIS
+Disables Xbox Game Monitoring service (xbgm) and stops the service if it is running.
+
+.DESCRIPTION
+This script checks if the Xbox Game Monitoring service (xbgm) is installed and running.
+ If it is installed, it disables the service by setting the 'Start' value in the registry to 4 (Disabled). 
+It also stops the service and sets its startup type to Disabled.
+
 # Disable Xbox Game Monitoring Windows 10 service
 # http://batcmd.com/windows/10/services/xbgm/
 # http://batcmd.com/windows/10/services/xbgm/
+
+.PARAMETER None
+
+.EXAMPLE
+.\0101_Disable_xbox_Game_monitoring_service_xbgm.ps1
+This example runs the script to disable the Xbox Game Monitoring service (xbgm) and stop it if it is running.
+
+.NOTES
+Author: [Author Name]
+Date: [Date]
+Version: [Version Number]
+#>
+
+
 if (Test-Path "HKLM:\System\CurrentControlSet\Services\xbgm") {
     $startValue = (Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Services\xbgm" -Name "Start").Start
     if ($startValue -eq 4) {

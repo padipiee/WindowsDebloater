@@ -18,8 +18,6 @@ Date: [Current Date]
 Version: 1.0
 #>
 
-
-
 $path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\"
 $items = Get-ChildItem -Path $path | Select-Object -ExpandProperty Name
 foreach ($item in $items) {

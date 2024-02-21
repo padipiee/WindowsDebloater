@@ -1,3 +1,26 @@
+<#
+.SYNOPSIS
+Disables app access to voice activation when the device is locked.
+
+.DESCRIPTION
+This script disables the ability for apps to access voice activation when the device is locked. It checks the value of a specific registry key and updates it if necessary.
+
+.PARAMETER registryPath
+The path to the registry key that controls app access to voice activation when the device is locked.
+
+.PARAMETER registryValueName
+The name of the registry value that controls app access to voice activation when the device is locked.
+
+.PARAMETER targetValue
+The desired value for the registry key. If the current value is different from the target value, the script will update it.
+
+.NOTES
+- This script requires administrative privileges to modify the registry.
+- The registry key and value names may vary depending on the Windows version.
+
+.EXAMPLE
+Disable-AppAccessToVoiceActivation -registryPath "HKCU:\Software\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps" -registryValueName "AgentActivationOnLockScreenEnabled" -targetValue 0
+#>
 $registryPath = "HKCU:\Software\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps"
 $registryValueName = "AgentActivationOnLockScreenEnabled"
 $targetValue = 0

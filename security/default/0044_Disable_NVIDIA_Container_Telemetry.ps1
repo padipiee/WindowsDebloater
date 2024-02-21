@@ -1,10 +1,10 @@
 
 <#
 .SYNOPSIS
-Display a message in order to disable NVIDIA Container Telemetry by disably a dll (rename or deletion).
+Display a message in order to disable NVIDIA Container Telemetry by disablong a dll (rename or deletion).
 
 .DESCRIPTION
-Display a message in order to disable NVIDIA Container Telemetry by disably a dll (rename or deletion).
+Display a message in order to disable NVIDIA Container Telemetry by disabling a dll (rename or deletion).
 
 .PARAMETER directory
 The directory where the NVIDIA Container Telemetry files are located.

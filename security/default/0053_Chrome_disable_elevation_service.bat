@@ -1,4 +1,5 @@
 REM Keep manual and stop the suspicious GoogleChromeElevationService
+# https://support.google.com/chrome/thread/189935188/what-is-google-chrome-elevation-service-do-you-know?hl=en
 
 REM HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GoogleChromeElevationService
 

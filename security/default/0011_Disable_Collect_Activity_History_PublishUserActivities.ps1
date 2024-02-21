@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Disables the collection of activity history in Windows 10.
+Disables the collection of activity history in Windows 10 and Windows 11.
 
 .DESCRIPTION
 This script disables the collection of activity history in Windows 10 by modifying the registry value for PublishUserActivities.
@@ -20,7 +20,6 @@ This script does not accept any parameters.
 Disable-CollectActivityHistory
 
 #>
-
 $publishUserActivitiesPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
 $publishUserActivitiesValue = Get-ItemProperty -Path $publishUserActivitiesPath
 

@@ -3167,23 +3167,7 @@ Configuration CIS_Windows10_v181 {
             ValueData = '1'
         }
 
-        # 18.9.61.3 (L1) Ensure 'Allow Cortana' is set to 'Disabled'
-        Registry 'AllowCortana' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsSearch'
-            ValueName = 'AllowCortana'
-            ValueType = 'DWord'
-            ValueData = '0'
-        }
 
-        # 18.9.61.4 (L1) Ensure 'Allow Cortana above lock screen' is set to 'Disabled'
-        Registry 'AllowCortanaAboveLock' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search'
-            ValueName = 'AllowCortanaAboveLock'
-            ValueType = 'DWord'
-            ValueData = '0'
-        }
 
         # 18.9.61.5 (L1) Ensure 'Allow indexing of encrypted files' is set to 'Disabled'
         Registry 'AllowIndexingEncryptedStoresOrItems' {

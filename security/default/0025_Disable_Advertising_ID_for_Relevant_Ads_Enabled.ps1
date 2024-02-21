@@ -25,9 +25,9 @@ if (Test-Path $registryPath) {
   }
 }
 else {
-  Write-Host "[0025_Disable_Advertising_ID_for_Relevant_Ads] Registry path not found: $registryPath"
+  Write-Host "[0025_Disable_Advertising_ID_for_Relevant_Ads_Enabled] Registry path not found: $registryPath"
 }
 
 if (-not $modified) {
-  Write-Host "[0025_Disable_Advertising_ID_for_Relevant_Ads] [no change]"
+  Write-Host "[0025_Disable_Advertising_ID_for_Relevant_Ads_Enabled [no change]"
 }

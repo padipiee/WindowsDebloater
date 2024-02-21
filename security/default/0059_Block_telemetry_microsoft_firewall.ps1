@@ -4,7 +4,6 @@
 #https://www.pcministry.com/winsrv2016_telemetry/summary/top_ip_addresses_for_telemetry_over_https/
 
 Set-NetFirewallProfile -all
-netsh advfirewall firewall add rule name="telemetry_vortex.data.microsoft.com_191.232.139.254" dir=out action=block remoteip=191.232.139.254 enable=yes
 netsh advfirewall firewall add rule name="telemetry_telecommand.telemetry.microsoft.com_65.55.252.92" dir=out action=block remoteip=65.55.252.92 enable=yes
 netsh advfirewall firewall add rule name="telemetry_oca.telemetry.microsoft.com_65.55.252.63" dir=out action=block remoteip=65.55.252.63 enable=yes
 netsh advfirewall firewall add rule name="telemetry_sqm.telemetry.microsoft.com_65.55.252.93" dir=out action=block remoteip=65.55.252.93 enable=yes

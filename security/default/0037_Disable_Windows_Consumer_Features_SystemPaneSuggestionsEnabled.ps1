@@ -7,12 +7,12 @@ if (Test-Path $registryPath) {
 
   if ($currentValue -ne $targetValue) {
     Set-ItemProperty -Path $registryPath -Name $registryValueName -Value $targetValue
-    Write-Host "[0037_Disable_Windows_Consumer_Features] Value for $registryPath $registryValueName updated to $targetValue"
+    Write-Host "[0037_Disable_Windows_Consumer_Features_SystemPaneSuggestionsEnabled] Value for $registryPath $registryValueName updated to $targetValue"
   }
   else {
-    Write-Host "[0037_Disable_Windows_Consumer_Features] Value for $registryPath $registryValueName  is already set to $targetValue"
+    Write-Host "[0037_Disable_Windows_Consumer_Features_SystemPaneSuggestionsEnabled] Value for $registryPath $registryValueName  is already set to $targetValue"
   }
 }
 else {
-  Write-Host "[0037_Disable_Windows_Consumer_Features] Registry path $registryPath does not exist"
+  Write-Host "[0037_Disable_Windows_Consumer_Features_SystemPaneSuggestionsEnabled] Registry path $registryPath does not exist"
 }

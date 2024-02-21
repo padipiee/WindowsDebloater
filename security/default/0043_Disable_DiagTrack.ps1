@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+Disables DiagTrack service by modifying the registry keys.
+
+.DESCRIPTION
+This script disables the DiagTrack service by setting the value of the "Start" property in the registry keys to 4. It checks if the registry keys exist and if the current value is already set to the target value before making any changes.
+
+.PARAMETER None
+
+.EXAMPLE
+.\0043_Disable_DiagTrack.ps1
+Disables the DiagTrack service by modifying the registry keys.
+
+.NOTES
+Author: [Your Name]
+Date: [Current Date]
+Version: 1.0
+#>
 Write-Host "[0043_Disable_DiagTrack] Disable DiagTrack"
 
 # Define the target value
