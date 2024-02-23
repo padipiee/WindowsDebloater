@@ -21,7 +21,7 @@ Set-ExecutionPolicy Unrestricted
 ./security/default/0020_Disable_Advertising_ID_DisabledByGroupPolicy.ps1
 ./security/default/0021_Disable_keylogger_InputPersonalization.ps1
 ./security/default/0023_Disable_browser_access_to_local_language.ps1
-./security/default/0024_Disable_SmartScreen.ps1
+#./security/default/0024_Disable_SmartScreen.ps1
 ./security/default/0025_Disable_Advertising_ID_for_Relevant_Ads_Enabled.ps1
 ./security/default/0026.01_Deleting_microsoft_task_Microsoft_Compatibility_Appraiser_only.ps1
 ./security/default/0030_Disable_biometrics.ps1
@@ -32,7 +32,6 @@ Set-ExecutionPolicy Unrestricted
 ./security/default/0036.02_Disable_cortana-registry_DisableWebSearch.ps1
 ./security/default/0036.03_Disable_cortana-registry_AllowSearchToUseLocation.ps1
 ./security/default/0037_Disable_Windows_Consumer_Features_SystemPaneSuggestionsEnabled.ps1
-#./security/default/0038_Disable_Bluetooth.ps1  ##? HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\ActionCenter\Quick Actions\All\SystemSettings_Device_BluetoothQuickAction"
 ./security/default/0040_Disable_anonymous_enumeration_restrictanonymous.ps1
 ./security/default/0042_Disable_SSDP_Discovery_Service.ps1
 ./security/default/0043_Disable_DiagTrack.ps1

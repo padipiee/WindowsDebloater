@@ -3,7 +3,7 @@
 Disables biometrics on the Windows 10/11 system.
 
 .DESCRIPTION
-This script disables biometrics on the Windows 10 system by modifying the registry keys related to biometrics settings. 
+This script disables biometrics on the Windows 10/11 system by modifying the registry keys related to biometrics settings. 
 It checks if the necessary registry keys exist and if the current values are different from the target values. 
 If the keys exist and the values need to be modified, the script updates the registry values accordingly.
 

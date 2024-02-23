@@ -42,6 +42,6 @@ if (Test-Path $oneDrivePath) {
     }
 }
 else {
-    Write-Host "[0008_Disable_OneDrive_file_sync] Path tested: $oneDrivePath"
+    Write-Host "[0004_Disable_OneDrive_Policies_DisableFileSyncNGSC] Path tested: $oneDrivePath"
     Write-Host $targetMessage
 }

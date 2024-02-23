@@ -40,5 +40,5 @@ if (Test-Path -Path $registryPath) {
   }
 }
 else {
-  Write-Host "[0020_Disable_Advertising_ID_DisabledByGroupPolicy] Windows\AdvertisingInfo  path does not exist"
+  Write-Host "[0020_Disable_Advertising_ID_DisabledByGroupPolicy] Windows\AdvertisingInfo path does not exist"
 }

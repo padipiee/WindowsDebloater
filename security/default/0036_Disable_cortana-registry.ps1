@@ -29,26 +29,38 @@ function Set-RegistryValue {
     param(
         [string]$path,
         [string]$propertyName,
-        [int]$value,
-        [string]$propertyType = "DWORD"
+        [int]$value
     )
 
-    $existingValue = Get-ItemProperty -Path $path -Name $propertyName -ErrorAction SilentlyContinue
+    # Check if the path exists, and if not, create it
+    if (!(Test-Path $path)) {
+        $currentPath = "HKLM:"
+        $path.Substring(5).Split('\') | ForEach-Object {
+            $currentPath = Join-Path -Path $currentPath -ChildPath $_
+            if (!(Test-Path $currentPath)) {
+                New-Item -Path $currentPath | Out-Null
+            }
+        }
+    }
 
-    if (-not $existingValue) {
+    $propertyExists = (Get-Item -Path $path).Property -contains $propertyName
+
+    if (-not $propertyExists) {
         # If the property doesn't exist, create it
-        New-ItemProperty -Path $path -Name $propertyName -Value $value -PropertyType $propertyType -Force
+        New-ItemProperty -Path $path -Name $propertyName -Value $value -PropertyType DWORD -Force
         Write-Host "[$propertyName] created and set to $value"
-    } elseif ($existingValue.$propertyName -ne $value) {
-        # If the property exists and its value is not $value, set its value
-        Set-ItemProperty -Path $path -Name $propertyName -Value $value
-        Write-Host "[$propertyName] adjusted to $value"
     } else {
-        # If the property exists and its value is already $value
-        Write-Host "[$propertyName] is already set to $value. No modification"
+        $existingValue = (Get-ItemProperty -Path $path -Name $propertyName).$propertyName
+        if ($existingValue -ne $value) {
+            # If the property exists and its value is not $value, set its value
+            Set-ItemProperty -Path $path -Name $propertyName -Value $value
+            Write-Host "[$propertyName] adjusted to $value"
+        } else {
+            # If the property exists and its value is already $value
+            Write-Host "[$propertyName] is already set to $value. No modification"
+        }
     }
 }
-
 # Disable Cortana
 
 Set-RegistryValue -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -PropertyName "ConnectedSearchPrivacy" -Value 3

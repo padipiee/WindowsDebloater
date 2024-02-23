@@ -39,7 +39,7 @@ if (Test-Path $registryPath) {
   }
 }
 else {
-  Write-Host "[0023_Disable_browser_access_to_local_language] Registry path does not exist."
+  Write-Host "[0023_Disable_browser_access_to_local_language] Registry path $registryPath does not exist."
 }
 
 

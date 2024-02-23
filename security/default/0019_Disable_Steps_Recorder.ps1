@@ -27,7 +27,8 @@ Date: [Date]
 Version: [Version Number]
 #>
 # Check if registry key exists
-if (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat") {
+$testpath="HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+if (Test-Path $testpath) {
   # Get the current value of DisableUAR
   $currentValue = Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat" -Name "DisableUAR"
   
@@ -41,6 +42,10 @@ if (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat") {
   } else {
     Write-Host "[0019_Disable_Steps_Recorder] DisableUAR is already set to 1 [no change]."
   }
+}
+else {
+  Write-Host "[0019_Disable_Steps_Recorder] Registry folder $testpath does not exist. Exiting..."
+  return
 }
 
 

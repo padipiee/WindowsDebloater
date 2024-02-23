@@ -1,10 +1,10 @@
 
 <#
 .SYNOPSIS
-Disables SmartScreen feature in Windows 10.
+Disables SmartScreen feature in Windows 10/11
 
 .DESCRIPTION
-This script disables the SmartScreen feature in Windows 10 by modifying the registry values.
+This script disables the SmartScreen feature in Windows 10/11 by modifying the registry values.
 It checks if the registry values for SmartScreenEnabled exist and if their current value is different from the target value.
 If the values need to be changed, it updates the registry values accordingly.
 

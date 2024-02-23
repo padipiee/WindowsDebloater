@@ -29,5 +29,5 @@ else {
 }
 
 if (-not $modified) {
-  Write-Host "[0025_Disable_Advertising_ID_for_Relevant_Ads_Enabled [no change]"
+  Write-Host "[0025_Disable_Advertising_ID_for_Relevant_Ads_Enabled [no change] $registryPath $propertyName = $targetValue"
 }

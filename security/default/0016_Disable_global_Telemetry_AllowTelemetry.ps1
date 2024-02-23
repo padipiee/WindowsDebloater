@@ -18,10 +18,28 @@ Version: [Version]
 #>
 
 # Check and set "AllowTelemetry" value in "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
+
+function Get-RegistryValue {
+  param(
+      [string]$path,
+      [string]$propertyName
+  )
+
+  $propertyExists = (Get-Item -Path $path).Property -contains $propertyName
+
+  if ($propertyExists) {
+      return (Get-ItemProperty -Path $path -Name $propertyName).$propertyName
+  } else {
+      return $null
+  }
+}
+
+
+
 $targetValue = 0
 $path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
 if (Test-Path $path) {
-  $currentValue = (Get-ItemProperty -Path $path -Name "AllowTelemetry").AllowTelemetry
+  $currentValue = Get-RegistryValue -Path $path -PropertyName "AllowTelemetry"
   if ($currentValue -ne $targetValue) {
     Set-ItemProperty -Path $path -Name "AllowTelemetry" -Value $targetValue
     Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] AllowTelemetry (Policies\DataCollection) value updated to $targetValue"
@@ -38,7 +56,7 @@ else {
 $targetValue = 0
 $path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
 if (Test-Path $path) {
-  $currentValue = (Get-ItemProperty -Path $path -Name "AllowTelemetry").AllowTelemetry
+  $currentValue = Get-RegistryValue -Path $path -PropertyName "AllowTelemetry"
   if ($currentValue -ne $targetValue) {
     Set-ItemProperty -Path $path -Name "AllowTelemetry" -Value $targetValue
     Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] AllowTelemetry (Windows\DataCollection) value updated to $targetValue"
@@ -55,7 +73,7 @@ else {
 $targetValue = 4
 $path = "HKLM:\SYSTEM\ControlSet001\Services\dmwappushsvc"
 if (Test-Path $path) {
-  $currentValue = (Get-ItemProperty -Path $path -Name "Start").Start
+  $currentValue = Get-RegistryValue -Path $path -PropertyName "Start"
   if ($currentValue -ne $targetValue) {
     Set-ItemProperty -Path $path -Name "Start" -Value $targetValue
     Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] Start value updated to $targetValue"
@@ -75,10 +93,10 @@ if (Test-Path $path) {
   $currentValue = (Get-ItemProperty -Path $path -Name "value").value
   if ($currentValue -ne $targetValue) {
     Set-ItemProperty -Path $path -Name "value" -Value $targetValue
-    Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] value updated to $targetValue"
+    Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] value updated to $targetValue for $path"
   }
   else {
-    Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] value is already set to $targetValue [no change]"
+    Write-Host "[0016_Disable_global_Telemetry_AllowTelemetry] value is already set to $targetValue [no change] for $path"
   }
 }
 else {

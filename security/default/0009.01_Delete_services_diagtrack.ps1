@@ -56,3 +56,6 @@ if ($serviceStatus) {
     #& sc.exe delete $service | Out-Null
     & sc.exe delete $service 
 }
+else {
+    Write-Host "[0009.01_Delete_services_diagtrack] Service already deleted: $service"
+}
