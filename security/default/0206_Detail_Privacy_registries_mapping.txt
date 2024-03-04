@@ -7,8 +7,7 @@ Some ref : https://gist.github.com/Carm01/3b83d78a0d99cc78ff1d46385ba68a13
 2 - HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports\PreventHandwritingErrorReports
 3 - Disable Inventory Collector
 3 - HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat\DisableInventory
-4 - Disable camera in logon Screen
-4 - HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization\NoLockScreenCamera
+
 ...
 21 - Disable sending URLs from apps to Windows Store [0076]
 21 - HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost\EnableWebContentEvaluation

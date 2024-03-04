@@ -347,17 +347,8 @@
         d: "RequireMutualAuthentication=1,RequireIntegrity=1{% if harden_win_hardenedunc_requireprivacy %},RequirePrivacy=1{% endif %}"
       }
 
-# https://www.stigviewer.com/stig/windows_10/2015-11-30/finding/V-63545
-# https://www.stigviewer.com/stig/windows_10/2016-06-24/finding/V-63549
-- name: Windows personalization - Disable Camera access and Slideshow from the lock screen
-  win_regedit:
-    key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization'
-    value: "{{ item.v }}"
-    datatype: dword
-    data: "{{ item.d }}"
-  with_items:
-    - { v: 'NoLockScreenCamera', d: 1 }
-    - { v: 'NoLockScreenSlideshow', d: 1 }
+
+
 
 # https://www.stigviewer.com/stig/windows_10/2017-02-21/finding/V-63591
 - name: Wi-Fi Sense must be disabled.
@@ -471,13 +462,6 @@
     datatype: dword
     data: 1
 
-# https://www.stigviewer.com/stig/windows_10/2015-11-30/finding/V-63545
-- name: Camera access from the lock screen must be disabled.
-  win_regedit:
-    key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization'
-    value: NoLockScreenCamera
-    datatype: dword
-    data: 1
 
 # https://www.stigviewer.com/stig/windows_10/2016-06-24/finding/V-63549
 - name: The display of slide shows on the lock screen must be disabled.

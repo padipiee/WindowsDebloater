@@ -4104,22 +4104,7 @@ $chaine>> $nomfichier
 Write-Host "#########>Begin Personalization audit<#########" -ForegroundColor DarkGreen
 
 
-#Prevent enabling lock screen camera
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "PA" + "$indextest"
 
-$chaine = "$id" + ";" + "(L1)Ensure 'Prevent enabling lock screen camera' is set to 'Enabled, value must 1 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"|Select-Object NoLockScreenCamera
- $traitement = $traitement.NoLockScreenCamera
-}
-else {
- $traitement = "not configure"
-}
 
 $chaine += $traitement
 $chaine>> $nomfichier
