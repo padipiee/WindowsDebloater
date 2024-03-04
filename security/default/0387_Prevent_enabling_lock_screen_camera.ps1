@@ -42,14 +42,14 @@ $targetValue = 1
 if (-not (Test-Path -Path $registryPath)) {
     # If the registry key does not exist, create it
     New-Item -Path $registryPath -Force | Out-Null
-    Write-Host "[0385_Prevent_enabling_lock_screen_camera] $registryPath was created."
+    Write-Host "[0387_Prevent_enabling_lock_screen_camera] $registryPath was created."
 }
 
 $currentValue = Get-ItemPropertyValue -Path $registryPath -Name $propertyName -ErrorAction SilentlyContinue
 
 if ($currentValue -eq $targetValue) {
-    Write-Host "[0385_Prevent_enabling_lock_screen_camera] The value of '$propertyName' is already set to '$targetValue'. No changes were made."
+    Write-Host "[0387_Prevent_enabling_lock_screen_camera] The value of '$propertyName' is already set to '$targetValue'. No changes were made."
 } else {
     Set-ItemProperty -Path $registryPath -Name $propertyName -Value $targetValue -Type DWord
-    Write-Host "[0385_Prevent_enabling_lock_screen_camera] The value of '$propertyName' has been modified to '$targetValue'."
+    Write-Host "[0387_Prevent_enabling_lock_screen_camera] The value of '$propertyName' has been modified to '$targetValue'."
 }

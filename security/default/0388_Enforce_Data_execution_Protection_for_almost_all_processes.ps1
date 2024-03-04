@@ -26,11 +26,11 @@ $properties = Get-ItemProperty -Path $registryPath
 if ($properties.PSObject.Properties.Name -contains $propertyName) {
     # If the property exists, get its value
     $propertyValue = Get-ItemProperty -Path $registryPath -Name $propertyName
-    Write-Output "[0387_Enforce_Data_execution_Protection_for_almost_all_processes] $propertyName = $propertyValue"
+    Write-Output "[0388_Enforce_Data_execution_Protection_for_almost_all_processes] $propertyName = $propertyValue"
 } else {
     # If the property does not exist, create it with the default value
     New-ItemProperty -Path $registryPath -Name $propertyName -Value 2 -PropertyType DWord
-    Write-Output "[0387_Enforce_Data_execution_Protection_for_almost_all_processes] Created property $propertyName with the default value at the path $registryPath."
+    Write-Output "[0388_Enforce_Data_execution_Protection_for_almost_all_processes] Created property $propertyName with the default value at the path $registryPath."
 }
 
 # Get the current DEP configuration
@@ -46,10 +46,10 @@ if ($dep -ne 3) {
 
     # Set the DEP configuration to OptOut
     Set-ItemProperty -Path $registryPath -Name $propertyName -Value 3 -Type DWord
-    Write-Output "[0387_Enforce_Data_execution_Protection_for_almost_all_processes]  $propertyName with the  value 3 !!! NEED A RESTART !!!!!!!!!!!!!!!!!!!."
+    Write-Output "[0388_Enforce_Data_execution_Protection_for_almost_all_processes]  $propertyName with the  value 3 !!! NEED A RESTART !!!!!!!!!!!!!!!!!!!."
  
 }
 else {
     # DEP is already configured to OptOut
-    Write-Output "[0387_Enforce_Data_execution_Protection_for_almost_all_processes]  DEP is already configured to 3: DEP is enabled for all processes, but some exceptions are allowed"
+    Write-Output "[0388_Enforce_Data_execution_Protection_for_almost_all_processes]  DEP is already configured to 3: DEP is enabled for all processes, but some exceptions are allowed"
 }

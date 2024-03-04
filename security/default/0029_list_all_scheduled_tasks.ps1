@@ -16,5 +16,6 @@ Task To Run : C:\Program Files (x86)\Microsoft Office\root\Office16\msoia.exe sc
 #>
 # list all scheduled tasks
 # check via taskschd.msc 
+
 schtasks /query /v /fo csv | ConvertFrom-CSV | Select-Object -Property "TaskName","Task To Run" | Where-Object {$_.TaskName -notcontains "TaskName"} | Format-List
 

@@ -20,7 +20,7 @@ function Set-RegistryValue {
     }
 
     $existingValue = Get-ItemProperty -Path $path -Name $propertyName -ErrorAction SilentlyContinue
-    $title = "[0381_Disable_Store_my_activity_history]"
+    $title = "[0383_Disable_Store_my_activity_histor]"
 
     if (-not $existingValue) {
         # If the property doesn't exist, create it

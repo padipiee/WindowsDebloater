@@ -15,4 +15,4 @@ $BraveConfig.password_manager_enabled = $false
 # Save the modified configuration back to the file
 $BraveConfig | ConvertTo-Json | Set-Content -Path $BraveConfigPath
 
-Write-Host "[0380_Disable_Brave_save_passwords_offer] Password saving in Brave Browser has been disabled."
+Write-Host "[0381_Disable_Brave_save_passwords_offer] Password saving in Brave Browser has been disabled."
