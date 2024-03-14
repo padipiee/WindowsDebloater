@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+This script disables the save and fill functionality in the Brave browser by modifying the registry settings.
+
+.DESCRIPTION
+The script checks if the registry key for Brave exists and creates it if it doesn't. It then checks the values of AutofillEnabled and PasswordManagerEnabled in the registry. If either of these values is not already set to 0, the script sets them to 0 to disable autofill and password manager in Brave.
+
+.PARAMETER None
+
+.EXAMPLE
+.\0389_Disable_Brave_save_fill.ps1
+Runs the script to disable save and fill functionality in Brave.
+
+.NOTES
+Author: [Author Name]
+Date: [Date]
+Version: [Version]
+#>
+
 # Define the registry path
 $registryPath = "HKCU:\Software\Policies\BraveSoftware\Brave"
 

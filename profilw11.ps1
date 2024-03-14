@@ -80,6 +80,8 @@ Set-ExecutionPolicy Unrestricted
 ./security/default/0386_Check_Data_execution_prevention_status
 ./security/default/0387_Prevent_enabling_lock_screen_camera
 ./security/default/0388_Enforce_Data_execution_Protection_for_almost_all_processes
+./security/default/0389_Disable_Brave_save_fill.ps1
+./security/default/0390_Disable_Widgets_AllowNewsAndInterests.ps1
 
 
 
