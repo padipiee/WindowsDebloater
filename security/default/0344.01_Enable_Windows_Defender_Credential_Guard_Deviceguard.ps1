@@ -29,13 +29,11 @@ if ($null -eq $currentValue -or $currentValue.$policyValueName -ne $policyValue)
     Set-ItemProperty -Path $policyPath -Name $policyValueName -Value $policyValue
     # Restart the system to apply the changes
     # Restart-Computer   #activate if you want it
-    Write-Host "The value of $policyValueName was configured to $policyValue."
+    Write-Host "[0344.01_Enable_Windows_Defender_Credential_Guard_Deviceguard] The value of $policyValueName was configured to $policyValue."
 }
 else {
-    Write-Host "The value of $policyValueName is already set to $policyValue."
+    Write-Host "[0344.01_Enable_Windows_Defender_Credential_Guard_Deviceguard] The value of $policyValueName is already set to $policyValue."
 }
-
-
 
 
 #   # 18.8.5.5 (NG) Ensure 'Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock'
@@ -49,19 +47,6 @@ else {
 #$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard"
 #$traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" |Select-Object LsaCfgFlags
 #$traitement = $traitement.LsaCfgFlags
-$registryPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa"
-$registryValueName = "LsaCfgFlags"
-$desiredValue = 1  # Set the desired value: 1 for enabling with UEFI lock, 2 for enabling without lock, 0 for disabling
-
-$currentValue = Get-ItemPropertyValue -Path $registryPath -Name $registryValueName -ErrorAction SilentlyContinue
-
-if ($currentValue -ne $desiredValue) {
-    Set-ItemProperty -Path $registryPath -Name $registryValueName -Value $desiredValue -Force
-    Write-Host "Windows Defender Credential Guard has been enabled with the desired setting."
-}
-else {
-    Write-Host "Windows Defender Credential Guard is already enabled with the desired setting."
-}
 
 
 

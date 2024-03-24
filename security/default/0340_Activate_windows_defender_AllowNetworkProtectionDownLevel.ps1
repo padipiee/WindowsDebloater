@@ -3,7 +3,8 @@
 Activates the AllowNetworkProtectionDownLevel option for Windows Defender.
 
 .DESCRIPTION
-This script activates the AllowNetworkProtectionDownLevel option for Windows Defender, which specifies whether to allow network protection to be set to Enabled or Audit Mode on Windows versions before 1709.
+This script activates the AllowNetworkProtectionDownLevel option for Windows Defender, 
+which specifies whether to allow network protection to be set to Enabled or Audit Mode on Windows versions before 1709.
 
 .NOTES
 - This script requires administrative privileges.
@@ -38,7 +39,7 @@ None.
 function Test-AdminPriv {
   # Check if running with administrative privileges
   if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Warning "This function requires administrative privileges. Please run PowerShell as an administrator."
+    Write-Warning "[0340_Activate_windows_defender_AllowNetworkProtectionDownLevel] This function requires administrative privileges. Please run PowerShell as an administrator."
     exit 1
   }
 }
@@ -50,10 +51,10 @@ function Test-Get-MpPreference-AllowNetworkProtectionDownLevel {
   
   # Check if the AllowNetworkProtectionDownLevel option is enabled
   if ($mpPreference.AllowNetworkProtectionDownLevel -eq 1) {
-    Write-Host "Get-MpPreference : AllowNetworkProtectionDownLevel option is currently enabled in Windows Defender."
+    Write-Host "[0340_Activate_windows_defender_AllowNetworkProtectionDownLevel]  Get-MpPreference : AllowNetworkProtectionDownLevel option is currently enabled in Windows Defender."
   }
   else {
-    Write-Host "Get-MpPreference : AllowNetworkProtectionDownLevel option is currently disabled in Windows Defender."
+    Write-Host "[0340_Activate_windows_defender_AllowNetworkProtectionDownLevel] Get-MpPreference : AllowNetworkProtectionDownLevel option is currently disabled in Windows Defender."
   }
 }
 
@@ -68,14 +69,14 @@ function Set-Registry-AllowNetworkProtectionDownLevel {
       # Set the registry value to 1 to enable the option
       Set-ItemProperty -Path $registryPath -Name $registryValue -Value 1
       reg query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection"
-      Write-Host "Successfully activated AllowNetworkProtectionDownLevel registry option for Windows Defender."
+      Write-Host "[0340_Activate_windows_defender_AllowNetworkProtectionDownLevel] Successfully activated AllowNetworkProtectionDownLevel registry option for Windows Defender."
     }
     else {
-      Write-Warning "The required registry key does not exist. Please ensure that Windows Defender is installed on the system."
+      Write-Warning "[0340_Activate_windows_defender_AllowNetworkProtectionDownLevel]  The required registry key does not exist. Please ensure that Windows Defender is installed on the system."
     }
   }
   catch {
-    Write-Error "Failed to activate AllowNetworkProtectionDownLevel option in Windows Defender. Error: $_"
+    Write-Error "[0340_Activate_windows_defender_AllowNetworkProtectionDownLevel]  Failed to activate AllowNetworkProtectionDownLevel option in Windows Defender. Error: $_"
   }
 }
 

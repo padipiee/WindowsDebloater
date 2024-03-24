@@ -3,7 +3,8 @@
 Activates the AllowDatagramProcessingOnWinServer option for Windows Defender.
 
 .DESCRIPTION
-This script activates the AllowDatagramProcessingOnWinServer option for Windows Defender. It sets the required registry key and Windows Defender preference to enable the option.
+This script activates the AllowDatagramProcessingOnWinServer option for Windows Defender.
+It sets the required registry key and Windows Defender preference to enable the option.
 
 .PARAMETER None
 
@@ -20,7 +21,7 @@ This script requires administrative privileges to run. Please run PowerShell as 
 function Test-AdminPriv {
   # Check if running with administrative privileges
   if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Warning "This function requires administrative privileges. Please run PowerShell as an administrator."
+    Write-Warning "[0339_Activate_windows_defender_AllowDatagramProcessingOnWinServer] This function requires administrative privileges. Please run PowerShell as an administrator."
     exit 1
   }
 }
@@ -32,10 +33,10 @@ function Test-Get-MpPreference-AllowDatagramProcessingOnWinServer {
   
   # Check if the AllowDatagramProcessingOnWinServer option is enabled
   if ($mpPreference.AllowDatagramProcessingOnWinServer -eq 1) {
-    Write-Host "Get-MpPreference : AllowDatagramProcessingOnWinServer option is currently enabled in Windows Defender."
+    Write-Host "[0339_Activate_windows_defender_AllowDatagramProcessingOnWinServer] Get-MpPreference : AllowDatagramProcessingOnWinServer option is currently enabled in Windows Defender."
   }
   else {
-    Write-Host "Get-MpPreference : AllowDatagramProcessingOnWinServer option is currently disabled in Windows Defender."
+    Write-Host "[0339_Activate_windows_defender_AllowDatagramProcessingOnWinServer] Get-MpPreference : AllowDatagramProcessingOnWinServer option is currently disabled in Windows Defender."
   }
 }
 

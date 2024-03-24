@@ -422,7 +422,7 @@ Check also chrome://policy/
 "AlternateErrorPagesEnabled"=dword:00000001
 "ApplicationLocaleValue"="en"
 "AutofillAddressEnabled"=dword:00000000
-"AutofillCreditCardEnabled"=dword:00000000
+
 "BackgroundModeEnabled"=dword:00000001
 "BlockThirdPartyCookies"=dword:00000000
 "BookmarkBarEnabled"=dword:00000001
@@ -440,11 +440,6 @@ Check also chrome://policy/
 "NetworkPredictionOptions"=dword:00000001
 "NewTabPageLocation"="https://www.chromium.org"
 "PasswordLeakDetectionEnabled"=dword:00000001
-<<<<<<< HEAD
-
-=======
-"PasswordManagerEnabled"=dword:00000001
->>>>>>> feae34e98302c12b3753da7b45b8072fcab3dc01
 "PrintHeaderFooter"=dword:00000000
 "PrintPreviewUseSystemDefaultPrinter"=dword:00000000
 "RegisteredProtocolHandlers"="[{\"default\": true, \"protocol\": \"mailto\", \"url\": \"https://mail.google.com/mail/?extsrc=mailto&url=%s\"}]"

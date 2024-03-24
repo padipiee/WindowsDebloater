@@ -12,8 +12,7 @@ The EnableVirtualizationBasedSecurity, RequirePlatformSecurityFeatures, and LsaC
 Enable-WindowsDefenderCredentialGuard
 
 .NOTES
-This setting is commented out as it enables a subset of DC/CG which renders other virtualization products unusable.
-It can be enabled if you don't use those products.
+
 #>
 
 $parentFolder = Split-Path -Path $MyInvocation.MyCommand.Path -Parent
@@ -29,13 +28,13 @@ if (Test-Path -Path $parentFolder) {
     Set-ItemProperty -Path $registryPath -Name RequirePlatformSecurityFeatures -Value 3
     Set-ItemProperty -Path $registryPath -Name LsaCfgFlags -Value 1
 
-    Write-Host "Configuration applied:"
+    Write-Host "[0345_Enable_Windows_Defender_Credential_Guard] Configuration applied:"
     Write-Host "EnableVirtualizationBasedSecurity = 1"
     Write-Host "RequirePlatformSecurityFeatures = 3"
     Write-Host "LsaCfgFlags = 1"
   } else {
-    Write-Host "Configuration values are already set."
+    Write-Host "[0345_Enable_Windows_Defender_Credential_Guard] Configuration values are already set."
   }
 } else {
-  Write-Host "Parent folder does not exist."
+  Write-Host "[0345_Enable_Windows_Defender_Credential_Guard] Parent folder does not exist."
 }
