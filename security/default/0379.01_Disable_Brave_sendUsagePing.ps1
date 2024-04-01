@@ -9,7 +9,7 @@ function Set-RegistryValue {
     )
 
     $existingValue = Get-ItemProperty -Path $path -Name $propertyName -ErrorAction SilentlyContinue
-    $title = "[0377_Disable_Brave_rewards]"
+    $title = "[0379.01_Disable_Brave_sendUsagePing]"
 
     if (-not $existingValue) {
         # If the property doesn't exist, create it

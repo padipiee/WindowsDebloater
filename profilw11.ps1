@@ -80,13 +80,30 @@ Set-ExecutionPolicy Unrestricted
 #./security/default/0370_disable_tips.ps1
 ./security/default/0371_enable-feature_Microsoft-Windows-Subsystem-Linux.ps1
 ./security/default/0373_Disable_cool_data_tips_screen_log.ps1
-
 #
-./security/default/0386_Check_Data_execution_prevention_status
-./security/default/0387_Prevent_enabling_lock_screen_camera
+./security/default/0378_Disable_Brave_sponsored_images.ps1
+./security/default/0379_Disable_Brave_analytics.ps1
+./security/default/0379.01_Disable_Brave_sendUsagePing.ps1
+./security/default/0382_Delete_Firefox_default_archived.ps1
+./security/default/0383_Disable_Store_my_activity_history.ps1
+./security/default/0384_Harden_Firefox_user_config_simple.ps1
+./security/default/0385_List_Details_Firefox_profiles.ps1
+./security/default/0386_Check_Data_execution_prevention_status.ps1
+#./security/default/0387.00_Disable_camera.ps1
+./security/default/0387.01_Prevent_enabling_lock_screen_camera
 ./security/default/0388_Enforce_Data_execution_Protection_for_almost_all_processes
 ./security/default/0389_Disable_Brave_save_fill.ps1
 ./security/default/0390_Disable_Widgets_AllowNewsAndInterests.ps1
+./security/default/0391_Disable_Brave_stats_updater_url
+./security/default/0392_Disable_Chrome_AutofillCreditCardEnabled
+./security/default/0393_Disable_AllowClipboardHistory.ps1
+./security/default/0394_Disable_Brave_AutofillAddressEnabled.ps1
+./security/default/0395_Disable_Brave_AutofillCreditCardEnabled.ps1
+./security/default/0396_Disable_Chrome_AutofillAddressEnabled
+./security/default/0397_Force_Chrome_NewTabPageLocation.ps1
+./security/default/0398_Chrome_ClearBrowsingDataOnExitList.ps1
+./security/default/0399_Brave_ClearBrowsingDataOnExitList.ps1
+
 
 
 

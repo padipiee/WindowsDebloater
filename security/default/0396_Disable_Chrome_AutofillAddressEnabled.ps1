@@ -14,23 +14,18 @@ Function Set-ChromePolicy {
     )
     If ($null -ne  (Get-ItemProperty -Path $ChromePolicyPath -Name $Key -ErrorAction SilentlyContinue) ) {
         Set-ItemProperty -Path $ChromePolicyPath -Name $Key -Value $Value
-        Write-Host "[0392_Disable_Chrome_AutofillCreditCardEnabled] The key '$Key' was already set. It has been reconfirmed as disabled."
+        Write-Host "[0396_Disable_Chrome_AutofillAddressEnabled] The key '$Key' was already set. It has been reconfirmed as disabled."
     } else {
         New-ItemProperty -Path $ChromePolicyPath -Name $Key -Value $Value -PropertyType DWORD
-        Write-Host "[0392_Disable_Chrome_AutofillCreditCardEnabled] The key '$Key' did not exist. It has been created and set as disabled."
+        Write-Host "[0396_Disable_Chrome_AutofillAddressEnabled] The key '$Key' did not exist. It has been created and set as disabled."
     }
 }
 
-# Disable 'Save and fill payment methods'
-Set-ChromePolicy -Key "AutofillCreditCardEnabled" -Value 0
-#"AutofillCreditCardEnabled"=dword:00000000
 
 # Disable 'Allow sites to check if you have payment methods saved'
-Set-ChromePolicy -Key "AutofillCreditCardSigninPromoEnabled" -Value 0
+Set-ChromePolicy -Key "AutofillAddressEnabled" -Value 0
 
 # Output the current settings
-Write-Host "[0392_Disable_Chrome_AutofillCreditCardEnabled] Current config is so : "
+Write-Host "[0396_Disable_Chrome_AutofillAddressEnabled] Current config is so : "
 Get-ItemProperty -Path $ChromePolicyPath
 
-# Output completion message
-# Write-Host "[0392_Disable_Chrome_AutofillCreditCardEnabled] Chrome autofill for Credit Card have been disabled, along with AutofillCreditCardSigninPromoEnabled"

@@ -15,5 +15,8 @@ This script uses the `wmic` command to retrieve the DataExecutionPrevention_Supp
 Returns the current status of Data Execution Prevention (DEP) on the operating system.
 
 #>
-Write-Output "[0386_Check_Data_execution_prevention_status] "
+Write-Output "[0386_Check_Data_execution_prevention_status] wmic OS Get DataExecutionPrevention_SupportPolicy :"
+Write-Output "[0386_Check_Data_execution_prevention_status] Default is 2 (DEP is enabled for only Windows system components and services)"
+
+
 wmic OS Get DataExecutionPrevention_SupportPolicy

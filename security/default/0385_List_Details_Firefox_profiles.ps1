@@ -8,7 +8,7 @@ if (Test-Path -Path $ProfilesPath) {
     Get-ChildItem -Path $ProfilesPath
 } else {
     # If the path does not exist, output a message
-    Write-Output "[0385_Detail_Firefox_profiles] The path $ProfilesPath does not exist."
+    Write-Output "[0385_List_Details_Firefox_profiles] The path $ProfilesPath does not exist."
 }
 
 # Read the contents of the profiles.ini file
@@ -23,5 +23,5 @@ $foundFiles = Get-ChildItem -Path $rootDir -Filter $fileName -Recurse -ErrorActi
 
 # Output the paths of the found files
 $foundFiles | ForEach-Object {
-    Write-Output "[0385_Detail_Firefox_profiles] $_.FullName"
+    Write-Output "[0385_List_Details_Firefox_profiles] $_.FullName"
 }

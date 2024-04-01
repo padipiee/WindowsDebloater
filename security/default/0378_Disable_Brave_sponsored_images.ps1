@@ -42,3 +42,4 @@ function Set-RegistryValue {
     }
 }
 
+Set-RegistryValue -Path "HKCU:\Software\BraveSoftware\Brave-Browser" -PropertyName "ShowSponsoredImages" -Value 0

@@ -2,7 +2,7 @@
 
 <#
 .SYNOPSIS
-This script disables the camera device and prevents enabling the lock screen camera on Windows 10/11.
+This script prevents enabling the lock screen camera on Windows 10/11.
 # https://www.stigviewer.com/stig/microsoft_windows_11/2023-09-29/finding/V-253350
 # https://www.stigviewer.com/stig/windows_10/2015-11-30/finding/V-63545
 # https://www.stigviewer.com/stig/windows_10/2016-06-24/finding/V-63549
@@ -24,13 +24,6 @@ Runs the script to disable the camera device and prevent enabling the lock scree
 - The script is specifically designed for Windows 11.
 #>
 
-Get-PnpDevice -PresentOnly -Class Camera,Image -Status OK | Format-List
-
-# Get the camera device instance ID
-$cameraId = (Get-PnpDevice -Class Camera,Image  -Status OK).InstanceId
-
-# Disable the camera device
-Disable-PnpDevice -InstanceId $cameraId -Confirm:$false
 
 # Set the registry value to prevent enabling lock screen camera
 $registryPath = "HKLM:\Software\Policies\Microsoft\Windows\Personalization"

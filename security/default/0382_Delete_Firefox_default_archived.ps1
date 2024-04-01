@@ -1,7 +1,7 @@
 
 
-#The datareporting folder within your Firefox profile directory contains various files related to data collection and reporting.
-#session-state.json : This file stores information about the current session, including open tabs, windows, and other session-related data.
+# The datareporting folder within your Firefox profile directory contains various files related to data collection and reporting.
+# session-state.json : This file stores information about the current session, including open tabs, windows, and other session-related data.
 # state.json : Similar to session-state.json, this file also contains session-related information.
 # archived folder : Inside the archived folder, you’ll find dated subfolders. Each dated subfolder contains multiple files with names like 
 # 1439862649871.c0086185-14f2-45b3-a1f5-6fbcb95f58c5.saved-session.jsonlz4. These files are compressed using jsonlz4 compression (similar to automatically created bookmark backups 

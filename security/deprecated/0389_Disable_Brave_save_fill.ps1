@@ -1,3 +1,10 @@
+#### WARNING
+#### brave://policy/  AutofillEnabled does NOT EXIST as deprecated
+#### below script is only exploratory for reference
+#### ref https://raw.githubusercontent.com/Prowler2/Brave-Browser-GPO-Policy/master/Policy%20Templates/v97.0.4692.71/brave.admx
+#### 0392 : AutofillCreditCardEnabled
+
+
 <#
 .SYNOPSIS
 This script disables the save and fill functionality in the Brave browser by modifying the registry settings.
