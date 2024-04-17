@@ -103,10 +103,10 @@ Set-ExecutionPolicy Unrestricted
 ./security/default/0397_Force_Chrome_NewTabPageLocation.ps1
 ./security/default/0398_Chrome_ClearBrowsingDataOnExitList.ps1
 ./security/default/0399_Brave_ClearBrowsingDataOnExitList.ps1
-
-
-
-
+./security/default/0400_Brave_RestoreOnStartupOnNewTab.ps1
+./security/default/0401_Firefox_Disable_HomePage_Pocket.ps1
+./security/default/0402_Firefox_Disable_HomePage_TopSites.ps1
+./security/default/0405_Harden_LSA_credentialDelegation_AllowProtectedCreds.ps1
 
 ############################################
 # On demand . Enable if needed

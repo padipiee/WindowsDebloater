@@ -1174,12 +1174,7 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "AllowEncryptionOracle"=dword:0000001
 
-;;; 18.8.4.2 (L1) Ensure 'Remote host allows delegation of non-exportable credentials' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation]
-; <deleted> = (Default)
-; 0000000 = Off
-; 0000001 = On (CIS)
-"AllowProtectedCreds"=dword:0000001
+
 
 ;;; 18.8.14.1 (L1) Ensure 'Boot-Start Driver Initialization Policy' is set to 'Enabled: Good, unknown and bad but critical'
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]

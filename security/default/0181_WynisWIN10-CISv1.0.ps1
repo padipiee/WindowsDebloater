@@ -5105,24 +5105,7 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#Remote host allows delegation of non-exportable credentials
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "CD" + "$indextest"
-$chaine = "$indextest" + ";" + "(L1) Ensure 'Remote host allows delegation of non-exportable credentials' is set to 'Enabled', value must be 1 " + ";"
-$exist = Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation" |Select-Object AllowProtectedCreds
- $traitement = $traitement.AllowProtectedCreds
-}
-else {
- $traitement = "not configure"
-}
 
-$chaine += $traitement
-$chaine>> $nomfichier
 
 
 

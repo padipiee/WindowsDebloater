@@ -1891,14 +1891,7 @@ Configuration CIS_Windows10_v181 {
             ValueData = '2'
         }
 
-        # 18.8.4.2 (L1) Ensure 'Remote host allows delegation of non-exportable credentials' is set to 'Enabled'
-        Registry 'AllowProtectedCreds' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation'
-            ValueName = 'AllowProtectedCreds'
-            ValueType = 'DWord'
-            ValueData = '1'
-        }
+
 
         # 18.8.5.1 (NG) Ensure 'Turn On Virtualization Based Security' is set to 'Enabled'
         Registry 'EnableVirtualizationBasedSecurity' {
@@ -5772,14 +5765,6 @@ Configuration CIS_Windows10_v181 {
           ValueData  = '2'
       }
 
-      # 18.8.4.2 (L1) Ensure 'Remote host allows delegation of non-exportable credentials' is set to 'Enabled'
-      Registry 'AllowProtectedCreds' {
-          Ensure     = 'Present'
-          Key        = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation'
-          ValueName  = 'AllowProtectedCreds'
-          ValueType  = 'DWord'
-          ValueData  = '1'
-      }
 
       # 18.8.5.1 (NG) Ensure 'Turn On Virtualization Based Security' is set to 'Enabled'
       Registry 'EnableVirtualizationBasedSecurity' {

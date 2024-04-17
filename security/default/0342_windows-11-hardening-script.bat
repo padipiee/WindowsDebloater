@@ -470,20 +470,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10" /v Start /t REG_DWORD 
 powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWindowsPowerShellV2
 powershell.exe Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWindowsPowerShellV2Root
 ::
-::#######################################################################
-:: Harden lsass to help protect against credential dumping (Mimikatz)
-:: Configures lsass.exe as a protected process and disables wdigest
-:: Enables delegation of non-exported credentials which enables support for Restricted Admin Mode or Remote Credential Guard
-:: https://technet.microsoft.com/en-us/library/dn408187(v=ws.11).aspx
-:: https://medium.com/blue-team/preventing-mimikatz-attacks-ed283e7ebdd5
-:: ---------------------
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\LSASS.exe" /v AuditLevel /t REG_DWORD /d 00000008 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v RunAsPPL /t REG_DWORD /d 00000001 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v DisableRestrictedAdmin /t REG_DWORD /d 00000000 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v DisableRestrictedAdminOutboundCreds /t REG_DWORD /d 00000001 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v UseLogonCredential /t REG_DWORD /d 0 /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v Negotiate /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation" /v AllowProtectedCreds /t REG_DWORD /d 1 /f
+
 ::
 ::#######################################################################
 :: Disable the ClickOnce trust promp
@@ -747,21 +734,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v SCENoApplyLegacyAuditPoli
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging" /v EnableModuleLogging /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging" /v EnableScriptBlockLogging /t REG_DWORD /d 1 /f
 ::
-:: Enable Windows Event Detailed Logging
-:: This is intentionally meant to be a subset of expected enterprise logging as this script may be used on consumer devices.
-:: For more extensive Windows logging, I recommend https://www.malwarearchaeology.com/cheat-sheets
-Auditpol /set /subcategory:"Security Group Management" /success:enable /failure:enable
-Auditpol /set /subcategory:"Process Creation" /success:enable /failure:enable
-Auditpol /set /subcategory:"Logoff" /success:enable /failure:disable
-Auditpol /set /subcategory:"Logon" /success:enable /failure:enable 
-:: Auditpol /set /subcategory:"Filtering Platform Connection" /success:enable /failure:disable
-Auditpol /set /subcategory:"Removable Storage" /success:enable /failure:enable
-Auditpol /set /subcategory:"SAM" /success:disable /failure:disable
-Auditpol /set /subcategory:"Filtering Platform Policy Change" /success:disable /failure:disable
-:: Auditpol /set /subcategory:"IPsec Driver" /success:enable /failure:enable
-Auditpol /set /subcategory:"Security State Change" /success:enable /failure:enable
-Auditpol /set /subcategory:"Security System Extension" /success:enable /failure:enable
-Auditpol /set /subcategory:"System Integrity" /success:enable /failure:enable
+
 :: Uninstall pups
 :: ---------------------
 :: wmic /interactive:off product where "name like 'Ask Part%' and version like'%'" call uninstall
