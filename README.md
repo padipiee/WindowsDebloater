@@ -5,6 +5,8 @@ Scripts to harden Windows 10 and Windows 11.
 Assist to remove unnecessary Windows apps, disable telemetry, inactivate bloatware and disable unecessary or insecure default features and enable some security features.
 Attempts to improve security and privacy posture.
 
+![alt text](windowsdebloatersponge.png)
+
 # Specificity of this tool
 
 The "difference" of this tool is a focus on granularity (1 script for one 1 control) as all-in-one scripts are rapidly impossible to use or obsolete or difficult to use and maintain.
