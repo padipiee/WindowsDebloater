@@ -1,5 +1,8 @@
 # Set DNS
 
+Get-DnsClientServerAddress
+
+#
 Get-DnsClientServerAddress -InterfaceIndex 9
 #set-DnsClientServerAddress -InterfaceIndex 9 -ServerAddresses ("8.8.8.8","1.1.1.1")
 

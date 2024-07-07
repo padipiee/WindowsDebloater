@@ -12,7 +12,7 @@ A current profile (TBC) would be the update of the day sequence of each required
 
 # Usage
 
-This tool is mainly focused on a **powershell** approach and add others scripts ( batch, powershell, python, ansible ) for reference.
+This tool is mainly focused on a **powershell** approach and add others scripts ( batch, powershell, python, ansible ) for reference. Scripts are in <https://github.com/blue101010/Windows10Debloater/tree/master/security/default> driectory
 
 ## Credits
 
