@@ -3,7 +3,8 @@
 Activates the AllowNetworkProtectionOnWinServer option for Windows Defender.
 
 .DESCRIPTION
-This script activates the AllowNetworkProtectionOnWinServer option for Windows Defender. It checks if the option is already enabled, and if not, it sets the required registry key and Windows Defender preference to enable it.
+This script activates the AllowNetworkProtectionOnWinServer option for Windows Defender.
+It checks if the option is already enabled, and if not, it sets the required registry key and Windows Defender preference to enable it.
 
 .PARAMETER None
 This script does not accept any parameters.
@@ -13,15 +14,14 @@ This script does not accept any parameters.
 Activates the AllowNetworkProtectionOnWinServer option for Windows Defender.
 
 .NOTES
-Author: Unknown
-Date: Unknown
+Author: 
+Date: 
+
 #>
 # Activate AllowNetworkProtectionOnWinServer option for Windows defender
 # https://jeffreyappel.nl/microsoft-defender-for-endpoint-series-validate-defender-protection-and-additional-troubleshooting-part6/
 # https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/network-protection?view=o365-worldwide
 # https://learn.microsoft.com/en-us/windows/client-management/mdm/defender-csp#configurationallownetworkprotectiondownlevel
-
-
 
 
 function Test-AdminPriv {
@@ -45,8 +45,28 @@ function Test-Get-MpPreference-AllowNetworkProtectionOnWinServer {
   }
 }
 
+
+function Get-RegistryProperties {
+  param (
+      [string]$RegistryPath
+  )
+
+  try {
+      $properties = Get-ItemProperty -Path $RegistryPath
+      Write-Host "Properties in ${RegistryPath}:"
+      $properties.PSObject.Properties | ForEach-Object {
+          Write-Host "$($_.Name) : $($_.Value)"
+      }
+  } catch {
+      Write-Host "Error: Unable to query properties in $RegistryPath."
+  }
+}
+
+
+
 function Set-Registry-AllowNetworkProtectionOnWinServer { 
   # Set registry path and value
+  
   $registryPath = "HKLM:\Software\Policies\Microsoft\Windows Defender\Real-Time Protection"
   $registryValue = "AllowNetworkProtectionOnWinServer"
   
@@ -55,10 +75,9 @@ function Set-Registry-AllowNetworkProtectionOnWinServer {
     if (Test-Path -Path $registryPath) {
       # Set the registry value to 1 to enable the option
       Set-ItemProperty -Path $registryPath -Name $registryValue -Value 1
-      reg query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection"
       Write-Host "Successfully activated AllowNetworkProtectionOnWinServer registry option for Windows Defender."
     } else {
-      Write-Warning "The required registry key does not exist. Please ensure that Windows Defender is installed on the system."
+      Write-Host "(INFO) The required registry key  $registryValue does not exist in $registryPath. Normal on Windows 11"
     }
   } catch {
     Write-Error "Failed to activate AllowNetworkProtectionOnWinServer option in Windows Defender. Error: $_"
@@ -80,7 +99,10 @@ function Set-MpPreference-AllowNetworkProtectionOnWinServer {
   }
 }
 
+# MAIN
 Test-AdminPriv
 Test-Get-MpPreference-AllowNetworkProtectionOnWinServer
+Get-RegistryProperties -RegistryPath "HKLM:\Software\Policies\Microsoft\Windows Defender"
 Set-Registry-AllowNetworkProtectionOnWinServer
 Set-MpPreference-AllowNetworkProtectionOnWinServer
+Get-MpPreference | Select-Object AllowNetworkProtectionOnWinServer | Format-List
