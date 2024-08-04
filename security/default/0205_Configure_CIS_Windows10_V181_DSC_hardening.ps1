@@ -1504,14 +1504,7 @@ Configuration CIS_Windows10_v181 {
             ValueData = '2'
         }
       
-        # 18.3.6 (L1) Ensure 'WDigest Authentication' is set to 'Disabled'
-        Registry 'UseLogonCredential' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest'
-            ValueName = 'UseLogonCredential'
-            ValueType = 'DWord'
-            ValueData = '0'
-        }
+
 
         #  18.4.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
         Registry 'AutoAdminLogon' {
@@ -5378,14 +5371,7 @@ Configuration CIS_Windows10_v181 {
           ValueData    = '2'
       }
       
-      # 18.3.6 (L1) Ensure 'WDigest Authentication' is set to 'Disabled'
-      Registry 'UseLogonCredential' {
-          Ensure       = 'Present'
-          Key          = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest'
-          ValueName    = 'UseLogonCredential'
-          ValueType    = 'DWord'
-          ValueData    = '0'
-      }
+  
 
       #  18.4.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
       Registry 'AutoAdminLogon' {

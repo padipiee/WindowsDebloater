@@ -98,5 +98,6 @@ function Set-MpPreference-AllowNetworkProtectionDownLevel {
 
 Test-AdminPriv
 Test-Get-MpPreference-AllowNetworkProtectionDownLevel
-Set-Registry-AllowNetworkProtectionDownLevel
+#Set-Registry-AllowNetworkProtectionDownLevel
 Set-MpPreference-AllowNetworkProtectionDownLevel
+Get-MpPreference | Select-Object AllowNetworkProtectionDownLevel | Format-List

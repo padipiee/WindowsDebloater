@@ -4399,26 +4399,6 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#WDigest Authentication'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-
-$id = "MSSG" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'WDigest Authentication' is set to 'Disabled', value must be 0" + ";"
-$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest"|Select-Object UseLogonCredential
- $traitement = $traitement.UseLogonCredential
-}
-else {
- $traitement = "not configure"
-}
-
-$chaine += $traitement
-$chaine>> $nomfichier
-
 
 
 #Checking MSS (Legacy)
@@ -5066,24 +5046,6 @@ else {
 $chaine += $traitement
 $chaine>> $nomfichier
 
-#WDigest Authentication'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
-$id = "CD" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'WDigest Authentication' is set to 'Disabled', value must be 0 " + ";"
-$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" |Select-Object UseLogonCredential
- $traitement = $traitement.UseLogonCredential
-}
-else {
- $traitement = "not configure"
-}
-
-$chaine += $traitement
-$chaine>> $nomfichier
 
 
 #Encryption Oracle Remediation''

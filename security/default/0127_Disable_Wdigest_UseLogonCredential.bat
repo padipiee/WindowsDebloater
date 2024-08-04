@@ -1,6 +1,7 @@
 
 
-::After you install this security update, you can control how installed WDigest credentials can be saved by using a registry setting. To prevent WDigest credentials from being stored in memory, a Group Policy setting can be applied to the UseLogonCredential registry entry under the following subkey:
+::After you install this security update, you can control how installed WDigest credentials can be saved by using a registry setting.
+:: To prevent WDigest credentials from being stored in memory, a Group Policy setting can be applied to the UseLogonCredential registry entry under the following subkey:
 :: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\WDigest
 :: If the UseLogonCredential value is set to 0, WDigest will not store credentials in memory.
 :: https://support.microsoft.com/en-us/help/2871997/microsoft-security-advisory-update-to-improve-credentials-protection-a
@@ -11,5 +12,16 @@
 
 ::https://www.stigviewer.com/stig/windows_7/2016-12-19/finding/V-72753
 
+reg query HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential
 reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 0 /f
 reg query HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential
+
+        @REM # 18.3.6 (L1) Ensure 'WDigest Authentication' is set to 'Disabled'
+        @REM Registry 'UseLogonCredential' {
+        @REM     Ensure    = 'Present'
+        @REM     Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest'
+        @REM     ValueName = 'UseLogonCredential'
+        @REM     ValueType = 'DWord'
+        @REM     ValueData = '0'
+        @REM }
+

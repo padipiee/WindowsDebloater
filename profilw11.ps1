@@ -67,8 +67,10 @@ Set-ExecutionPolicy Unrestricted
 ./security/default/0102.004_Disable_ads_RotatingLockScreenOverlayEnabled.ps1
 ./security/default/0102.005_Disable_ads_ShowSyncProviderNotifications.ps1
 #
+./security/default/0197_Enable_Structured_Exception_Handling_Overwrite_Protection_Exception_chains_SEHOP.ps1
 ./security/default/0339_Activate_windows_defender_AllowDatagramProcessingOnWinServer.ps1
 ./security/default/0340_Activate_windows_defender_AllowNetworkProtectionDownLevel.ps1
+./security/default/0341_Activate_windows_defender_AllowNetworkProtectionOnWinServer.ps1
 ./security/default/0344.01_Enable_Windows_Defender_Credential_Guard_Deviceguard.ps1
 ./security/default/0344.02_Enable_Windows_Defender_Credential_Guard_LsaCfgFlags.ps1
 ./security/default/0345_Enable_Windows_Defender_Credential_Guard.ps1

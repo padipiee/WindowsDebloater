@@ -877,12 +877,6 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "DisableExceptionChainValidation"=dword:0000000
 
-;;; 18.3.6 (L1) Ensure 'WDigest Authentication' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest]
-; <deleted> = Default
-; 0000000 = Off (Default / CIS)
-; 0000001 = On
-"UseLogonCredential"=dword:0000000
 
 ;;; 18.4.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
@@ -2208,29 +2202,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"ManagePreviewBuildsPolicyValue"=dword:0000000
 
-;;; 18.9.101.1.2 (L1) Ensure 'Select when Preview Builds and Feature Updates are received' is set to 'Enabled: Semi-Annual Channel, 180 or more days'
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-; <deleted> = (Default)
-; 0000000 = 0 days (min)
-; 00000b4 = 180 days (CIS)
-; 000016d = 365 days (max)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"DeferFeatureUpdatesPeriodInDays"=dword:0000000
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-; <deleted> = (Default)
-; 00000002 = Preview Build - Fast
-; 00000004 = Preview Build - Slow 
-; 00000008 = Release Preview
-; 00000010 = Semi-Annual Channel (Targeted)
-; 00000020 = Semi-Annual Channel (CIS)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"BranchReadinessLevel"=dword:00000020
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-; <deleted> = (Default)
-; 0000000 = Off
-; 0000001 = On (CIS)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"DeferFeatureUpdates"=dword:0000001
+
 
 ;;; 18.9.101.1.3 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
