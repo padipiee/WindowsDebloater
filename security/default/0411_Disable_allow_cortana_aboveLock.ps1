@@ -1,5 +1,4 @@
-Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" |Select-Object AllowCortanaAboveLock
-
+# Function to set the registry value and display a message
 #Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\AboveLock\AllowCortanaAboveLock
 # https://admx.help/?Category=Windows_10_2016&Policy=FullArmor.Policies.3B9EA2B5_A1D1_4CD5_9EDE_75B22990BC21::AllowCortanaAboveLock
 
@@ -12,10 +11,6 @@ Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" |Sel
 # ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 # ;"AllowCortanaAboveLock"=dword:0000000
 
-
-## 
-
-# Function to set the registry value and display a message
 $title = "[0411_Disable_allow_cortana_aboveLock]"
 Function Set-RegistryPolicy {
     param (
@@ -26,25 +21,29 @@ Function Set-RegistryPolicy {
     # Ensure the registry path exists
     If (-Not (Test-Path $Path)) {
         # Create the registry path if it does not exist
-        New-Item -Path $Path -Force
+        New-Item -Path $Path -Force | Out-Null
         Write-Host "$title Registry path '$Path' did not exist. It has been created."
     }
 
     # Check if the registry key exists
-    If ($null -ne (Get-ItemProperty -Path $Path -Name $Key -ErrorAction SilentlyContinue)) {
+    $existingKey = Get-ItemProperty -Path $Path -Name $Key -ErrorAction SilentlyContinue
+    If ($null -ne $existingKey) {
         # If it exists, set the value
         Set-ItemProperty -Path $Path -Name $Key -Value $Value
         Write-Host "$title The key '$Key' was already set. It has been reconfirmed with the new value."
     } else {
         # If it does not exist, create it and set the value
-        New-ItemProperty -Path $Path -Name $Key -Value $Value -PropertyType DWORD
-        Write-Host "$title he key '$Key' did not exist. It has been created and set with the value."
+        New-ItemProperty -Path $Path -Name $Key -Value $Value -PropertyType DWORD | Out-Null
+        Write-Host "$title The key '$Key' did not exist. It has been created and set with the value."
     }
 }
 
 # Define the registry path for the policy
 $RegistryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
 
-
-# Use the function to set 'AllowProtectedCreds' to 1
+# Use the function to set 'AllowCortanaAboveLock' to 0
 Set-RegistryPolicy -Path $RegistryPath -Key "AllowCortanaAboveLock" -Value 0
+
+# Verify the change
+$propertyValue = Get-ItemProperty -Path $RegistryPath -Name "AllowCortanaAboveLock" -ErrorAction Stop
+Write-Host "Verification: AllowCortanaAboveLock is set to $($propertyValue.AllowCortanaAboveLock)"
