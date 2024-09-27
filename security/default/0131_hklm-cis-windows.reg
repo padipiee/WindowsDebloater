@@ -870,13 +870,6 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "SMB1"=dword:0000000
 
-;;; 18.3.4 (L1) Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-; <deleted> = Default
-; 0000000 = Off (CIS)
-; 0000001 = On
-"DisableExceptionChainValidation"=dword:0000000
-
 
 ;;; 18.4.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
@@ -1961,13 +1954,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"AllowCortana"=dword:0000001
 
-;;; 18.9.60.4 (L1) Ensure 'Allow Cortana above lock screen' is set to 'Disabled'
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-; <deleted> = (Default)
-; 0000000 = Off (CIS)
-; 0000001 = On
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"AllowCortanaAboveLock"=dword:0000000
+
 
 ;;; 18.9.60.5 (L1) Ensure 'Allow indexing of encrypted files' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]

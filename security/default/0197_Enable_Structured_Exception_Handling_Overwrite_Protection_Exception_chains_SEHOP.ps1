@@ -95,3 +95,5 @@ try {
 } catch {
     Write-Host "Step 6: Error: Unable to retrieve the property [$PROPERTYSEHOP] from the registry."
 }
+
+

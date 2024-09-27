@@ -4359,25 +4359,7 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#'Enable Structured Exception Handling Overwrite Protection (SEHOP)'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$exist = $null
 
-$id = "MSSG" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled', value must be 0" + ";"
-$exist = Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\kernel"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\kernel"|Select-Object DisableExceptionChainValidation
- $traitement = $traitement.DisableExceptionChainValidation
-}
-else {
- $traitement = "not configure"
-}
-
-$chaine += $traitement
-$chaine>> $nomfichier
 
 #Ensure 'NetBT NodeType configuration' is set to 'Enabled: P-node (recommended)
 $indextest += 1
