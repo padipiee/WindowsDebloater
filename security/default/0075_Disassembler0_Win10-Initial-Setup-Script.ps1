@@ -1902,17 +1902,6 @@ Function EnableChangingSoundScheme {
 }
 
 
-# Disable verbose startup/shutdown status messages
-Function DisableVerboseStatus {
-	Write-Output "Disabling verbose startup/shutdown status messages..."
-	If ((Get-CimInstance -Class "Win32_OperatingSystem").ProductType -eq 1) {
-		Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -ErrorAction SilentlyContinue
-	}
- Else {
-		Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -Type DWord -Value 0
-	}
-}
-
 # Disable F1 Help key in Explorer and on the Desktop
 Function DisableF1HelpKey {
 	Write-Output "Disabling F1 Help key..."
