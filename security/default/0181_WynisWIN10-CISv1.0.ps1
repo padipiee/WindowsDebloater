@@ -9372,62 +9372,6 @@ $chaine += $traitement
 $chaine>> $nomfichier
 
 
-#Personalization
-
-Write-Host "#########>Begin Personalization audit<#########" -ForegroundColor DarkGreen
-
-#Enable screen saver'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "PERSO" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Enable screen saver' is set to 'Enabled', value must be 1" + ";"
-$exist = Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop" |Select-Object ScreenSaveActive
- $traitement = $traitement.ScreenSaveActive
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
-
-#Force specific screen saver: Screen saver executable name'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "PERSO" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Force specific screen saver: Screen saver executable name' is set to 'Enabled: scrnsave.scr', value must be 0" + ";"
-$exist = Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop" |Select-Object SCRNSAVE.EXE
- $traitement = $traitement."SCRNSAVE.EXE"
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
-
-#Password protect the screen saver'
-$indextest += 1
-$chaine = $null
-$traitement = $null
-$id = "PERSO" + "$indextest"
-$chaine = "$id" + ";" + "(L1)Ensure 'Password protect the screen saver' is set to 'Enabled', value must be 1" + ";"
-$exist = Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop"
-if ( $exist -eq $true) {
- $traitement = Get-ItemProperty "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop" |Select-Object ScreenSaverIsSecure
- $traitement = $traitement.ScreenSaverIsSecure
-}
-else {
- $traitement = "not configure"
-}
-$chaine += $traitement
-$chaine>> $nomfichier
-
-
 #Screen saver timeout'
 $indextest += 1
 $chaine = $null

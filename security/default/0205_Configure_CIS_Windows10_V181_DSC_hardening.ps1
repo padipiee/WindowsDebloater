@@ -2269,14 +2269,7 @@ Configuration CIS_Windows10_v181 {
             ValueData = '0'
         }
 
-        # 19.1.3.1 (L1) Ensure 'Enable screen saver' is set to 'Enabled'
-        Registry 'ScreenSaveActive' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop'
-            ValueName = 'ScreenSaveActive'
-            ValueType = 'String'
-            ValueData = '1'
-        }
+
 
         # 18.8.31.1 (L2) Ensure 'Allow Clipboard synchronization across devices' is set to 'Disabled'
         Registry 'AllowCrossDeviceClipboard' {
@@ -3726,14 +3719,7 @@ Configuration CIS_Windows10_v181 {
             ValueData = '1'
         }
 
-        # 19.1.3.1 (L1) Ensure 'Enable screen saver' is set to 'Enabled'
-        Registry 'ScreenSaveActive' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop'
-            ValueName = 'ScreenSaveActive'
-            ValueType = 'String'
-            ValueData = '1'
-        }
+
 
         # 19.1.3.2 (L1) Ensure 'Force specific screen saver: Screen saver executable name' is set to 'Enabled: scrnsave.scr'
         Registry 'SCRNSAVE.EXE' {
@@ -3744,14 +3730,6 @@ Configuration CIS_Windows10_v181 {
             ValueData = 'scrnsave.scr'
         }
 
-        # 19.1.3.3 (L1) Ensure 'Password protect the screen saver' is set to 'Enabled'
-        Registry 'ScreenSaverIsSecure' {
-            Ensure    = 'Present'
-            Key       = 'HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop'
-            ValueName = 'ScreenSaverIsSecure'
-            ValueType = 'String'
-            ValueData = '1'
-        }
 
 
 
