@@ -1,4 +1,6 @@
-# Disable NULL Cipher Suites - 1
+# Disable weak Cipher Suites
+# if errror message 0xD0000225 is thrown, it probabley means the cipher suite is already disabled
+
 function DisableAndReport {
     param($CipherSuiteName)
     try {
