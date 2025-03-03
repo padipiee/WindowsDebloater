@@ -146,7 +146,6 @@ Check also chrome://policy/
 "RemoteAccessHostAllowGnubbyAuth"=dword:00000001
 "RemoteAccessHostAllowRelayedConnection"=dword:00000000
 "RemoteAccessHostAllowUiAccessForRemoteAssistance"=dword:00000001
-"RemoteAccessHostFirewallTraversal"=dword:00000000
 "RemoteAccessHostRequireCurtain"=dword:00000000
 "RemoteAccessHostTalkGadgetPrefix"="chromoting-host"
 "RemoteAccessHostTokenUrl"="https://example.com/issue"
