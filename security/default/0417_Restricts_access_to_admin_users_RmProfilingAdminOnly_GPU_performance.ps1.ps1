@@ -1,5 +1,6 @@
 # Define the registry path and value name
-# reference to the security "Restricting/Enabling Access to GPU Performance Counters, example CVE-2018-6260 (NVIDIA)"
+# reference to the security "Restricting/Enabling Access to GPU Performance Counters
+# example CVE-2018-6260 (NVIDIA)"
 
 $RegistryPath = "HKLM:\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\NVTweak"
 $ValueName = "RmProfilingAdminOnly"

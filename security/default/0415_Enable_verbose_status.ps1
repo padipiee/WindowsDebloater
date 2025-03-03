@@ -19,12 +19,21 @@ Function EnableVerboseStatus {
     .NOTES
     File Path: /C:/DATA/GIT/Windows10Debloater/security/default/0415_Enable_verbose_status.ps1
     #>
-    Write-Output "Enabling verbose startup/shutdown status messages..."
     If ((Get-CimInstance -Class "Win32_OperatingSystem").ProductType -eq 1) {
-        Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -Type DWord -Value 1
-    }
-    Else {
-        Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -ErrorAction SilentlyContinue
+        $currentValue = (Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -ErrorAction SilentlyContinue)."VerboseStatus"
+        if ($currentValue -ne 1) {
+            Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -Type DWord -Value 1
+            Write-Host "Verbose status messages enabled to Enable verbose startup/shutdown status messages"
+        } else {
+            Write-Host "Verbose status messages are already enabled to Enable verbose startup/shutdown status messages."
+        }
+    } else {
+        if (Test-Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System") {
+            Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "VerboseStatus" -ErrorAction SilentlyContinue
+            Write-Host "Removed verbose status messages for non-client OS."
+        } else {
+            Write-Host "Verbose status messages not applicable for non-client OS."
+        }
     }
 }
 

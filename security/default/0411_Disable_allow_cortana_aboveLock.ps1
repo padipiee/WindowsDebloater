@@ -26,15 +26,15 @@ Function Set-RegistryPolicy {
     }
 
     # Check if the registry key exists
-    $existingKey = Get-ItemProperty -Path $Path -Name $Key -ErrorAction SilentlyContinue
-    If ($null -ne $existingKey) {
-        # If it exists, set the value
-        Set-ItemProperty -Path $Path -Name $Key -Value $Value
-        Write-Host "$title The key '$Key' was already set. It has been reconfirmed with the new value."
-    } else {
-        # If it does not exist, create it and set the value
+    $currentVal = (Get-ItemProperty -Path $Path -Name $Key -ErrorAction SilentlyContinue).$Key
+    if ($null -eq $currentVal) {
         New-ItemProperty -Path $Path -Name $Key -Value $Value -PropertyType DWORD | Out-Null
-        Write-Host "$title The key '$Key' did not exist. It has been created and set with the value."
+        Write-Host "$title The key '$Key' did not exist. Created and set to $Value."
+    } elseif ($currentVal -ne $Value) {
+        Set-ItemProperty -Path $Path -Name $Key -Value $Value
+        Write-Host "$title The key '$Key' was changed from $currentVal to $Value."
+    } else {
+        Write-Host "$title The key '$Key' is already $Value."
     }
 }
 

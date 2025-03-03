@@ -28,20 +28,20 @@ Date: [Date]
 
 # Check if the registry key exists
 if (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System") {
-    # Query the registry key
     $currentValue = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "InactivityTimeoutSecs" -ErrorAction SilentlyContinue
-
     if ($null -eq $currentValue) {
-        # If the value does not exist, create it
         New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "InactivityTimeoutSecs" -Value 900 -PropertyType DWord -Force
-    } else {
-        # If the value exists, update it
+        Write-Host "InactivityTimeoutSecs set to 900 (created)."
+    } elseif ($currentValue.InactivityTimeoutSecs -ne 900) {
         Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "InactivityTimeoutSecs" -Value 900
+        Write-Host "InactivityTimeoutSecs set to 900 (updated)."
+    } else {
+        Write-Host "InactivityTimeoutSecs is already 900."
     }
 } else {
-    # If the registry key does not exist, create it and set the value
     New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Force | Out-Null
     New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "InactivityTimeoutSecs" -Value 900 -PropertyType DWord -Force
+    Write-Host "InactivityTimeoutSecs set to 900 (path created)."
 }
 
 # @REM #Interactive logon: Machine inactivity limit'

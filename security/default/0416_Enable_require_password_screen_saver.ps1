@@ -10,10 +10,19 @@ foreach ($path in @($desktopRegPath, $pushNotificationsRegPath)) {
 }
 
 # Set multiple properties for Desktop
-Set-ItemProperty -Path $desktopRegPath -Property @{
-    "ScreenSaveActive"   = "1";    # Enable screen saver
-    "ScreenSaveTimeOut"  = "900"   # Screen saver timeout (900 seconds)
-    "ScreenSaverIsSecure"= "1";    # On resume, display logon screen
+$desiredValues = @{
+    "ScreenSaveActive"   = "1"
+    "ScreenSaveTimeOut"  = "900"
+    "ScreenSaverIsSecure"= "1"
+}
+foreach ($item in $desiredValues.Keys) {
+    $currentValue = (Get-ItemProperty -Path $desktopRegPath -Name $item -ErrorAction SilentlyContinue).$item
+    if ($currentValue -ne $desiredValues[$item]) {
+        Set-ItemProperty -Path $desktopRegPath -Name $item -Value $desiredValues[$item]
+        Write-Host "$item set to $($desiredValues[$item])."
+    } else {
+        Write-Host "$item is already $($desiredValues[$item])."
+    }
 }
 
 # Set property for PushNotifications (Optional)
@@ -21,8 +30,6 @@ Set-ItemProperty -Path $desktopRegPath -Property @{
 # Set-ItemProperty -Path $pushNotificationsRegPath -Name "NoToastApplicationNotificationOnLockScreen" -Value 1 -PropertyType DWord
 # Write-Host "Turn off toast notifications on the lock screen setting applied."
 
-# Output confirmation messages
-Write-Host "Screen saver settings applied successfully."
 
 #reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v ScreenSaverIsSecure /t REG_SZ /d 1 /f
 

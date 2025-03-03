@@ -10,17 +10,16 @@ $prefsFilePath = Join-Path -Path $profileDir.FullName -ChildPath "prefs.js"
 # Define the preference to disable privacy-preserving ad measurement
 $preference = 'user_pref("dom.private-attribution.submission.enabled", false);'
 
-# Check if the preference already exists in the prefs.js file
-$existingPreference = Get-Content -Path $prefsFilePath | Select-String -Pattern 'dom.private-attribution.submission.enabled'
-
-if ($existingPreference) {
-    Write-Output "Preference already exists. Updating the value..."
-    # Update the existing preference
-    (Get-Content -Path $prefsFilePath) -replace 'user_pref\("dom.private-attribution.submission.enabled", true\);', $preference | Set-Content -Path $prefsFilePath
+# Read the prefs.js content
+$prefsContent = Get-Content -Path $prefsFilePath
+if ($prefsContent -match 'user_pref\("dom.private-attribution.submission.enabled", false\);') {
+    Write-Host "Privacy-preserving ad measurement is already disabled."
+} elseif ($prefsContent -match 'user_pref\("dom.private-attribution.submission.enabled", true\);') {
+    Write-Host "Preference set to true. Replacing with false..."
+    ($prefsContent -replace 'user_pref\("dom.private-attribution.submission.enabled", true\);', $preference) | Set-Content -Path $prefsFilePath
 } else {
-    Write-Output "Adding new preference..."
-    # Add the new preference to the prefs.js file
+    Write-Host "Preference not found. Adding new entry..."
     Add-Content -Path $prefsFilePath -Value $preference
+    Write-Host "Privacy-preserving ad measurement feature check complete."
 }
 
-Write-Output "Privacy-preserving ad measurement feature has been disabled."
