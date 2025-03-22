@@ -2,20 +2,6 @@ REM https://raw.githubusercontent.com/aghorler/Windows-10-Hardening/master/all.b
 
 
 
-
-
-:: Privacy (optional) - Clear browsing history on exit in Edge.
-:: reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\MicrosoftEdge\Privacy" /v "ClearBrowsingHistoryOnExit" /t REG_DWORD /d 1 /f
-:: reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Privacy" /v "ClearBrowsingHistoryOnExit" /t REG_DWORD /d 1 /f
-
-:: General - Disable help prompt in Edge UI.
-reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI" /v "DisableHelpSticker" /t REG_DWORD /d 1 /f
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI" /v "DisableHelpSticker" /t REG_DWORD /d 1 /f
-
-:: Privacy - Disable search suggestions in Edge.
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes" /v "ShowSearchSuggestionsGlobal" /t REG_DWORD /d 0 /f
-
-
 :: Privacy - Disable and configure Windows Spotlight for privacy.
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent" /v "ConfigureWindowsSpotlight" /t REG_DWORD /d 2 /f
 reg add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableTailoredExperiencesWithDiagnosticData" /t REG_DWORD /d 1 /f
