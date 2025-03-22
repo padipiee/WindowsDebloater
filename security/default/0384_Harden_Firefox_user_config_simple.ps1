@@ -69,18 +69,22 @@ $MySettings = @(
     'user_pref("toolkit.coverage.opt-out", true);',
     'user_pref("toolkit.telemetry.enabled", false);',
     'user_pref("toolkit.coverage.endpoint.base", "");',
-    'user_pref("browser.ping-centre.telemetry", false);',
     'user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);',
     'user_pref("toolkit.telemetry.newProfilePing.enabled", false);',
     'user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);',
     'user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);',
     'user_pref("toolkit.telemetry.server", "data:,");',
     'user_pref("toolkit.telemetry.unified", false);',
-    'user_pref("browser.startup.homepage", "https://www.google.com/");',
+    'user_pref("toolkit.telemetry.updatePing.enabled", false);',
+    'user_pref("browser.startup.homepage", "https://www.startpage.com/");',
     'user_pref("browser.newtab.url", "https://www.startpage.com/");',
     'user_pref("extensions.formautofill.addresses.enabled", false);',
     'user_pref("extensions.formautofill.creditCards.enabled", false);',
-    'user_pref("toolkit.telemetry.updatePing.enabled", false);'
+    'user_pref("extensions.pocket.enabled", false);',
+    'user_pref("extensions.pocket.api", "");',
+    'user_pref("network.cookie.lifetimePolicy", 2);'
+
+    
     
 )
 

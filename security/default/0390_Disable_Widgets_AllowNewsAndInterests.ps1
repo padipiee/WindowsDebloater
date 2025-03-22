@@ -62,11 +62,15 @@ if ((Get-ItemProperty -Path $registryPath -ErrorAction SilentlyContinue).PSObjec
 
 $registryPathGPO = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\{58C75E30-53B6-4D20-BB5A-ABA1B40F04A5}Machine\Software\Policies\Microsoft\Dsh"
 
-# Check ONLY - if the GPO value is set to 0
-$AllowNewsAndInterests = (Get-ItemProperty -Path $registryPathGPO -Name AllowNewsAndInterests).AllowNewsAndInterests
-if ($AllowNewsAndInterests -ne 0) {
-
-    Write-Host "[0390_Disable_Widgets_AllowNewsAndInterests] Group Policy Registry $registryPathGPO AllowNewsAndInterests NOT set to 0"
+# Check if the GPO registry path exists before attempting to read it
+if (Test-Path -Path $registryPathGPO) {
+    # Check ONLY - if the GPO value is set to 0
+    $AllowNewsAndInterests = (Get-ItemProperty -Path $registryPathGPO -Name AllowNewsAndInterests -ErrorAction SilentlyContinue).AllowNewsAndInterests
+    if ($null -eq $AllowNewsAndInterests -or $AllowNewsAndInterests -ne 0) {
+        Write-Host "[0390_Disable_Widgets_AllowNewsAndInterests] Group Policy Registry $registryPathGPO AllowNewsAndInterests NOT set to 0"
+    } else {
+        Write-Host "[0390_Disable_Widgets_AllowNewsAndInterests] Group Policy Registry $registryPathGPO AllowNewsAndInterests is already set to 0"
+    }
 } else {
-    Write-Host "[0390_Disable_Widgets_AllowNewsAndInterests] Group Policy Registry $registryPathGPO AllowNewsAndInterests is already set to 0"
+    Write-Host "[0390_Disable_Widgets_AllowNewsAndInterests] Group Policy Registry path $registryPathGPO does not exist"
 }
