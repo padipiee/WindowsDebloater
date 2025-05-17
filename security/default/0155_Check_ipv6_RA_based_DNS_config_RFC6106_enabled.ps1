@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-Checks if IPv6 RA-based DNS configuration (RFC 6106) is enabled on the network interfaces.
+Checks if IPv6 RA-based DNS configuration (RFC 6106) is enabled on the network interfaces and identifies Wi-Fi adapters.
 
 .DESCRIPTION
 This script retrieves the network interfaces with IPv6 address family and checks if the RA-based
- DNS configuration (RFC 6106) is enabled.
-  It uses the `Get-NetIPInterface` cmdlet to get the network interfaces and the `netsh` command to retrieve the configuration details.
+ DNS configuration (RFC 6106) is enabled. It also identifies if the interface is a Wi-Fi adapter.
+  It uses the `Get-NetIPInterface` and `Get-NetAdapter` cmdlets, and the `netsh` command to retrieve the configuration details.
 
 .PARAMETER None
 
@@ -15,17 +15,20 @@ None. You cannot pipe objects to this script.
 .OUTPUTS
 [PSCustomObject] with the following properties:
 - IfIndex: The interface index of the network interface.
+- IsWiFi: Boolean indicating if the interface is a Wi-Fi adapter.
 - RFC: The status of the RA-based DNS configuration (RFC 6106) on the network interface.
 
 .NOTES
 - This script requires administrative privileges to run.
 - The `netsh` command is used to retrieve the configuration details. Make sure it is available on the system where the script is executed.
+- Wi-Fi adapters are identified by an InterfaceType of 71 (IF_TYPE_IEEE80211).
 
 .EXAMPLE
 PS C:\> .\0155_Check_ipv6_RA_based_DNS_config_RFC6106_enabled.ps1
-    IfIndex RFC
-    ------- ---
-    28      enabled
+    IfIndex IsWiFi RFC
+    ------- ------ ---
+    28      True   enabled
+    15      False  disabled
 
 .LINK
 https://www.pdq.com/blog/how-to-fix-patch-the-bad-neighbor-exploit-vulnerability/
@@ -82,9 +85,34 @@ https://www.pdq.com/blog/how-to-fix-patch-the-bad-neighbor-exploit-vulnerability
 
 #>
 Get-NetIPInterface -AddressFamily ipv6 | ForEach-Object {
+    # Execute netsh command once for the current interface
+    $netshOutputLines = netsh int ipv6 show interface $_.ifIndex
+
+    # Extract the line containing RFC 6106 configuration
+    $rfcConfigLine = $netshOutputLines | Where-Object { $_ -match 'RA Based DNS Config \(RFC 6106\)' }
+
+    # Determine the RFC status from the extracted line
+    $rfcStatus = if ($rfcConfigLine) {
+        # Extract the value after the colon and trim whitespace
+        ($rfcConfigLine -replace '.*:\s*', '').Trim()
+    } else {
+        'N/A' # Value if the RFC 6106 line is not found
+    }
+
+    # Get the network adapter to check its type
+    $adapter = Get-NetAdapter -InterfaceIndex $_.ifIndex -ErrorAction SilentlyContinue
+    $isWiFi = $false
+    if ($adapter) {
+        # InterfaceType 71 is for IEEE 802.11 (Wi-Fi)
+        if ($adapter.InterfaceType -eq 71) {
+            $isWiFi = $true
+        }
+    }
+
    [PSCustomObject]@{
-        "IfIndex"   = (& netsh int ipv6 show int $_.ifIndex) -match 'IfIndex' -replace "ifindex\s*:","" | Out-String
-        "RFC"   = (& netsh int ipv6 show int $_.ifIndex) -match '(RFC 6106)' -replace "RA Based DNS Config \(RFC 6106\)\s*:","" | Out-String
+        "IfIndex" = $_.ifIndex # Use the direct numerical IfIndex from Get-NetIPInterface
+        "IsWiFi"  = $isWiFi
+        "RFC"     = $rfcStatus
     }
 }
 
